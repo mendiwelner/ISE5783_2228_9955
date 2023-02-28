@@ -14,8 +14,9 @@ public class Point {
 		 if (obj instanceof Point p)
 			 return this.xyz.equals(p.xyz);
 		 return false;
-	 }
+	}
 	
+	@Override
 	public String toString() {
 		return xyz.toString();
 	}
