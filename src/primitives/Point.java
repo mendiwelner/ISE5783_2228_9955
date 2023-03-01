@@ -4,6 +4,11 @@ import static java.lang.Math.*;
 public class Point {
 	protected Double3 xyz;
 	
+	public Point(double x,double y,double z) {
+		
+		xyz = new Double3(x,y,z);
+	}
+	
 	public Point(Double3 newXyz){
 		xyz = newXyz;
 	}
@@ -39,7 +44,6 @@ public class Point {
 	public double distance(Point p) {
 		return Math.sqrt(distanceSquared(p));
 	}
-	
 	
 
 }
