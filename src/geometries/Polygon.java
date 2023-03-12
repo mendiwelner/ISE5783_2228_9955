@@ -1,5 +1,5 @@
 package geometries;
 
-public class Polygon {
+public class Polygon { // h
 
 }
