@@ -13,6 +13,10 @@ public class Vector extends Point{
 	
 	public Vector(Double3 newXyz) {
 		super(newXyz);
+		
+		if(this.xyz.equals(Double3.ZERO))
+			throw new IllegalArgumentException("The vector can not be zero");
+		
 	}
 	
 	public Vector add(Vector vec) {
@@ -34,6 +38,7 @@ public class Vector extends Point{
 	}
 	
 	public Vector crossProduct(Vector vec) {
+		
 		
 		double x1 = this.xyz.d1;
 		double y1 = this.xyz.d2;

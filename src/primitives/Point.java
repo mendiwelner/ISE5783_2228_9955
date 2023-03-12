@@ -4,12 +4,12 @@ import static java.lang.Math.*;
 public class Point {
 	protected Double3 xyz;
 	
-	public Point(double x,double y,double z) {
+	Point(double x,double y,double z) {
 		
 		xyz = new Double3(x,y,z);
 	}
 	
-	public Point(Double3 newXyz){
+	Point(Double3 newXyz){
 		xyz = newXyz;
 	}
 	
