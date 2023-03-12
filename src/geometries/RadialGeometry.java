@@ -8,5 +8,6 @@ public abstract class RadialGeometry implements Geometry {
 		
 		radius = r;
 	}
+	//;
 
 }
