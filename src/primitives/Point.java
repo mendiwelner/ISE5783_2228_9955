@@ -1,6 +1,7 @@
 package primitives;
 import static java.lang.Math.*;
 
+
 public class Point {
 	protected Double3 xyz;
 	
@@ -31,6 +32,7 @@ public class Point {
 	}
 	
 	public Vector subtract(Point p) {
+		
 		return new Vector(xyz.subtract(p.xyz));
 	}
 	
