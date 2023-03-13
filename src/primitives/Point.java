@@ -30,7 +30,7 @@ public class Point {
 		return new Point(xyz.add(vec.xyz));
 	}
 	
-	public Vector substract(Point p) {
+	public Vector subtract(Point p) {
 		return new Vector(xyz.subtract(p.xyz));
 	}
 	
