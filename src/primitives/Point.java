@@ -31,6 +31,7 @@ public class Point {
 		return new Point(xyz.add(vec.xyz));
 	}
 	
+	// the name is subtract
 	public Vector subtract(Point p) {
 		
 		return new Vector(xyz.subtract(p.xyz));

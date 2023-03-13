@@ -6,7 +6,7 @@ public class Triangle extends Polygon {
 		
 	public Triangle(Point a,Point b, Point c) {
 		
-		super(a,b,c); // calling the ctor of polygon
+		super(a,b,c); // Calling the ctor of polygon
 	}
 
 }
