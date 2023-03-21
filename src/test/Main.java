@@ -1,10 +1,13 @@
 package test;
-
 import static java.lang.System.out;
 import static primitives.Util.isZero;
-
 import primitives.Point;
 import primitives.Vector;
+
+/**
+Mendy Segal. 211769955. Mendysegal490@gmail.com
+Mendy welner 209272228. mendiwell@gmail.com
+ */
 
 /** Test program for the 1st stage
  * @author Dan Zilberstein */
