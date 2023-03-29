@@ -4,19 +4,19 @@ import primitives.Vector;
 
 public class Plane implements Geometry {
 	
-	private Point q0;
+	private Point point;
 	private Vector normal;
 	
 	
-	public Plane(Point p, Vector _normal) {
+	public Plane(Point point, Vector normal) {
 		
-		q0 = p;
-		normal = _normal.normalize(); // making sure that the vector is normalized
+		this.point = point;
+		this.normal = normal.normalize(); // making sure that the vector is normalized
 	}
 	
-	public Plane(Point a, Point b,Point c) {
+	public Plane(Point p1, Point p2, Point p3) {
 		
-		q0 = a; // Point of reference
+		point = p1; // Point of reference
 		normal = null;
 		
 	}

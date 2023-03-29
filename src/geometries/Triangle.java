@@ -4,9 +4,9 @@ import primitives.Point;
 
 public class Triangle extends Polygon {
 		
-	public Triangle(Point a,Point b, Point c) {
+	public Triangle(Point p1,Point p2, Point p3) {
 		
-		super(a,b,c); // Calling the ctor of polygon
+		super(p1,p2,p3); // Calling the ctor of polygon
 	}
 
 }

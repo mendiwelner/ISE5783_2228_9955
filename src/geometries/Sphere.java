@@ -5,11 +5,10 @@ import primitives.Vector;
 public class Sphere extends RadialGeometry{
 	private Point center;
 	
-	Sphere(double radius1, Point point1){
-		super(radius1);
-		center = point1;
+	Sphere(double radius, Point point){
+		super(radius);
+		center = point;
 	}
-	
 
 	public Vector getNormal(Point p) {
 		return null; 
