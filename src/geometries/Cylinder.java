@@ -8,7 +8,7 @@ import primitives.Vector;
  
 public class Cylinder extends Tube{
 	//the height of the Cylinder
-	private double height;
+	private final double height;
 	
 	/** Constructor to initialize Cylinder
 	   * @param radius1 radius value

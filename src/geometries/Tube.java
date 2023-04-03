@@ -4,19 +4,30 @@ import primitives.Ray;
 import primitives.Vector;
 
 public class Tube extends RadialGeometry{
-	private Ray ray;
 	
+	 
+	private final Ray axisRay;
+	
+	/**
+	 * Creates a cylindrical tube with the specified radius and axis ray.
+	 * @param radius the radius of the tube
+	 * @param axisRay the axis ray of the tube
+	 */
 	Tube(double radius, Ray ray){
 		super(radius);
-		this.ray = ray;
+		this.axisRay = ray;
 	}
 	
+
 	public Vector getNormal(Point p) {
 		return null; 
 	}
 	
+	/**
+	 * @return axisRay
+	 */
 	Ray getRay(){
-		return ray;
+		return axisRay;
 	}
 
 }

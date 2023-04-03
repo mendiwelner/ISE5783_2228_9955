@@ -1,105 +1,106 @@
 package primitives;
 
-public class Vector extends Point{
-	
-	public Vector(double _x, double _y, double _z)
-	{
-		super(_x,_y,_z);
-		
-		if(this.xyz.equals(Double3.ZERO))
+public class Vector extends Point {
+
+	/**
+	 * Constructor to initialize xyz
+	 * @param _x The x-coordinate
+	 * @param _y The y-coordinate
+	 * @param _z The z-coordinate
+	 */
+	public Vector(double x, double y, double z) {
+		super(x, y, z);
+		if (this.xyz.equals(Double3.ZERO))
 			throw new IllegalArgumentException("The vector can not be zero");
-			
 	}
-	
-	public Vector(Double3 newXyz) {
+
+	/**
+	 * Constructor to initialize xyz with Double3 object
+	 * @param newXyz
+	 */
+	Vector(Double3 newXyz) {
 		super(newXyz);
-		
-		if(this.xyz.equals(Double3.ZERO))
+		if (this.xyz.equals(Double3.ZERO))
 			throw new IllegalArgumentException("The vector can not be zero");
-		
 	}
-	
+
+	/**
+     * Add the given vector to this vector and return the result as a new vector.
+     * @param vec The vector to add
+     * @return A new vector that is the sum of this vector and the given vector
+     */
 	public Vector add(Vector vec) {
 		return new Vector(xyz.add(vec.xyz));
 	}
-	
+
+	/**
+     * Scale this vector by the given scalar and return the result as a new vector.
+     * @param scalar The scalar to multiply the vector by
+     * @return A new vector that is this vector multiplied by the given scalar
+     */
 	public Vector scale(double scalar) {
-		
 		return new Vector(xyz.scale(scalar));
 	}
-	
+
+	 /**
+     * Compute the dot product of this vector and the given vector.
+     * @param vec The vector to compute the dot product with
+     * @return The dot product of this vector and the given vector
+     */
 	public double dotProduct(Vector vec) {
-		
-		double x =  this.xyz.d1 * vec.xyz.d1;
-		double y =  this.xyz.d2 * vec.xyz.d2;
-		double z =  this.xyz.d3 * vec.xyz.d3;
-		
-		return x + y + z;
+		return   xyz.d1 * vec.xyz.d1 
+			   + xyz.d2 * vec.xyz.d2 
+			   + xyz.d3 * vec.xyz.d3;
 	}
-	
+
+	/**
+     * Compute the cross product of this vector and the given vector and return the
+     * result as a new vector.
+     * @param vec The vector to compute the cross product with
+     * @return A new vector that is the cross product of this vector and the given vector
+     */
 	public Vector crossProduct(Vector vec) {
-		
-		
-		double x1 = this.xyz.d1;
-		double y1 = this.xyz.d2;
-		double z1 = this.xyz.d3;
-		
-		double x2 = vec.xyz.d1;
-		double y2 = vec.xyz.d2;
-		double z2 = vec.xyz.d3;
-		
-		return new Vector(y1 * z2 - z1 * y2,
-						  z1 * x2 - x1 * z2,
-						  x1 * y2 - y1 * x2
-						  );		
+		return new Vector(xyz.d2 * vec.xyz.d3 - xyz.d3 * vec.xyz.d2, //
+				xyz.d3 * vec.xyz.d1 - xyz.d1 * vec.xyz.d3, //
+				xyz.d1 * vec.xyz.d2 - xyz.d2 * vec.xyz.d1);
 	}
-	
+
+	/**
+     * Compute the squared length of this vector.
+     * @return The squared length of this vector
+     */
 	public double lengthSquared() {
-		
-		double x = this.xyz.d1;
-		double y = this.xyz.d2;
-		double z = this.xyz.d3;
-		
-		return x * x + y * y + z * z;
+		return xyz.d1 * xyz.d1 + xyz.d2 * xyz.d2 + xyz.d3 * xyz.d3;
 	}
-	
+
+	/**
+     * Compute the length of this vector.
+     * @return The length of this vector
+     */
 	public double length() {
-		
-		return Math.sqrt(this.lengthSquared()); 
+		return Math.sqrt(this.lengthSquared());
 	}
-	
+
+	/**
+     * Return a new vector that is the normalized version of this vector.
+     * @return A new vector that has the same direction as this vector but a length of 1
+     */
 	public Vector normalize() {
-		
-		double len = this.length();
-		double x = xyz.d1 / len;
-		double y = xyz.d2 / len;
-		double z = xyz.d3 / len;
-		
-		Vector temp = new Vector(x,y,z);
-		if(temp.xyz.equals(Double3.ZERO))
-			throw new IllegalArgumentException("The vector can not be zero");
-		
-		this.xyz = temp.xyz;
-		return this;		
+		return this.scale(1 / this.length());
 	}
-	
+
 	@Override
-	 public boolean equals(Object obj) {
-		 if (this == obj) return true;
-		 if (obj instanceof Vector v)
-			 return this.xyz.equals(v.xyz);
-		 return false;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj instanceof Vector v)
+			return this.xyz.equals(v.xyz); //
+		return false;
 	}
-	
+
 	@Override
 	public String toString() {
-		return xyz.toString();
+		return super.toString();
 	}
 
 }
-
-
-
-
-
-

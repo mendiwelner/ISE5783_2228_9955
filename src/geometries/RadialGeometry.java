@@ -2,10 +2,13 @@ package geometries;
 
 public abstract class RadialGeometry implements Geometry {
 	
-	protected double radius;
+	// the radius of a general shape
+	protected final double radius;
 	
-	RadialGeometry(double r){
-		
+	/**
+	 * @param r is the radius to assign
+	 */
+	RadialGeometry(double r){		
 		radius = r;
 	}
 
