@@ -2,7 +2,7 @@ package primitives;
 
 public class Ray {
 	
-	private Point point;
+	private Point p0;
 	private Vector dir;
 	
 	/**
@@ -12,15 +12,24 @@ public class Ray {
 	 * @param vec the direction vector of the Ray
 	 */
 	public Ray(Point p, Vector vec) {
-		point = p;
+		p0 = p;
 		dir = vec.normalize();
+	}
+	
+	
+	public Point getP0() {
+		return p0;
+	}
+	
+	public Vector getDir() {
+		return dir;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
 		if (obj instanceof Ray r)
-			return this.point.equals(r.point) && this.dir.equals(r.dir);
+			return this.p0.equals(r.p0) && this.dir.equals(r.dir);
 		return false;
 	}
 	
@@ -31,7 +40,7 @@ public class Ray {
 	 */
 	@Override
 	public String toString() {
-		return point + "->" + dir;
+		return p0 + "->" + dir;
 	}
 
 }

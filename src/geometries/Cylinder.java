@@ -21,7 +21,7 @@ public class Cylinder extends Tube{
 	
 	//this function returns the normal of the Cylinder in sum point on it, @param point 
 	public Vector getNormal(Point point) {
-		return null; 
+		return getRay().getDir();
 	}
 	
 	//this function returns the height of the Cylinder

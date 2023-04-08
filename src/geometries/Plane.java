@@ -30,7 +30,10 @@ public class Plane implements Geometry {
 	public Plane(Point p1, Point p2, Point p3) {
 		
 		point = p1;
-		normal = null;	
+		
+		Vector v1 = p1.subtract(p2);
+		Vector v2 = p3.subtract(p1);
+		normal = v1.crossProduct(v2.normalize());		
 	}
 	
 	public Vector getNormal() {

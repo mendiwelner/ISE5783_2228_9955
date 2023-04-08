@@ -11,16 +11,17 @@ public class Sphere extends RadialGeometry{
 	 * @param radius
 	 * @param point
 	 */
-	Sphere(double radius, Point point){
+	public Sphere(double radius, Point point){ // is it should be Package Friendly
 		super(radius);
 		center = point;
 	}
 
 	/**
-	 * returns null in the mine time
+	 * @param point
+	 * @return normal to the sphere
 	 */
 	public Vector getNormal(Point p) {
-		return null; 
+		return p.subtract(center).normalize(); 
 	}
 	
 	/**
@@ -29,5 +30,4 @@ public class Sphere extends RadialGeometry{
 	Point getCenter(){
 		return center;
 	}
-
 }
