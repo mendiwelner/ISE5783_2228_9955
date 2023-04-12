@@ -22,11 +22,18 @@ class SphereTest {
 	 */
 	@Test
 	void testSphere() {
-		assertDoesNotThrow(() -> new Sphere(3 ,new Point(1,2,3))
+		// ============ Equivalence Partitions Tests ==============
+		assertDoesNotThrow(() -> new Sphere(5 ,new Point(1,2,3))
+				,"Failed constructing a correct sphere");
+		
+		assertDoesNotThrow(() -> new Sphere(2.5 ,new Point(1,2,3))
 				,"Failed constructing a correct sphere");
 		
 		assertThrows(IllegalArgumentException.class,()-> new Sphere(0 ,new Point(1,2,3))
-				,"The radius of a sphere must be greater then zero");
+				,"The radius of a sphere must be greater then 0");
+		
+		assertThrows(IllegalArgumentException.class,() -> new Sphere(-5 ,new Point(1,2,3))
+				,"The radius of a sphere must be greater then 0");
 	}
 
 	/**

@@ -1,12 +1,17 @@
 package unittests.geometries;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static primitives.Util.isZero;
 
 import org.junit.jupiter.api.Test;
 
 import geometries.Polygon;
-import primitives.*;
-import static primitives.Util.*;
+import primitives.Point;
+import primitives.Vector;
 
 /** Testing Polygons
  * @author Dan */
@@ -18,11 +23,11 @@ public class PolygonTests {
       // ============ Equivalence Partitions Tests ==============
 
       // TC01: Correct concave quadrangular with vertices in correct order
-      assertDoesNotThrow(() -> new Polygon(new Point(0, 0, 1), //
-                                           new Point(1, 0, 0), //
-                                           new Point(0, 1, 0), //
-                                           new Point(-1, 1, 1)), //
-                         "Failed constructing a correct polygon");
+      try {
+         new Polygon(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1));
+      } catch (IllegalArgumentException e) {
+         fail("Failed constructing a correct polygon");
+      }
 
       // TC02: Wrong vertices order
       assertThrows(IllegalArgumentException.class, //
