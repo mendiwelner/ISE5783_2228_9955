@@ -8,10 +8,9 @@ import primitives.*;
 import geometries.Sphere;
 import org.junit.jupiter.api.Test;
 
-import primitives.Vector;
 
 /**
- * @author meniw
+ * @author Mendy&Mendy
  *
  */
 class SphereTest {
@@ -41,6 +40,9 @@ class SphereTest {
 	 */
 	@Test
 	void testGetNormal() {
-		fail("Not yet implemented");
-	}
+		// ============ Equivalence Partitions Tests ==============
+		Sphere sphere = new Sphere(5,new Point(0,0,1));
+		assertEquals(new Vector(0,0,1), sphere.getNormal(new Point(0,0,5))
+				,"normal((0,0,5)-(0,0,1)) must be equal to (0,0,1)");
+	}	
 }

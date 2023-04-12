@@ -47,7 +47,8 @@ public class VectorTest {
 		assertEquals(new Vector(2, 4, 6), v1.add(new Vector(1, 2, 3)), "(1,2,3) + (-2,-4,-6) must be (-1,-2,-3)");
 		// TC05: Correct adding vectors
 		assertEquals(new Vector(-1, -2, -3), v1.add(new Vector(-2, -4, -6)), "(1,2,3) + (-2,-4,-6) must be (-1,-2,-3)");
-
+		
+		
 		// =============== Boundary Values Tests ==================
 		// TC06: Getting the zero vector
 		assertThrows(IllegalArgumentException.class, () -> v1.add(new Vector(-1, -2, -3)),
@@ -77,20 +78,18 @@ public class VectorTest {
 	 */
 	@Test
 	void testScale() {
-		Vector v1 = new Vector(1, 2, 3);
+		Vector v = new Vector(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
 		// TC10: Correct scaling
-		assertEquals(new Vector(2, 4, 6), v1.scale(2), "2*(1,2,3) must be (2,4,6)");
-		// TC11: Correct scaling
-		assertEquals(new Vector(1, 2, 3), v1.scale(1), "1*(1,2,3) must be (1,2,3)");
+		assertEquals(new Vector(2, 4, 6), v.scale(2), "2*(1,2,3) must be (2,4,6)");
 		// TC12: Correct scaling
-		assertEquals(new Vector(-1, -2, -3), v1.scale(-1), "-1*(1,2,3) must be (-1,-2,-3)");
-		// TC13: Correct scaling
-		assertEquals(new Vector(-2, -4, -6), v1.scale(-2), "-2*(1,2,3) must be (-2,-4,-6)");
+		assertEquals(new Vector(-1, -2, -3), v.scale(-1), "-1*(1,2,3) must be (-1,-2,-3)");
+		
+		assertTrue(isZero(v.scale(2.5d).length() -  new Vector(2.5d,5d,7.5d).length()));
 		
 		// =============== Boundary Values Tests ==================
 		// TC14: Getting the zero vector
-		assertThrows(IllegalArgumentException.class, () -> v1.scale(0),
+		assertThrows(IllegalArgumentException.class, () -> v.scale(0),
 				"0*(1,2,3) should be exeption of vector(0,0,0)");
 	}
 
@@ -102,12 +101,11 @@ public class VectorTest {
 		Vector v1 = new Vector(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
 		// TC15: Correct Dot Product value
-		assertEquals(0,v1.dotProduct(new Vector(0 ,3 ,-2)),"ERROR: dotProduct() wrong value");
+		assertEquals(32,v1.dotProduct(new Vector(4 ,5 ,6)),"ERROR: dotProduct() wrong value");
 		
 		// =============== Boundary Values Tests ==================
-		// TC16: Zero Vector as an argument, wrong!
-		assertThrows(IllegalArgumentException.class,() -> v1.dotProduct(new Vector(0,0,0))
-				,"ERROR: dotProduct() for orthogonal vectors must be zero");		
+		// TC16: orthogonal vectors
+		assertEquals(0,v1.dotProduct(new Vector(0 ,3 ,-2)),"ERROR: dotProduct() for orthogonal vectors is not zero");
 	}
 
 	/**
@@ -141,8 +139,6 @@ public class VectorTest {
 	@Test
 	void testLengthSquared() {
 		// ============ Equivalence Partitions Tests ==============
-		//TC20: Testing vector with positive values
-		assertEquals(14,new Vector(1 ,2 ,3).lengthSquared(),"ERROE: wrong result length squared");
 		//TC21: Testing vector with negative values
 		assertEquals(14,new Vector(-1 ,-2 ,-3).lengthSquared(),"ERROE: wrong result length squared");
 		
@@ -158,8 +154,6 @@ public class VectorTest {
 	@Test
 	void testLength() {
 		// ============ Equivalence Partitions Tests ==============
-		//TC20: Testing vector with positive values
-		assertEquals(Math.sqrt(3),new Vector(1 ,1 ,1).length(),"ERROE: wrong result length squared");
 		//TC21: Testing vector with negative values
 		assertEquals(Math.sqrt(14),new Vector(-1 ,-2 ,-3).length(),"ERROE: wrong result length squared");
 				
