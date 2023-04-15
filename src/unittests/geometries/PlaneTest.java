@@ -37,15 +37,11 @@ class PlaneTest {
 		assertThrows(IllegalArgumentException.class,
 				() -> new Plane(new Point(0, 0, 1), new Point(0, 0, 1), new Point(1, 0, 0)));
 
-		// TC03: wrong plane - point 1 and 3 equal
+		// TC03: wrong plane - all points on the same vector
 		// =============== Boundary Values Tests ==================
 		assertThrows(IllegalArgumentException.class,
-				() -> new Plane(new Point(0, 0, 1), new Point(0, 1, 0), new Point(0, 0, 1)));
+				() -> new Plane(new Point(0, 0, 1), new Point(0, 0, 2), new Point(0, 0, 3)));
 
-		// TC04: wrong plane - point 2 and 3 equal
-		// =============== Boundary Values Tests ==================
-		assertThrows(IllegalArgumentException.class,
-				() -> new Plane(new Point(0, 0, 1), new Point(0, 1, 0), new Point(0, 1, 0)));
 
 	}
 
