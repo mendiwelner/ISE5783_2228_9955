@@ -47,7 +47,7 @@ class SphereTest {
 	void testGetNormal() {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Testing a correct getNormal to sphere
-		Sphere sphere = new Sphere(5 ,new Point(0,0,1));
+		Sphere sphere = new Sphere(5 ,new Point(0,0,0));
 		assertEquals(new Vector(0,0,1), sphere.getNormal(new Point(0,0,5))
 				,"normal((0,0,5)-(0,0,1)) must be equal to (0,0,1)");
 	}	
