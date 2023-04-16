@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import geometries.Plane;
 
 /**
- * @author mendy
+ * @author Mendy&Mendy
  *
  */
 class PlaneTest {
@@ -26,11 +26,8 @@ class PlaneTest {
 		// ============ Equivalence Partitions Tests ==============
 
 		// TC01: Correct plane
-		try {
-			new Plane(new Point(0, 0, 1), new Point(0, 1, 0), new Point(1, 0, 0));
-		} catch (IllegalArgumentException e) {
-			fail("Failed constructing a correct polygon");
-		}
+		assertDoesNotThrow(()-> new Plane(new Point(0, 0, 1), new Point(0, 1, 0), new Point(1, 0, 0))
+				,"Failed constructing a correct polygon");
 
 		// TC02: wrong plane - point 1 and 2 equal
 		// =============== Boundary Values Tests ==================

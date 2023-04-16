@@ -16,8 +16,10 @@ public class Cylinder extends Tube{
 	   * @param radius1 radius value
 	   * @param ray1 ray value
 	   * @param height1 height value */
-	Cylinder(double radius, Ray axisRay, double height){
+	public Cylinder(double radius, Ray axisRay, double height){ // is it should be Package Friendly
 		super(radius, axisRay);
+		if(height <= 0)
+			throw new IllegalArgumentException("The height of a cylinder must be greater then 0");
 		this.height = height;
 		topCap = new Plane(axisRay.getPoint(height) , axisRay.getDir());
 		bottomCap = new Plane(axisRay.getP0(), axisRay.getDir().scale(-1));

@@ -14,7 +14,7 @@ public class Tube extends RadialGeometry{
 	 * @param radius the radius of the tube
 	 * @param axisRay the axis ray of the tube
 	 */
-	Tube(double radius, Ray ray){
+	public Tube(double radius, Ray ray){ // is it should be Package Friendly
 		super(radius);
 		this.axisRay = ray;
 	}

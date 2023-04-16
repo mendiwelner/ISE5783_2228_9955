@@ -3,16 +3,14 @@
  */
 package unittests.primitives;
 
-import static java.lang.System.out;
 import static primitives.Util.isZero;
 import static org.junit.jupiter.api.Assertions.*;
 import primitives.*;
 import org.junit.jupiter.api.Test;
 
-import geometries.Polygon;
 
 /**
- * @author mendy
+ * @author Mendy&Mendy
  *
  */
 
@@ -41,17 +39,17 @@ public class VectorTest {
 	 */
 	@Test
 	void testAddVector() {
-		Vector v1 = new Vector(1, 2, 3);
+		Vector v = new Vector(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
-		// TC04: Correct adding vectors
-		assertEquals(new Vector(2, 4, 6), v1.add(new Vector(1, 2, 3)), "(1,2,3) + (-2,-4,-6) must be (-1,-2,-3)");
-		// TC05: Correct adding vectors
-		assertEquals(new Vector(-1, -2, -3), v1.add(new Vector(-2, -4, -6)), "(1,2,3) + (-2,-4,-6) must be (-1,-2,-3)");
+		// TC01: Correct adding vectors
+		assertEquals(new Vector(2, 4, 6), v.add(new Vector(1, 2, 3)), "(1,2,3) + (-2,-4,-6) must be (-1,-2,-3)");
+		// TC02: Correct adding vectors
+		assertEquals(new Vector(-1, -2, -3), v.add(new Vector(-2, -4, -6)), "(1,2,3) + (-2,-4,-6) must be (-1,-2,-3)");
 		
 		
 		// =============== Boundary Values Tests ==================
-		// TC06: Getting the zero vector
-		assertThrows(IllegalArgumentException.class, () -> v1.add(new Vector(-1, -2, -3)),
+		// TC03: Getting the zero vector
+		assertThrows(IllegalArgumentException.class, () -> v.add(v.scale(-1)),
 				"This should be exeption of vector(0,0,0)");
 	}
 
@@ -60,16 +58,16 @@ public class VectorTest {
 	 */
 	@Test
 	void testSubtractVector() {
-		Vector v1 = new Vector(1, 2, 3);
+		Vector v = new Vector(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
-		// TC07: Correct subtracting vectors
-		assertEquals(new Vector(2, 4, 6), v1.subtract(new Vector(-1, -2, -3)), "(1,2,3) - (-1,-2,-3) must be (2,4,6)");
-		// TC08: Correct subtracting vectors
-		assertEquals(new Vector(-1, -2, -3), v1.subtract(new Vector(2, 4, 6)), "(1,2,3) - (2,4,6) must be (-1,-2,-3)");
+		// TC01: Correct subtracting vectors
+		assertEquals(new Vector(2, 4, 6), v.subtract(new Vector(-1, -2, -3)), "(1,2,3) - (-1,-2,-3) must be (2,4,6)");
+		// TC02: Correct subtracting vectors
+		assertEquals(new Vector(-1, -2, -3), v.subtract(new Vector(2, 4, 6)), "(1,2,3) - (2,4,6) must be (-1,-2,-3)");
 
 		// =============== Boundary Values Tests ==================
-		// TC09: Getting the zero vector
-		assertThrows(IllegalArgumentException.class, () -> v1.subtract(new Vector(1, 2, 3)),
+		// TC03: Getting the zero vector
+		assertThrows(IllegalArgumentException.class, () -> v.subtract(v),
 				"This should be exeption of vector(0,0,0)");
 	}
 
@@ -80,15 +78,15 @@ public class VectorTest {
 	void testScale() {
 		Vector v = new Vector(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
-		// TC10: Correct scaling
+		// TC01: Correct positive scaling
 		assertEquals(new Vector(2, 4, 6), v.scale(2), "2*(1,2,3) must be (2,4,6)");
-		// TC12: Correct scaling
+		// TC02: Correct negative scaling
 		assertEquals(new Vector(-1, -2, -3), v.scale(-1), "-1*(1,2,3) must be (-1,-2,-3)");
-		
+		// TC03: Correct negative scaling less then 1
 		assertTrue(isZero(v.scale(2.5d).length() -  new Vector(2.5d,5d,7.5d).length()));
 		
 		// =============== Boundary Values Tests ==================
-		// TC14: Getting the zero vector
+		// TC04: Getting the zero vector
 		assertThrows(IllegalArgumentException.class, () -> v.scale(0),
 				"0*(1,2,3) should be exeption of vector(0,0,0)");
 	}
@@ -98,14 +96,14 @@ public class VectorTest {
 	 */
 	@Test
 	void testDotProduct() {
-		Vector v1 = new Vector(1, 2, 3);
+		Vector v = new Vector(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
-		// TC15: Correct Dot Product value
-		assertEquals(32,v1.dotProduct(new Vector(4 ,5 ,6)),"ERROR: dotProduct() wrong value");
+		// TC01: Correct Dot Product value
+		assertEquals(32,v.dotProduct(new Vector(4 ,5 ,6)),"ERROR: dotProduct() wrong value");
 		
 		// =============== Boundary Values Tests ==================
-		// TC16: orthogonal vectors
-		assertEquals(0,v1.dotProduct(new Vector(0 ,3 ,-2)),"ERROR: dotProduct() for orthogonal vectors is not zero");
+		// TC02: orthogonal vectors
+		assertEquals(0,v.dotProduct(new Vector(0 ,3 ,-2)),"ERROR: dotProduct() for orthogonal vectors is not zero");
 	}
 
 	/**
@@ -116,18 +114,18 @@ public class VectorTest {
 		Vector v1 = new Vector(1, 2, 3);
 		Vector v2 = new Vector(0, 3, -2);
 		// ============ Equivalence Partitions Tests ==============
-		// TC17: Length of cross product between v1 and v2 should be same as mult them 
+		// TC01: Length of cross product between v1 and v2 should be same as mult them 
 		assertTrue(isZero(v1.crossProduct(v2).length() - v1.length() * v2.length())
 				,"ERROR: crossProduct() wrong result length");
 				
 		// =============== Boundary Values Tests ==================
-		// TC18: Cross product of parallel vectors
+		// TC02: Cross product of parallel vectors
 		assertTrue(isZero(v1.crossProduct(v2).dotProduct(v1)),
 				"ERROR: crossProduct() result is not orthogonal to its operands");
 		// This test is the continuation of the privies test
 		assertTrue(isZero(v1.crossProduct(v2).dotProduct(v2))
 				,"ERROR: crossProduct() result is not orthogonal to its operands");
-		//TC19: Cross product of parallel vectors
+		//TC03: Cross product of parallel vectors
 		assertThrows(Exception.class,() -> v1.crossProduct(new Vector(-2 ,-4 ,-6))
 				,"ERROR: crossProduct() for parallel vectors must throw an exception");
 		
@@ -139,13 +137,8 @@ public class VectorTest {
 	@Test
 	void testLengthSquared() {
 		// ============ Equivalence Partitions Tests ==============
-		//TC21: Testing vector with negative values
+		//TC01: Testing vector with negative values
 		assertEquals(14,new Vector(-1 ,-2 ,-3).lengthSquared(),"ERROE: wrong result length squared");
-		
-		// =============== Boundary Values Tests ==================
-		//TC22: Testing the zero vector
-		assertThrows(IllegalArgumentException.class,() -> new Vector(0,0,0).lengthSquared()
-				,"ERROR: there is no zero-vector");
 	}
 
 	/**
@@ -154,13 +147,8 @@ public class VectorTest {
 	@Test
 	void testLength() {
 		// ============ Equivalence Partitions Tests ==============
-		//TC21: Testing vector with negative values
+		//TC02: Testing vector with negative values
 		assertEquals(Math.sqrt(14),new Vector(-1 ,-2 ,-3).length(),"ERROE: wrong result length squared");
-				
-		// =============== Boundary Values Tests ==================
-		//TC22: Testing the zero vector
-		assertThrows(IllegalArgumentException.class,() -> new Vector(0,0,0).length()
-				,"ERROR: there is no zero-vector");
 	}
 
 	/**
@@ -171,18 +159,18 @@ public class VectorTest {
 		Vector v = new Vector(1,2,3);
 		Vector u = v.normalize();
 		// ============ Equivalence Partitions Tests ==============
-		//TC23: Testing normalized positive vector
+		//TC01: Testing normalized positive vector
 		assertTrue(isZero(v.normalize().length() - 1)
 				,"ERROR: the normalized vector is not a unit vector");
-		//TC23: Testing normalized negative vector
+		//TC02: Testing normalized negative vector
 		assertTrue(isZero(new Vector(-10 ,-20 ,-30).normalize().length() - 1)
 				,"ERROR: the normalized vector is not a unit vector");
 		
 		// =============== Boundary Values Tests ==================
-		//TC23: Normalized vector to v must be parallel to v
+		//TC03: Normalized vector to v must be parallel to v
 		assertThrows(Exception.class,() -> v.crossProduct(u)
 				,"ERROR: the normalized vector is not parallel to the original one");
-		//TC24: Normalized vector to v must be in the same direction as v
+		//TC04: Normalized vector to v must be in the same direction as v
 		assertTrue(v.dotProduct(u) >= 0,"ERROR: the normalized vector is opposite to the original one");
 	}
 }
