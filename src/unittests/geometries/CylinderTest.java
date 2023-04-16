@@ -61,7 +61,7 @@ class CylinderTest {
 		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,0,3)));
 		
 		//TC03: Point is at the bottom base
-		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(1,2.5,0)));
+		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(0,1,0)));
 		
 		// =============== Boundary Values Tests ==================
 		//TC04: Point is at the top center base
