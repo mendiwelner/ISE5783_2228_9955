@@ -14,7 +14,8 @@ import primitives.Vector;
 /**
  * Tests for class {@link geometries.Triangle}.
  * @author Mendy&Mendy
- *
+ * Mendy Segal. 211769955. Mendysegal490@gmail.com
+ * Mendy Welner 209272228. mendiwell@gmail.com
  */
 class TriangleTest {
 
