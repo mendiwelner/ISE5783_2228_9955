@@ -12,9 +12,8 @@ import org.junit.jupiter.api.Test;
 import geometries.Plane;
 
 /**
- * @author Mendy&Mendy
- * Mendy Segal. 211769955. Mendysegal490@gmail.com
- * Mendy Welner 209272228. mendiwell@gmail.com
+ * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
+ *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 class PlaneTest {
 
@@ -27,19 +26,17 @@ class PlaneTest {
 		// ============ Equivalence Partitions Tests ==============
 
 		// TC01: Correct plane
-		assertDoesNotThrow(()-> new Plane(new Point(0, 0, 1), new Point(0, 1, 0), new Point(1, 0, 0))
-				,"Failed constructing a correct polygon");
+		assertDoesNotThrow(() -> new Plane(new Point(0, 0, 1), new Point(0, 1, 0), new Point(1, 0, 0)),
+				"Failed constructing a correct polygon");
 
-		// TC02: wrong plane - point 1 and 2 equal
 		// =============== Boundary Values Tests ==================
+		// TC02: wrong plane - point 1 and 2 equal
 		assertThrows(IllegalArgumentException.class,
 				() -> new Plane(new Point(0, 0, 1), new Point(0, 0, 1), new Point(1, 0, 0)));
 
 		// TC03: wrong plane - all points on the same vector
-		// =============== Boundary Values Tests ==================
 		assertThrows(IllegalArgumentException.class,
 				() -> new Plane(new Point(0, 0, 1), new Point(0, 0, 2), new Point(0, 0, 3)));
-
 
 	}
 
@@ -61,12 +58,12 @@ class PlaneTest {
 		// ensure |result| = 1
 		assertEquals(1, result.length(), 0.00000001, "Polygon's normal is not a unit vector");
 		// ensure the result is orthogonal to all the edges
-			assertTrue(isZero(result.dotProduct(p1.subtract(p2))),
-					"Polygon's normal is not orthogonal to one of the edges");
-			assertTrue(isZero(result.dotProduct(p1.subtract(p3))),
-					"Polygon's normal is not orthogonal to one of the edges");
-			assertTrue(isZero(result.dotProduct(p2.subtract(p3))),
-					"Polygon's normal is not orthogonal to one of the edges");
+		assertEquals(0,result.dotProduct(p1.subtract(p2)),0.00000001,
+				"Polygon's normal is not orthogonal to one of the edges");
+		assertEquals(0,result.dotProduct(p1.subtract(p3)),0.00000001,
+				"Polygon's normal is not orthogonal to one of the edges");
+		assertEquals(0,result.dotProduct(p2.subtract(p3)),0.00000001,
+				"Polygon's normal is not orthogonal to one of the edges");
 	}
 
 	/**
@@ -88,12 +85,12 @@ class PlaneTest {
 		// ensure |result| = 1
 		assertEquals(1, result.length(), 0.00000001, "Polygon's normal is not a unit vector");
 		// ensure the result is orthogonal to all the edges
-			assertTrue(isZero(result.dotProduct(p1.subtract(p2))),
-					"Polygon's normal is not orthogonal to one of the edges");
-			assertTrue(isZero(result.dotProduct(p1.subtract(p3))),
-					"Polygon's normal is not orthogonal to one of the edges");
-			assertTrue(isZero(result.dotProduct(p2.subtract(p3))),
-					"Polygon's normal is not orthogonal to one of the edges");
+		assertEquals(0,result.dotProduct(p1.subtract(p2)),0.00000001,
+				"Polygon's normal is not orthogonal to one of the edges");
+		assertEquals(0,result.dotProduct(p1.subtract(p3)),0.00000001,
+				"Polygon's normal is not orthogonal to one of the edges");
+		assertEquals(0,result.dotProduct(p2.subtract(p3)),0.00000001,
+				"Polygon's normal is not orthogonal to one of the edges");
 	}
 
 }
