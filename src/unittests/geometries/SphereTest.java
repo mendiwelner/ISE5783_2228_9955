@@ -4,6 +4,9 @@
 package unittests.geometries;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+import static primitives.Util.isZero;
 import primitives.*;
 import geometries.Sphere;
 import org.junit.jupiter.api.Test;
@@ -45,5 +48,85 @@ class SphereTest {
 		Sphere sphere = new Sphere(5, new Point(0, 0, 0));
 		assertEquals(new Vector(0, 0, 1), sphere.getNormal(new Point(0, 0, 5)),
 				"normal((0,0,5)-(0,0,1)) must be equal to (0,0,1)");
+	}
+	/**
+	 * Test method for {@link geometries.Sphere#testFindIntsersections(primitives.Point)}.
+	 */
+	@Test
+	void testFindIntersections() {
+		Sphere sphere = new Sphere(5, new Point(0, 0, 1));
+		// ============ Equivalence Partitions Tests ==============
+		// TC01: Testing one point of intersection, ray starts inside the sphere
+		Ray ray1 = new Ray(new Point(1,1,2),new Vector(0,0,1));
+		assertEquals(new Point(1,1,Math.sqrt(23) + 1),sphere.findIntsersections(ray1).get(0),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray1).size(),"Faild");
+		
+		// TC02: Testing two points of intersection, ray starts outside the sphere
+		Ray ray2 = new Ray(new Point(1,1,-5),new Vector(0,0,1));
+		assertTrue(sphere.findIntsersections(ray2).contains(new Point(1,1,Math.sqrt(23) + 1)),"Faild");
+		assertTrue(sphere.findIntsersections(ray2).contains(new Point(1,1,-Math.sqrt(23) + 1)),"Faild");
+		//assertEquals(2,sphere.findIntsersections(ray2).size(),"Faild");
+		
+		// TC03: Testing 0 points of intersection, ray does not touch sphere
+		Ray ray3 = new Ray(new Point(1,1,-5),new Vector(0,1,0));
+		assertEquals(null,sphere.findIntsersections(ray3),"Faild");
+		
+		// TC04: Testing 0 points of intersection, ray orthogonal to sphere
+		Ray ray4 = new Ray(new Point(1,1,-5),new Vector(0,0,-1));
+		assertEquals(null,sphere.findIntsersections(ray4),"Faild");
+		
+		// =============== Boundary Values Tests ==================
+		// group 1 - the ray cuts the center
+		// TC01: Testing one point of intersection, ray starts in the center of the sphere
+		Ray ray5 = new Ray(new Point(0,0,1),new Vector(0,0,1));
+		assertEquals(new Point(0,0,6),sphere.findIntsersections(ray5).get(0),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray5).size(),"Faild");
+		
+		// TC02: Testing 0 point of intersection, ray starts in the edge of the sphere
+		Ray ray6 = new Ray(new Point(0,0,6),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray6),"Faild");
+		
+		// TC03: Testing 1 point of intersection, ray starts in the edge and passing by the sphere
+		Ray ray7 = new Ray(new Point(0,0,-4),new Vector(0,0,1));
+		assertEquals(new Point(0,0,6),sphere.findIntsersections(ray7).get(0),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray7).size(),"Faild");
+				
+		// TC04: Testing 0 points of intersection, ray starts outside of the sphere
+		Ray ray8 = new Ray(new Point(0,0,7),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray8),"Faild");
+		
+		// TC05: Testing 0 points of intersection, ray starts outside of the sphere
+		Ray ray9 = new Ray(new Point(0,0,-5),new Vector(0,0,1));
+		assertTrue(sphere.findIntsersections(ray9).contains(new Point(0,0,-4)),"Faild");
+		assertTrue(sphere.findIntsersections(ray9).contains(new Point(0,0,6)),"Faild");
+		
+		// TC06: Testing one point of intersection, ray starts near the center of the sphere
+		Ray ray10 = new Ray(new Point(0,0,2),new Vector(0,0,1));
+		assertEquals(new Point(0,0,6),sphere.findIntsersections(ray10).get(0),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray5).size(),"Faild");
+		
+		// group 2 - the ray starts on the edge of the sphere
+		// TC01: Testing one point of intersection, ray pass the sphere
+		Ray ray11 = new Ray(new Point(1,1,-Math.sqrt(23) + 1),new Vector(0,0,1));
+		assertEquals(new Point(1,1,Math.sqrt(23) + 1),sphere.findIntsersections(ray11).get(0),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray1).size(),"Faild");
+		
+		// TC02: Testing 0 point of intersection, ray does not pass the sphere
+		Ray ray12 = new Ray(new Point(1,1,Math.sqrt(23) + 1),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray12),"Faild");
+		
+		// group 3 - the ray tangent to the sphere
+		// TC01: Testing 0 point of intersection, ray starts from the edge
+		Ray ray13 = new Ray(new Point(0,5,1),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray13),"Faild");
+		
+		// TC02: Testing 0 point of intersection, ray passes the edge
+		Ray ray14 = new Ray(new Point(0,5,0),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray14),"Faild");
+		
+		// TC02: Testing 0 point of intersection, ray does not passes the edge
+		Ray ray15 = new Ray(new Point(0,5,2),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray15),"Faild");
+		
 	}
 }

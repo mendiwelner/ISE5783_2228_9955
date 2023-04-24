@@ -7,15 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
 import org.junit.jupiter.api.Test;
+import primitives.*;
 import geometries.Triangle;
-import primitives.Point;
-import primitives.Vector;
 
 /**
  * Tests for class {@link geometries.Triangle}.
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955. Mendysegal490@gmail.com
  */
 class TriangleTest {
 
@@ -60,5 +59,36 @@ class TriangleTest {
 		for (int i = 0; i < 3; ++i)
 			assertTrue(isZero(result.dotProduct(pts[i].subtract(pts[i == 0 ? 2 : i - 1]))),
 					"Triangle's normal is not orthogonal to one of the edges");
+	}
+
+	void testFindIntersections() {
+
+		Triangle trgle = new Triangle(new Point(0, 0, 0), new Point(5, 0, 0), new Point(0, 5, 0));
+		// ============ Equivalence Partitions Tests ==============
+		// TC01: intersection in the Triangle
+		Ray ray1 = new Ray(new Point(1, 1, -1), new Vector(0, 0, 1));
+		assertEquals(new Point(1, 1, 0), trgle.findIntsersections(ray1), "Faild");
+
+		// TC02: intersection outside of the Triangle, against one of the ribs
+		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));
+		assertEquals(new Point(-1, 1, 0), trgle.findIntsersections(ray2), "Faild");
+
+		// TC03: intersection outside of the Triangle, against one of the vertexes
+		Ray ray3 = new Ray(new Point(-1, -1, -1), new Vector(0, 0, 1));
+		assertEquals(new Point(-1, -1, 0), trgle.findIntsersections(ray3), "Faild");
+
+		// =============== Boundary Values Tests ==================
+		// TC01: intersection on one of the ribs
+		Ray ray4 = new Ray(new Point(0, 1, -1), new Vector(0, 0, 1));
+		assertEquals(new Point(0, 1, 0), trgle.findIntsersections(ray4), "Faild");
+
+		// TC02: intersection on one of the vertexes
+		Ray ray5 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
+		assertEquals(new Point(0, 0, 0), trgle.findIntsersections(ray5), "Faild");
+
+		// TC03: intersection on the continued of the one of the ribs
+		Ray ray6 = new Ray(new Point(-1, 0, -1), new Vector(0, 0, 1));
+		assertEquals(new Point(-1, 0, 0), trgle.findIntsersections(ray6), "Faild");
+
 	}
 }

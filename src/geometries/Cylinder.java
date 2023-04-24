@@ -1,4 +1,6 @@
 package geometries;
+import java.util.List;
+
 import primitives.*;
 
 /**
@@ -52,6 +54,11 @@ public class Cylinder extends Tube {
 			return v.scale(-1);
 		}
 		return v;
+	}
+	
+	@Override
+	public List<Point> findIntsersections(Ray ray){
+		return null;
 	}
 
 	/**

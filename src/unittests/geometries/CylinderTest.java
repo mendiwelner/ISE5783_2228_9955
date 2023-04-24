@@ -77,4 +77,10 @@ class CylinderTest {
 		// Point is at the edge bottom base
 		// assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(0,0,0)));
 	}
+	
+	void testFindIntsersections() {
+		fail("Not yet implemented");
+	}
+	
+	
 }

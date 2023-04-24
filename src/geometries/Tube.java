@@ -5,6 +5,8 @@ import primitives.Ray;
 import primitives.Vector;
 import static primitives.Util.isZero;
 
+import java.util.List;
+
 public class Tube extends RadialGeometry {
 
 	protected final Ray axisRay;
@@ -29,6 +31,11 @@ public class Tube extends RadialGeometry {
 		// Check that there is no zero vector
 		Point o = isZero(t) ? p0 : p0.add(v.scale(t));
 		return p.subtract(o).normalize();
+	}
+	
+	@Override
+	public List<Point> findIntsersections(Ray ray){
+		return null;
 	}
 
 	/**

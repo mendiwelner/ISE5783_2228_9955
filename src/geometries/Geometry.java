@@ -10,7 +10,7 @@ import primitives.Point;
  *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 
-public interface Geometry {
+public interface Geometry extends Intersectable {
 
 	/**
 	 * @param point

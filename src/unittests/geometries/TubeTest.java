@@ -57,4 +57,8 @@ class TubeTest {
 		assertEquals(new Vector(0, -Math.sqrt(1 / 2d), -Math.sqrt(1 / 2d)), tube.getNormal(new Point(0, 1, 1)),
 				"getNormal does not work correctly (Boundary test)");
 	}
+	
+	void testFindIntersections() {
+		fail("Not yet implemented");
+	}
 }
