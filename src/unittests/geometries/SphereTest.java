@@ -103,13 +103,13 @@ class SphereTest {
 		// TC06: Testing one point of intersection, ray starts near the center of the sphere
 		Ray ray10 = new Ray(new Point(0,0,2),new Vector(0,0,1));
 		assertEquals(new Point(0,0,6),sphere.findIntsersections(ray10).get(0),"Faild");
-		assertEquals(1,sphere.findIntsersections(ray5).size(),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray10).size(),"Faild");
 		
 		// group 2 - the ray starts on the edge of the sphere
 		// TC01: Testing one point of intersection, ray pass the sphere
 		Ray ray11 = new Ray(new Point(1,1,-Math.sqrt(23) + 1),new Vector(0,0,1));
 		assertEquals(new Point(1,1,Math.sqrt(23) + 1),sphere.findIntsersections(ray11).get(0),"Faild");
-		assertEquals(1,sphere.findIntsersections(ray1).size(),"Faild");
+		assertEquals(1,sphere.findIntsersections(ray11).size(),"Faild");
 		
 		// TC02: Testing 0 point of intersection, ray does not pass the sphere
 		Ray ray12 = new Ray(new Point(1,1,Math.sqrt(23) + 1),new Vector(0,0,1));

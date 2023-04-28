@@ -2,9 +2,9 @@ package geometries;
 
 import java.util.List;
 
-import primitives.Point;
-import primitives.Ray;
-
+import primitives.*;
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 /**
  * The class Triangle extends the Polygon class
  * and allows us to represent a Triangle by 3 points.
@@ -27,6 +27,24 @@ public class Triangle extends Polygon {
 	
 	@Override
 	public List<Point> findIntsersections(Ray ray){
+		
+		Vector dir = ray.getDir();
+		Point p0 = ray.getP0();
+		Vector v1 = vertices.get(0).subtract(p0);
+		Vector v2 = vertices.get(1).subtract(p0);
+		Vector v3 = vertices.get(2).subtract(p0);
+		
+		Vector n1 = v1.crossProduct(v2).normalize();
+		Vector n2 = v2.crossProduct(v3).normalize();
+		Vector n3 = v3.crossProduct(v1).normalize();
+		double res1 = alignZero(dir.dotProduct(n1));
+		double res2 = alignZero(dir.dotProduct(n2));
+		double res3 = alignZero(dir.dotProduct(n3));
+		
+		if((res1 > 0 && res2 > 0 && res3 > 0) || (res1 < 0 && res2 < 0 && res3 < 0)) {
+			return plane.findIntsersections(ray);
+		}
+		
 		return null;
 	}
 }

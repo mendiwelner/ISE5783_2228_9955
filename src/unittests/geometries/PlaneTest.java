@@ -103,7 +103,8 @@ class PlaneTest {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Testing ray intersects the plane
 		Ray ray1 = new Ray(new Point(1, -1, -1), new Vector(0, 1, 1));
-		assertEquals(new Point(1, 0, 0), plane.findIntsersections(ray1));
+		System.out.print(plane.findIntsersections(ray1).get(0));
+		assertEquals(new Point(1, 0, 0), plane.findIntsersections(ray1).get(0));
 		assertEquals(1, plane.findIntsersections(ray1).size(), "Faild");
 
 		// TC02: Testing ray does not intersects the plane
@@ -114,38 +115,38 @@ class PlaneTest {
 		// group 1 - ray parallel to the plane, no intersections
 		// TC01: ray included in the plane
 		Ray ray3 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 0));
-		assertEquals(null, plane.findIntsersections(ray3), "Faild");
+		assertNull(plane.findIntsersections(ray3), "Faild");
 
 		// TC02: ray does not included in the plane
 		Ray ray4 = new Ray(new Point(0, 0, 1), new Vector(0, 1, 0));
-		assertEquals(null, plane.findIntsersections(ray4), "Faild");
+		assertNull(plane.findIntsersections(ray4), "Faild");
 
 		// group 2 - ray is orthogonal to the plane
 		// TC01: ray starts in the plane - no intersections
 		Ray ray5 = new Ray(new Point(0, 0, 0), new Vector(0, 0, 1));
-		assertEquals(null, plane.findIntsersections(ray5), "Faild");
+		assertNull(plane.findIntsersections(ray5), "Faild");
 
 		// TC02: ray starts before the plane - one intersections
 		Ray ray6 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
-		assertEquals(new Point(0, 0, 0), plane.findIntsersections(ray6));
+		assertEquals(new Point(0, 0, 0), plane.findIntsersections(ray6).get(0));
 		assertEquals(1, plane.findIntsersections(ray6).size(), "Faild");
 
 		// TC03: ray starts after the plane - no intersections
 		Ray ray7 = new Ray(new Point(0, 0, 1), new Vector(0, 0, 1));
-		assertEquals(null, plane.findIntsersections(ray7), "Faild");
+		assertNull(plane.findIntsersections(ray7), "Faild");
 
 		// group 3 - ray is not orthogonal and not parallel, no intersections
 		// TC01: ray starts from the plane
 		Ray ray8 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 1));
-		assertEquals(null, plane.findIntsersections(ray8), "Faild");
+		assertNull(plane.findIntsersections(ray8), "Faild");
 
 		// TC02: ray starts from the plane
 		Ray ray9 = new Ray(new Point(0, 0, 1), new Vector(0, 1, 1));
-		assertEquals(null, plane.findIntsersections(ray9), "Faild");
+		assertNull(plane.findIntsersections(ray9), "Faild");
 		
 		// TC03: ray starts from the reference point of the plane
 		Ray ray10 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 1));
-		assertEquals(null, plane.findIntsersections(ray10), "Faild");
+		assertNull(plane.findIntsersections(ray10), "Faild");
 
 	}
 

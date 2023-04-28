@@ -58,6 +58,30 @@ public class Plane implements Geometry {
 	
 	@Override
 	public List<Point> findIntsersections(Ray ray){	
+		
+		// if the starting point of plane equals to the start of ray, no intersection 
+		if(point.equals(ray.getP0())) {
+			return null;
+		}
+		
+		// if t == 0, no intersection  
+		double nQMinusP0 = normal.dotProduct(point.subtract(ray.getP0()));
+		if(isZero(nQMinusP0)) {
+			return null;
+		}	
+		
+		// we cannot divide by zero
+		double nv = normal.dotProduct(ray.getDir());
+		if(isZero(nv)) {
+			return null;
+		}
+		
+		// t has to be greater then 0 to avoid zero vector
+		double t = alignZero(nQMinusP0 / nv);
+		if(t > 0) {
+			return List.of(ray.getPoint(t));
+		}
+		
 		return null;
 	}
 }
