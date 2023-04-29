@@ -124,9 +124,14 @@ class SphereTest {
 		Ray ray14 = new Ray(new Point(0,5,0),new Vector(0,0,1));
 		assertEquals(null,sphere.findIntsersections(ray14),"Faild");
 		
-		// TC02: Testing 0 point of intersection, ray does not passes the edge
+		// TC03: Testing 0 point of intersection, ray does not passes the edge
 		Ray ray15 = new Ray(new Point(0,5,2),new Vector(0,0,1));
 		assertEquals(null,sphere.findIntsersections(ray15),"Faild");
+		
+		//group 3 - the ray is orthogonal to the diameter of sphere
+		Ray ray16 = new Ray(new Point(0,-6,1),new Vector(0,0,1));
+		assertEquals(null,sphere.findIntsersections(ray16),"Faild");
+		
 		
 	}
 }

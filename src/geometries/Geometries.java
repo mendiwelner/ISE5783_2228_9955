@@ -1,4 +1,5 @@
 package geometries;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class Geometries implements Intersectable {
 	private List<Intersectable> shapes;
 	
 	public Geometries(){
-		shapes = new LinkedList();
+		shapes = new LinkedList<Intersectable>();
 	}
 	
 	public Geometries(Intersectable... geometries) {
@@ -15,7 +16,9 @@ public class Geometries implements Intersectable {
 	}
 	
 	public void add(Intersectable... geometries) {
-		shapes = List.of(geometries);
+		for(Intersectable shape : geometries) {
+			shapes.add(shape);
+		}
 	}
 	
 	@Override
