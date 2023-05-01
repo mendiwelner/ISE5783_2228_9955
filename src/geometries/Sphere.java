@@ -3,7 +3,6 @@ package geometries;
 import java.util.List;
 import primitives.*;
 
-
 /**
  * The class Sphere extends the RadialGeometry class
  * and allows us to represent a sphere by radius and a point.
@@ -47,6 +46,7 @@ public class Sphere extends RadialGeometry {
 		}
 		
 		double d = Math.sqrt(u.lengthSquared() - tm * tm);
+		// if d >= radius then there is no intersection
 		if (d >= radius) {
 			return null;
 		}

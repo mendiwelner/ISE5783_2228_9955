@@ -66,7 +66,7 @@ public class Cylinder extends Tube {
 	 * Otherwise it returns False.
 	 * 
 	 * @param point
-	 * @return True or False
+	 * @return boolean value
 	 */
 	private boolean isBetweenCaps(Point p) {
 		Vector n = axisRay.getDir();

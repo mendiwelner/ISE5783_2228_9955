@@ -46,6 +46,8 @@ public class Geometries implements Intersectable {
 	
 	@Override
 	public List<Point> findIntsersections(Ray ray){
+		
+		// first we check if there is at least 1 intersection
 		boolean hasIntersection = false;
 		for(Intersectable shape : shapes){
 			if(shape.findIntsersections(ray) != null) {
@@ -53,9 +55,12 @@ public class Geometries implements Intersectable {
 				break;
 			}
 		}
-		if(!hasIntersection) {
+		
+		// if there is no intersections, return null
+		if(!hasIntersection)
 			return null;
-		}
+		
+		// there is at least 1 intersection, we create our list
 		List<Point> intsersections = new LinkedList<Point>();
 		for(Intersectable shape : shapes) {
 			if(shape.findIntsersections(ray) != null) {

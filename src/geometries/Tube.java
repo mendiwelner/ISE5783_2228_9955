@@ -4,7 +4,6 @@ import java.util.List;
 import primitives.*;
 import static primitives.Util.isZero;
 
-
 /**
  * The class Tube extends the RadialGeometry class
  * and allows us to represent a Tube with radius and ray.

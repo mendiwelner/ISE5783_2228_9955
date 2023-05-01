@@ -6,6 +6,8 @@ import geometries.Sphere;
 import org.junit.jupiter.api.Test;
 
 /**
+ * Testing Sphere
+ * 
  * @author Mendy Welner 209272228. mendiwell@gmail.com
  *         Mendy Segal. 211769955. Mendysegal490@gmail.com
  */
@@ -131,7 +133,7 @@ class SphereTest {
 		Ray ray15 = new Ray(new Point(0,5,2),new Vector(0,0,1));
 		assertEquals(null,sphere.findIntsersections(ray15),"There should be no intersections");
 		
-		//group 4 - the ray is orthogonal to the diameter of sphere
+		//group 4 - TC01: the ray is orthogonal to the diameter of sphere
 		Ray ray16 = new Ray(new Point(0,-6,1),new Vector(0,0,1));
 		assertEquals(null,sphere.findIntsersections(ray16),"There should be no intersections");
 		
