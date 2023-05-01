@@ -1,6 +1,3 @@
-/**
- * 
- */
 package unittests.geometries;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,37 +6,11 @@ import primitives.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author mendy
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  *
  */
 class GeometriesTest {
-
-	/**
-	 * Test method for {@link geometries.Geometries#Geometries()}.
-	 */
-	@Test
-	void testGeometries() {
-		// ============ Equivalence Partitions Tests ==============
-		assertDoesNotThrow(() -> new Geometries(), "Failed constructing a correct Geometries");
-	}
-
-	/**
-	 * Test method for
-	 * {@link geometries.Geometries#Geometries(geometries.Intersectable[])}.
-	 */
-	@Test
-	void testIntersectableArray() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for
-	 * {@link geometries.Geometries#add(geometries.Intersectable[])}.
-	 */
-	@Test
-	void testAdd() {
-		//fail("Not yet implemented");
-	}
 
 	/**
 	 * Test method for

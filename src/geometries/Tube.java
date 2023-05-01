@@ -1,14 +1,20 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
+import java.util.List;
+import primitives.*;
 import static primitives.Util.isZero;
 
-import java.util.List;
 
+/**
+ * The class Tube extends the RadialGeometry class
+ * and allows us to represent a Tube with radius and ray.
+ * 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ */
 public class Tube extends RadialGeometry {
-
+	
+	// our axis ray
 	protected final Ray axisRay;
 
 	/**

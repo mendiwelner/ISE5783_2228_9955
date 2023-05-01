@@ -4,8 +4,8 @@ package geometries;
  * The abstract class RadialGeometry implements the determination
  * of the general shape radius and more things down the road. 
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 public abstract class RadialGeometry implements Geometry {
 
@@ -13,6 +13,8 @@ public abstract class RadialGeometry implements Geometry {
 	protected final double radius;
 
 	/**
+	 * Constructor to initialize the radius of general radial geometry
+	 * 
 	 * @param radius r to assign the radius field
 	 */
 	RadialGeometry(double r) {

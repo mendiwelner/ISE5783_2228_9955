@@ -13,6 +13,9 @@ import primitives.Point;
 public interface Geometry extends Intersectable {
 
 	/**
+	 * This function returns the normal vector at the given point 
+	 * on the shell of general geometry
+	 * 
 	 * @param point
 	 * @return the normal of the shape at that point
 	 */

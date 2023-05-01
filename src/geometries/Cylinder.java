@@ -1,14 +1,14 @@
 package geometries;
-import java.util.List;
 
+import java.util.List;
 import primitives.*;
 
 /**
  * The class Cylinder is the extension of Tube. but unlike Tube,
  * Cylinder is finite Tube
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 
 public class Cylinder extends Tube {

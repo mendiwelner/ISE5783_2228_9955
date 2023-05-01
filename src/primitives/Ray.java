@@ -6,8 +6,8 @@ import static primitives.Util.isZero;
  * Ray class will serve as the ray of a general shape 
  * to build the shape later on.
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com  
  */
 public class Ray {
 

@@ -4,8 +4,8 @@ package primitives;
  * Vector class will serve as the "upgraded point" to represent
  * direction and size.
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 
 public class Vector extends Point {

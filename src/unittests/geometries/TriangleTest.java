@@ -1,6 +1,3 @@
-/**
- * 
- */
 package unittests.geometries;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -71,28 +68,28 @@ class TriangleTest {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: intersection in the Triangle
 		Ray ray1 = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
-		assertEquals(new Point(1, 1, 1), trgle.findIntsersections(ray1).get(0), "Faild");
+		assertEquals(new Point(1, 1, 1), trgle.findIntsersections(ray1).get(0),"This point is not the correct point");
 
 		// TC02: intersection outside of the Triangle, against one of the ribs
 		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray2), "Faild");
+		assertNull(trgle.findIntsersections(ray2), "There should be no intersections");
 
 		// TC03: intersection outside of the Triangle, against one of the vertexes
 		Ray ray3 = new Ray(new Point(-1, -1, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray3), "Faild");
+		assertNull(trgle.findIntsersections(ray3), "There should be no intersections");
 
 		// =============== Boundary Values Tests ==================
 		// TC01: intersection on one of the ribs
 		Ray ray4 = new Ray(new Point(0, 1, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray4), "Faild");
+		assertNull(trgle.findIntsersections(ray4), "There should be no intersections");
 
 		// TC02: intersection on one of the vertexes
 		Ray ray5 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray5), "Faild");
+		assertNull(trgle.findIntsersections(ray5), "There should be no intersections");
 
 		// TC03: intersection on the continued of the one of the ribs
 		Ray ray6 = new Ray(new Point(-1, 0, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray6), "Faild");
+		assertNull(trgle.findIntsersections(ray6), "There should be no intersections");
 
 	}
 }

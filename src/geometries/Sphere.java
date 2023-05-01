@@ -1,17 +1,15 @@
 package geometries;
 
 import java.util.List;
+import primitives.*;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
 
 /**
  * The class Sphere extends the RadialGeometry class
  * and allows us to represent a sphere by radius and a point.
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 public class Sphere extends RadialGeometry {
 
@@ -37,7 +35,7 @@ public class Sphere extends RadialGeometry {
 	@Override
 	public List<Point> findIntsersections(Ray ray){
 		
-		// if p0 is in the center of the sphere
+		// if p0 is the center of the sphere, we return the point on the shell
 		if (center.equals(ray.getP0())) {
 			return List.of(ray.getPoint(radius));
 		}	
@@ -76,7 +74,6 @@ public class Sphere extends RadialGeometry {
 
 	/**
 	 * This function returns the center of the sphere
-	 * 
 	 * @return center of sphere
 	 */
 	Point getCenter() {
@@ -85,7 +82,6 @@ public class Sphere extends RadialGeometry {
 	
 	/**
 	 * This function returns the radius of the sphere
-	 * 
 	 * @return radius of sphere
 	 */
 	double getRadius() {

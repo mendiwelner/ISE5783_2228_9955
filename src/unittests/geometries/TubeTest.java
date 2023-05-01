@@ -1,21 +1,13 @@
-/**
- * 
- */
 package unittests.geometries;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import primitives.*;
-import geometries.Sphere;
 import geometries.Tube;
-import primitives.Point;
-import primitives.Vector;
-import static primitives.Util.isZero;
 
 /**
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  */
 class TubeTest {
 

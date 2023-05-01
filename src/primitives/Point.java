@@ -3,8 +3,8 @@ package primitives;
 /**
  * Point class allows us to represent a point with coordinates x,y,z. 
  * 
- * @author Mendy&Mendy. Mendy Welner 209272228. mendiwell@gmail.com
- *        				Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  *
  */
 
@@ -88,6 +88,18 @@ public class Point {
 	 */
 	public double distance(Point p) {
 		return Math.sqrt(distanceSquared(p));
+	}
+	
+	public double getX() {
+		return xyz.d1;
+	}
+	
+	public double getY() {
+		return xyz.d2;
+	}
+	
+	public double getZ() {
+		return xyz.d3;
 	}
 
 }
