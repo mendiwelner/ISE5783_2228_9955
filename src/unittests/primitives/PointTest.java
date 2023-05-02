@@ -10,11 +10,12 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for class {@link primitives.Point}.
  * 
- * @author Mendy&Mendy
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
  *
  */
 class PointTest {
-	
+
 	/**
 	 * Test method for {@link primitives.Point#Point(primitives.Vector)}.
 	 */
@@ -31,7 +32,7 @@ class PointTest {
 		assertDoesNotThrow(() -> new Point(0, 0, 0), //
 				"ERROR: Zero point should be correct");
 	}
-	
+
 	/**
 	 * Test method for {@link primitives.Point#add(primitives.Vector)}.
 	 */
@@ -39,12 +40,11 @@ class PointTest {
 	void testAdd() {
 		Point p1 = new Point(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
-		// TC01: Add a negative vector to point(1,2,3) 
-		assertEquals(new Point(0,0,0) , p1.add(new Vector(-1,-2,-3))
-				,"Point(1,2,3) + Vector(-1,-2,-3) must be (0,0,0)");
+		// TC01: Add a negative vector to point(1,2,3)
+		assertEquals(new Point(0, 0, 0), p1.add(new Vector(-1, -2, -3)),
+				"Point(1,2,3) + Vector(-1,-2,-3) must be (0,0,0)");
 		// TC02: Add the opposite point
-		assertDoesNotThrow(()->p1.add(new Vector(-1,-2,-3))
-				,"This should be a correct point of (0,0,0)");
+		assertDoesNotThrow(() -> p1.add(new Vector(-1, -2, -3)), "This should be a correct point of (0,0,0)");
 	}
 
 	/**
@@ -55,17 +55,16 @@ class PointTest {
 		Point p1 = new Point(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Subtract point(0,0,0) from point(1,2,3)
-		assertEquals(new Vector(1,2,3),p1.subtract(new Point(0,0,0))
-				,"Point(1,2,3) + Point(0,0,0) must be (1,2,3)");
+		assertEquals(new Vector(1, 2, 3), p1.subtract(new Point(0, 0, 0)),
+				"Point(1,2,3) + Point(0,0,0) must be (1,2,3)");
 		// TC02: Subtract vector(2,4,6) from point(1,2,3)
-		assertEquals(new Vector(-1,-2,-3),p1.subtract(new Vector(2,4,6))
-				,"Point(1,2,3) - Vector(2,4,6) must be (-1,-2,-3)");
-		
+		assertEquals(new Vector(-1, -2, -3), p1.subtract(new Vector(2, 4, 6)),
+				"Point(1,2,3) - Vector(2,4,6) must be (-1,-2,-3)");
+
 		// =============== Boundary Values Tests ==================
 		// TC03: Subtract point(1,2,3) from point(1,2,3)
-		assertThrows(IllegalArgumentException.class,()-> p1.subtract(p1)
-				,"This should be exeption of vector(0,0,0)");
-		
+		assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1), "This should be exeption of vector(0,0,0)");
+
 	}
 
 	/**
@@ -76,8 +75,7 @@ class PointTest {
 		Point p1 = new Point(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Test Distance Squared of point(4,5,6)
-		assertEquals(27 , p1.distanceSquared(new Point(4,5,6))
-				,"(1-4)^2 + (2-5)^2 + (3-6)^2 must be equals to 27");
+		assertEquals(27, p1.distanceSquared(new Point(4, 5, 6)), 0.000001, "(1-4)^2 + (2-5)^2 + (3-6)^2 must be equals to 27");
 	}
 
 	/**
@@ -88,7 +86,6 @@ class PointTest {
 		Point p1 = new Point(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
 		// TC1: Test Distance of point(1,2,3)
-		assertEquals(0 , p1.distance(new Point(1,2,3))
-				,"sqrt((1-1)^2 + (2-2)^2 + (3-3)^2) must be equals to 0");
+		assertEquals(0, p1.distance(new Point(1, 2, 3)), "sqrt((1-1)^2 + (2-2)^2 + (3-3)^2) must be equals to 0");
 	}
 }

@@ -1,25 +1,33 @@
 package primitives;
 
-import static java.lang.Math.*;
+/**
+ * Point class allows us to represent a point with coordinates x,y,z. 
+ * 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com
+ *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ *
+ */
 
 public class Point {
-	
-	// x,y,z for a point
+
+	// x,y,z Double3 object to represent a point
 	protected final Double3 xyz;
 
 	/**
-	 * constructor to Initializing the point  
-	 * @param x
-	 * @param y
-	 * @param z
+	 * Constructor to initializing the point
+	 * 
+	 * @param x The x-coordinate
+	 * @param y The y-coordinate
+	 * @param z The z-coordinate
 	 */
 	public Point(double x, double y, double z) {
 		xyz = new Double3(x, y, z);
 	}
 
 	/**
-	 * constructor to Initializing the point with Double3 object
-	 * @param newXyz
+	 * Constructor to initializing the point with Double3 object
+	 * 
+	 * @param Double3 xyz-object
 	 */
 	Point(Double3 newXyz) {
 		xyz = newXyz;
@@ -30,7 +38,7 @@ public class Point {
 		if (this == obj)
 			return true;
 		if (obj instanceof Point p)
-			return this.xyz.equals(p.xyz);
+			return xyz.equals(p.xyz);
 		return false;
 	}
 
@@ -40,39 +48,58 @@ public class Point {
 	}
 
 	/**
-	 * adds a vector to point and returns the new point
-	 * @param vec
-	 * @return new point
+	 * This function adds a vector to the point and returns the new point
+	 * 
+	 * @param vector
+	 * @return new point after we added a vector to it
 	 */
 	public Point add(Vector vec) {
 		return new Point(xyz.add(vec.xyz));
 	}
 
 	/**
-	 * subtract the point from vector
-	 * @param p
-	 * @return a vector that was subtracted by a point
+	 * This function subtracts the point from vector
+	 * 
+	 * @param point
+	 * @return new vector that was subtracted by the given point
 	 */
 	public Vector subtract(Point p) {
 		return new Vector(xyz.subtract(p.xyz));
 	}
 
 	/**
-	 * @param p
+	 * This function returns the distance squared of our point from the given point
+	 * 
+	 * @param point
 	 * @return distance squared 
 	 */
 	public double distanceSquared(Point p) {
-		return (xyz.d1 - p.xyz.d1) * (xyz.d1 - p.xyz.d1) 
-			   + (xyz.d2 - p.xyz.d2) * (xyz.d2 - p.xyz.d2) 
-			   + (xyz.d3 - p.xyz.d3) * (xyz.d3 - p.xyz.d3);
+		double dx = xyz.d1 - p.xyz.d1;
+		double dy = xyz.d2 - p.xyz.d2;
+		double dz = xyz.d3 - p.xyz.d3;
+		return dx * dx + dy * dy + dz * dz;
 	}
 
 	/**
-	 * @param p
-	 * @return distance 
+	 * This function returns the distance of our point from the given point
+	 * 
+	 * @param point
+	 * @return distance of our point from the given point
 	 */
 	public double distance(Point p) {
 		return Math.sqrt(distanceSquared(p));
+	}
+	
+	public double getX() {
+		return xyz.d1;
+	}
+	
+	public double getY() {
+		return xyz.d2;
+	}
+	
+	public double getZ() {
+		return xyz.d3;
 	}
 
 }
