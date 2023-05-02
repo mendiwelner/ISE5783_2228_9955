@@ -1,7 +1,11 @@
 package geometries;
 
 import primitives.Vector;
+
+import java.util.List;
+
 import primitives.Point;
+import primitives.Ray;
 
 /**
  * The interface Geometry will serve as the representation of a general shape
@@ -20,4 +24,5 @@ public interface Geometry extends Intersectable {
 	 * @return the normal of the shape at that point
 	 */
 	public Vector getNormal(Point p);
+
 }
