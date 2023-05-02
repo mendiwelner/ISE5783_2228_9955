@@ -51,24 +51,24 @@ class CylinderTest {
 	 */
 	@Test
 	void testGetNormal() {
-		Ray axisRay = new Ray(new Point(1,2,0),new Vector(0,0,1));
+		Ray axisRay = new Ray(new Point(0,0,0),new Vector(0,0,1));
 		Cylinder cyl = new Cylinder(1 , axisRay , 3);
 		// ============ Equivalence Partitions Tests ==============
 		//TC01: Point is between the bases
-		assertEquals(new Vector(0,-1,0),cyl.getNormal(new Point(1,0,2)));
+		assertEquals(new Vector(1,0,0),cyl.getNormal(new Point(1,0,1)));
 		
 		//TC02: Point is at the top base
-		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,2.5,3)));
+		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,0,3)));
 		
 		//TC03: Point is at the bottom base
-		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(1,2.5,0)));
+		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(1,0,0)));
 		
 		// =============== Boundary Values Tests ==================
 		//TC04: Point is at the top center base
-		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,2,3)));
+		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(0,0,3)));
 		
 		//TC05: Point is at the bottom center base
-		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(1,2,0)));
+		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(0,0,0)));
 		
 		// Point is at the edge top base
 		//assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,0,3)));

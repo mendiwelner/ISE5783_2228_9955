@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
+import geometries.Cylinder;
 import geometries.Sphere;
 import geometries.Tube;
-import primitives.Point;
-import primitives.Vector;
+
 import static primitives.Util.isZero;
 
 /**
