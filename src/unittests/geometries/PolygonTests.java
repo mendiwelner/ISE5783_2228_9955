@@ -2,6 +2,7 @@ package unittests.geometries;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -10,7 +11,9 @@ import static primitives.Util.isZero;
 import org.junit.jupiter.api.Test;
 
 import geometries.Polygon;
+import geometries.Triangle;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 /**
@@ -89,6 +92,32 @@ public class PolygonTests {
 	/** Test method for {@link geometries.Polygon#testFindIntsersections(primitives.Point)}. */
 	@Test
 	void testFindIntersections() {
-		fail("Not yet implemented");
+		Polygon polygon = new Polygon(new Point(0, 0, 1), new Point(5, 0, 1), new Point(5, 5, 1), new Point(0, 5, 1));
+		// ============ Equivalence Partitions Tests ==============
+		// TC01: intersection in the Polygon
+		Ray ray1 = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
+		assertEquals(new Point(1, 1, 1), polygon.findIntsersections(ray1).get(0),"This point is not the correct point");
+
+		// TC02: intersection outside of the Polygon, against one of the ribs
+		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));
+		assertNull(polygon.findIntsersections(ray2), "There should be no intersections");
+
+		// TC03: intersection outside of the Polygon, against one of the vertexes
+		Ray ray3 = new Ray(new Point(-1, -1, -1), new Vector(0, 0, 1));
+		assertNull(polygon.findIntsersections(ray3), "There should be no intersections");
+
+		// =============== Boundary Values Tests ==================
+		// TC01: intersection on one of the ribs
+		Ray ray4 = new Ray(new Point(0, 1, -1), new Vector(0, 0, 1));
+		assertNull(polygon.findIntsersections(ray4), "There should be no intersections");
+
+		// TC02: intersection on one of the vertexes
+		Ray ray5 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
+		assertNull(polygon.findIntsersections(ray5), "There should be no intersections");
+
+		// TC03: intersection on the continued of the one of the ribs
+		Ray ray6 = new Ray(new Point(-1, 0, -1), new Vector(0, 0, 1));
+		assertNull(polygon.findIntsersections(ray6), "There should be no intersections");
+
 	}
 }
