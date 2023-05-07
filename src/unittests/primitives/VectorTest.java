@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for class {@link primitives.Vector}.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  *
  */
 
@@ -156,7 +156,7 @@ public class VectorTest {
 		Vector u = v.normalize();
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Testing normalized positive vector
-		assertTrue(isZero(v.normalize().length() - 1), "ERROR: the normalized vector is not a unit vector");
+		assertEquals(1, v.normalize().length(), 0.000001, "ERROR: the normalized vector is not a unit vector");
 		// TC02: Testing normalized negative vector
 		assertTrue(isZero(new Vector(-10, -20, -30).normalize().length() - 1),
 				"ERROR: the normalized vector is not a unit vector");

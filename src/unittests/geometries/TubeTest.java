@@ -3,23 +3,13 @@ package unittests.geometries;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import primitives.*;
-<<<<<<< HEAD
-import geometries.Cylinder;
-import geometries.Sphere;
-=======
->>>>>>> branch 'master' of https://github.com/mendiwelner/ISE5783_2228_9955.git
 import geometries.Tube;
-<<<<<<< HEAD
-
-import static primitives.Util.isZero;
-=======
->>>>>>> branch 'master' of https://github.com/mendiwelner/ISE5783_2228_9955.git
 
 /**
  * Testing Tube
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  */
 class TubeTest {
 
@@ -61,7 +51,7 @@ class TubeTest {
 		assertEquals(new Vector(0, -Math.sqrt(1 / 2d), -Math.sqrt(1 / 2d)), tube.getNormal(new Point(0, 1, 1)),
 				"getNormal does not work correctly (Boundary test)");
 	}
-	
+
 	void testFindIntersections() {
 		fail("Not yet implemented");
 	}

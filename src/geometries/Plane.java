@@ -5,11 +5,11 @@ import primitives.*;
 import static primitives.Util.*;
 
 /**
- * The class Plane will serve as the representation
- * of the shape plane created with 3 points or with point and vector.
+ * The class Plane will serve as the representation of the shape plane created
+ * with 3 points or with point and vector.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  */
 public class Plane implements Geometry {
 
@@ -31,6 +31,7 @@ public class Plane implements Geometry {
 	}
 
 	/**
+	 * Constructor to initialize Plane with 3 points
 	 * 
 	 * @param p1 for plane creation
 	 * @param p2 for plane creation
@@ -55,33 +56,28 @@ public class Plane implements Geometry {
 	public Vector getNormal(Point p) {
 		return normal;
 	}
-	
+
 	@Override
-	public List<Point> findIntsersections(Ray ray){	
-		
-		// if the starting point of plane equals to the start of ray, no intersection 
-		if(point.equals(ray.getP0())) {
+	public List<Point> findIntsersections(Ray ray) {
+
+		// if the starting point of plane equals to the start of ray, no intersection
+		if (point.equals(ray.getP0()))
+			return null;
+
+		// if t == 0, no intersection
+		double nQMinusP0 = normal.dotProduct(point.subtract(ray.getP0()));
+		if (isZero(nQMinusP0)) {
 			return null;
 		}
-		
-		// if t == 0, no intersection  
-		double nQMinusP0 = normal.dotProduct(point.subtract(ray.getP0()));
-		if(isZero(nQMinusP0)) {
-			return null;
-		}	
-		
+
 		// we cannot divide by zero
 		double nv = normal.dotProduct(ray.getDir());
-		if(isZero(nv)) {
+		if (isZero(nv)) {
 			return null;
 		}
-		
+
 		// t has to be greater then 0 to avoid zero vector
 		double t = alignZero(nQMinusP0 / nv);
-		if(t > 0) {
-			return List.of(ray.getPoint(t));
-		}
-		
-		return null;
+		return t <= 0 ? null : List.of(ray.getPoint(t));
 	}
 }

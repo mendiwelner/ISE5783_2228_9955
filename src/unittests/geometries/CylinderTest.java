@@ -10,8 +10,8 @@ import primitives.*;
 /**
  * Testing Cylinder
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  *
  */
 class CylinderTest {
@@ -48,25 +48,19 @@ class CylinderTest {
 	 */
 	@Test
 	void testGetNormal() {
-<<<<<<< HEAD
-		Ray axisRay = new Ray(new Point(0,0,0),new Vector(0,0,1));
-		Cylinder cyl = new Cylinder(1 , axisRay , 3);
-=======
+
 		Ray axisRay = new Ray(new Point(0, 0, 0), new Vector(0, 0, 1));
 		Cylinder cyl = new Cylinder(1, axisRay, 3);
->>>>>>> branch 'master' of https://github.com/mendiwelner/ISE5783_2228_9955.git
-		// ============ Equivalence Partitions Tests ==============
-<<<<<<< HEAD
-		//TC01: Point is between the bases
-		assertEquals(new Vector(1,0,0),cyl.getNormal(new Point(1,0,1)));
-		
-		//TC02: Point is at the top base
-		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,0,3)));
-		
-		//TC03: Point is at the bottom base
-		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(1,0,0)));
-		
-=======
+
+		// TC01: Point is between the bases
+		assertEquals(new Vector(1, 0, 0), cyl.getNormal(new Point(1, 0, 1)));
+
+		// TC02: Point is at the top base
+		assertEquals(new Vector(0, 0, 1), cyl.getNormal(new Point(1, 0, 3)));
+
+		// TC03: Point is at the bottom base
+		assertEquals(new Vector(0, 0, -1), cyl.getNormal(new Point(1, 0, 0)));
+
 		// TC01: Point is between the bases
 		assertEquals(new Vector(1, 0, 0), cyl.getNormal(new Point(1, 0, 1)));
 
@@ -76,33 +70,27 @@ class CylinderTest {
 		// TC03: Point is at the bottom base
 		assertEquals(new Vector(0, 0, -1), cyl.getNormal(new Point(0, 1, 0)));
 
->>>>>>> branch 'master' of https://github.com/mendiwelner/ISE5783_2228_9955.git
-		// =============== Boundary Values Tests ==================
-<<<<<<< HEAD
-		//TC04: Point is at the top center base
-		assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(0,0,3)));
-		
-		//TC05: Point is at the bottom center base
-		assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(0,0,0)));
-=======
 		// TC04: Point is at the top center base
 		assertEquals(new Vector(0, 0, 1), cyl.getNormal(new Point(0, 0, 3)));
 
 		// TC05: Point is at the bottom center base
 		assertEquals(new Vector(0, 0, -1), cyl.getNormal(new Point(0, 0, 0)));
 
->>>>>>> branch 'master' of https://github.com/mendiwelner/ISE5783_2228_9955.git
-		
+		// TC04: Point is at the top center base
+		assertEquals(new Vector(0, 0, 1), cyl.getNormal(new Point(0, 0, 3)));
+
+		// TC05: Point is at the bottom center base
+		assertEquals(new Vector(0, 0, -1), cyl.getNormal(new Point(0, 0, 0)));
+
 		// Point is at the edge top base
 		// assertEquals(new Vector(0,0,1),cyl.getNormal(new Point(1,0,3)));
 
 		// Point is at the edge bottom base
 		// assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(0,0,0)));
 	}
-	
+
 	void testFindIntsersections() {
 		fail("Not yet implemented");
 	}
-	
-	
+
 }

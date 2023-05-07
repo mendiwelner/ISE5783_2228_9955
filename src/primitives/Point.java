@@ -1,10 +1,10 @@
 package primitives;
 
 /**
- * Point class allows us to represent a point with coordinates x,y,z. 
+ * Point class allows us to represent a point with coordinates x,y,z.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  *
  */
 
@@ -70,8 +70,8 @@ public class Point {
 	/**
 	 * This function returns the distance squared of our point from the given point
 	 * 
-	 * @param point
-	 * @return distance squared 
+	 * @param p the second point
+	 * @return distance squared
 	 */
 	public double distanceSquared(Point p) {
 		double dx = xyz.d1 - p.xyz.d1;
@@ -89,15 +89,30 @@ public class Point {
 	public double distance(Point p) {
 		return Math.sqrt(distanceSquared(p));
 	}
-	
+
+	/**
+	 * This function returns the x coordinate
+	 * 
+	 * @return x coordinate of the Double3 object
+	 */
 	public double getX() {
 		return xyz.d1;
 	}
-	
+
+	/**
+	 * This function returns the y coordinate
+	 * 
+	 * @return y coordinate of the Double3 object
+	 */
 	public double getY() {
 		return xyz.d2;
 	}
-	
+
+	/**
+	 * This function returns the z coordinate
+	 * 
+	 * @return z coordinate of the Double3 object
+	 */
 	public double getZ() {
 		return xyz.d3;
 	}

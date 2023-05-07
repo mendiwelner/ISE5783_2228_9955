@@ -91,29 +91,32 @@ public class Polygon implements Geometry {
 	@Override
 	public List<Point> findIntsersections(Ray ray) {
 		List<Point> intersections = plane.findIntsersections(ray);
-	    if (intersections == null) return null;
-	    
-	    Vector v = ray.getDir();
-	    Point p0 = ray.getP0();
-	    Vector v1 = vertices.get(0).subtract(p0).normalize();
-	    Vector v2 = vertices.get(1).subtract(p0).normalize();
-	    Vector n = v1.crossProduct(v2).normalize();
+		if (intersections == null)
+			return null;
 
-	    // Check if the ray intersects the polygon
-	    if (n.dotProduct(v) == 0) return null;
+		Vector v = ray.getDir();
+		Point p0 = ray.getP0();
+		Vector v1 = vertices.get(0).subtract(p0);
+		Vector v2 = vertices.get(1).subtract(p0);
+		Vector n = v1.crossProduct(v2);
 
-	    boolean positive = n.dotProduct(v) > 0;
+		// Check if the ray intersects the polygon
+		if (n.dotProduct(v) == 0)
+			return null;
 
-	    // Check if the intersection point is inside the polygon
-	    for (int i = 0; i < size; i++) {
-	        Vector vi = vertices.get(i).subtract(p0).normalize();
-	        Vector vip1 = vertices.get((i + 1) % size).subtract(p0).normalize();
-	        Vector normal = vi.crossProduct(vip1).normalize();
-	        double sign = normal.dotProduct(n) > 0 ? 1 : -1;
-	        if (positive != (sign > 0)) return null;
-	    }
-	    
-	    return intersections;
+		boolean positive = n.dotProduct(v) > 0;
+
+		// Check if the intersection point is inside the polygon
+		for (int i = 0; i < size; i++) {
+			Vector vi = vertices.get(i).subtract(p0);
+			Vector vip1 = vertices.get((i + 1) % size).subtract(p0);
+			Vector normal = vi.crossProduct(vip1);
+			double sign = normal.dotProduct(n) > 0 ? 1 : -1;
+			if (positive != (sign > 0))
+				return null;
+		}
+
+		return intersections;
 	}
-		
+
 }

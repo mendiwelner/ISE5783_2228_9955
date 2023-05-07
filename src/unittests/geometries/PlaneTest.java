@@ -8,8 +8,8 @@ import geometries.Plane;
 /**
  * Testing Plane
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  */
 class PlaneTest {
 
@@ -95,12 +95,11 @@ class PlaneTest {
 	 */
 	@Test
 	void testFindIntersections() {
-		Plane plane = new Plane(new Point(1, 0, 0),new Vector(0, 0, 1));
+		Plane plane = new Plane(new Point(1, 0, 0), new Vector(0, 0, 1));
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Testing ray intersects the plane
 		Ray ray1 = new Ray(new Point(1, -1, -1), new Vector(0, 1, 1));
-		assertEquals(new Point(1, 0, 0), plane.findIntsersections(ray1).get(0)
-					,"This point is not the correct point");
+		assertEquals(new Point(1, 0, 0), plane.findIntsersections(ray1).get(0), "This point is not the correct point");
 		assertEquals(1, plane.findIntsersections(ray1).size(), "The amount of intersections should be 1");
 
 		// TC02: Testing ray does not intersects the plane
@@ -124,7 +123,7 @@ class PlaneTest {
 
 		// TC02: ray starts before the plane - one intersections
 		Ray ray6 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
-		assertEquals(new Point(0, 0, 0), plane.findIntsersections(ray6).get(0),"This point is not the correct point");
+		assertEquals(new Point(0, 0, 0), plane.findIntsersections(ray6).get(0), "This point is not the correct point");
 		assertEquals(1, plane.findIntsersections(ray6).size(), "The amount of intersections should be 1");
 
 		// TC03: ray starts after the plane - no intersections
@@ -139,7 +138,7 @@ class PlaneTest {
 		// TC02: ray starts from the plane
 		Ray ray9 = new Ray(new Point(0, 0, 1), new Vector(0, 1, 1));
 		assertNull(plane.findIntsersections(ray9), "There should be no intersections");
-		
+
 		// TC03: ray starts from the reference point of the plane
 		Ray ray10 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 1));
 		assertNull(plane.findIntsersections(ray10), "There should be no intersections");

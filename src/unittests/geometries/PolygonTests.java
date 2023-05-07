@@ -88,15 +88,19 @@ public class PolygonTests {
 			assertTrue(isZero(result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1]))),
 					"Polygon's normal is not orthogonal to one of the edges");
 	}
-	
-	/** Test method for {@link geometries.Polygon#testFindIntsersections(primitives.Point)}. */
+
+	/**
+	 * Test method for
+	 * {@link geometries.Polygon#testFindIntsersections(primitives.Point)}.
+	 */
 	@Test
 	void testFindIntersections() {
 		Polygon polygon = new Polygon(new Point(0, 0, 1), new Point(5, 0, 1), new Point(5, 5, 1), new Point(0, 5, 1));
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: intersection in the Polygon
 		Ray ray1 = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
-		assertEquals(new Point(1, 1, 1), polygon.findIntsersections(ray1).get(0),"This point is not the correct point");
+		assertEquals(new Point(1, 1, 1), polygon.findIntsersections(ray1).get(0),
+				"This point is not the correct point");
 
 		// TC02: intersection outside of the Polygon, against one of the ribs
 		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));

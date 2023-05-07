@@ -3,11 +3,11 @@ package primitives;
 import static primitives.Util.isZero;
 
 /**
- * Ray class will serve as the ray of a general shape 
- * to build the shape later on.
+ * Ray class will serve as the ray of a general shape to build the shape later
+ * on.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com  
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  */
 public class Ray {
 
@@ -15,11 +15,11 @@ public class Ray {
 	private final Vector dir;
 
 	/**
-	 * Constructor to create a new Ray object with the specified starting point and direction. The
-	 * direction vector is normalized to have a length of 1.
+	 * Constructor to create a new Ray object with the specified starting point and
+	 * direction. The direction vector is normalized to have a length of 1.
 	 * 
-	 * @param point-the starting point of the Ray
-	 * @param vector-the direction vector of the Ray
+	 * @param p the  starting point of the Ray
+	 * @param vec the direction vector of the Ray
 	 */
 	public Ray(Point p, Vector vec) {
 		p0 = p;
@@ -27,20 +27,20 @@ public class Ray {
 	}
 
 	/**
-	 * This function returns the central point on the bottom base which is p0
+	 * This function returns the starting point of the the ray which is p0
 	 * 
-	 * @return p0
+	 * @return point
 	 */
 	public Point getP0() {
 		return p0;
 	}
 
 	/**
-	 * This function returns a point p0 on the central base and we're adding
-	 * to it the direction vector scaled by t. if t equals to 0 then we just return p0.
+	 * This function returns a point p0 on the central base and we're adding to it
+	 * the direction vector scaled by t. if t equals to 0 then we just return p0.
 	 * 
 	 * @param t is a scalar
-	 * @return new point
+	 * @return point
 	 */
 	public Point getPoint(double t) {
 		return isZero(t) ? p0 : p0.add(dir.scale(t));

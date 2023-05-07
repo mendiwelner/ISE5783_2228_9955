@@ -57,9 +57,10 @@ class TriangleTest {
 			assertTrue(isZero(result.dotProduct(pts[i].subtract(pts[i == 0 ? 2 : i - 1]))),
 					"Triangle's normal is not orthogonal to one of the edges");
 	}
-	
+
 	/**
-	 * Test method for {@link geometries.Triangle#FindIntersections(primitives.Point)}.
+	 * Test method for
+	 * {@link geometries.Triangle#FindIntersections(primitives.Point)}.
 	 */
 	@Test
 	void testFindIntersections() {
@@ -68,7 +69,7 @@ class TriangleTest {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: intersection in the Triangle
 		Ray ray1 = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
-		assertEquals(new Point(1, 1, 1), trgle.findIntsersections(ray1).get(0),"This point is not the correct point");
+		assertEquals(new Point(1, 1, 1), trgle.findIntsersections(ray1).get(0), "This point is not the correct point");
 
 		// TC02: intersection outside of the Triangle, against one of the ribs
 		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));

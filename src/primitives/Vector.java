@@ -1,11 +1,11 @@
 package primitives;
 
 /**
- * Vector class will serve as the "upgraded point" to represent
- * direction and size.
+ * Vector class will serve as the "upgraded point" to represent direction and
+ * size.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  */
 
 public class Vector extends Point {
@@ -35,9 +35,10 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * This function adds the given vector to our vector and return the result as a new vector.
+	 * This function adds the given vector to our vector and return the result as a
+	 * new vector.
 	 * 
-	 * @param vector 
+	 * @param vector
 	 * @return new vector
 	 */
 	public Vector add(Vector vec) {
@@ -45,7 +46,8 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * This function scales this vector by the given scalar and return the result as a new vector.
+	 * This function scales this vector by the given scalar and return the result as
+	 * a new vector.
 	 * 
 	 * @param scalar to multiply the vector by
 	 * @return new vector
@@ -65,12 +67,12 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * This function computes the cross product of this vector and the given vector and return the
-	 * result as a new vector that orthogonal to both vectors.
+	 * This function computes the cross product of this vector and the given vector
+	 * and return the result as a new vector that orthogonal to both vectors.
 	 * 
 	 * @param vector to compute the cross product with
-	 * @return new orthogonal vector 
-	 *         
+	 * @return new orthogonal vector
+	 * 
 	 */
 	public Vector crossProduct(Vector vec) {
 		return new Vector(xyz.d2 * vec.xyz.d3 - xyz.d3 * vec.xyz.d2, //
@@ -85,7 +87,7 @@ public class Vector extends Point {
 	 */
 	public double lengthSquared() {
 		double dx = xyz.d1;
-		double dy =  xyz.d2;
+		double dy = xyz.d2;
 		double dz = xyz.d3;
 		return dx * dx + dy * dy + dz * dz;
 	}
@@ -100,10 +102,10 @@ public class Vector extends Point {
 	}
 
 	/**
-	 * normalize this vector to be a vector with 
-	 * the same direction as this vector but a length of 1
+	 * normalize this vector to be a vector with the same direction as this vector
+	 * but a length of 1
 	 * 
-	 * @return normalized vector   
+	 * @return normalized vector
 	 */
 	public Vector normalize() {
 		return this.scale(1 / this.length());

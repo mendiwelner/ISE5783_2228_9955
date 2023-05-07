@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for class {@link primitives.Point}.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com
- *         Mendy Segal. 211769955. Mendysegal490@gmail.com 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
+ *         Mendysegal490@gmail.com
  *
  */
 class PointTest {
@@ -75,7 +75,8 @@ class PointTest {
 		Point p1 = new Point(1, 2, 3);
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Test Distance Squared of point(4,5,6)
-		assertEquals(27, p1.distanceSquared(new Point(4, 5, 6)), 0.000001, "(1-4)^2 + (2-5)^2 + (3-6)^2 must be equals to 27");
+		assertEquals(27, p1.distanceSquared(new Point(4, 5, 6)), 0.000001,
+				"(1-4)^2 + (2-5)^2 + (3-6)^2 must be equals to 27");
 	}
 
 	/**
