@@ -8,8 +8,8 @@ import primitives.*;
  * The class Geometries composites our geometries shapes to build some complex
  * shapes. Cylinder is finite Tube
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
- *         Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com 
+ * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
  */
 public class Geometries implements Intersectable {
 

@@ -8,8 +8,8 @@ import static primitives.Util.isZero;
  * The class Tube extends the RadialGeometry class and allows us to represent a
  * Tube with radius and ray.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
- *         Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com 
+ * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
  */
 public class Tube extends RadialGeometry {
 

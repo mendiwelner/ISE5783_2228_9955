@@ -8,8 +8,8 @@ import static primitives.Util.*;
  * The class Plane will serve as the representation of the shape plane created
  * with 3 points or with point and vector.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
- *         Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com 
+ * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
  */
 public class Plane implements Geometry {
 

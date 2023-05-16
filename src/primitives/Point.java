@@ -3,8 +3,8 @@ package primitives;
 /**
  * Point class allows us to represent a point with coordinates x,y,z.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal. 211769955.
- *         Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com 
+ * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
  *
  */
 

@@ -48,7 +48,7 @@ public class Triangle extends Polygon {
 		double res3 = alignZero(dir.dotProduct(n3));
 		if (res1 * res3 <= 0)
 			return null;
-		
+
 		return intersections;
 	}
 }
