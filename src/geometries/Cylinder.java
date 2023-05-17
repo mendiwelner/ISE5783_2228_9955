@@ -7,8 +7,8 @@ import primitives.*;
  * The class Cylinder is the extension of Tube. but unlike Tube, Cylinder is
  * finite Tube
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 
 public class Cylinder extends Tube {
@@ -58,7 +58,7 @@ public class Cylinder extends Tube {
 	}
 
 	@Override
-	public List<Point> findIntsersections(Ray ray) {
+	public List<Point> findIntersections(Ray ray) {
 		return null;
 	}
 

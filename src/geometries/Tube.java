@@ -2,18 +2,17 @@ package geometries;
 
 import java.util.List;
 import primitives.*;
-import static primitives.Util.isZero;
 
 /**
  * The class Tube extends the RadialGeometry class and allows us to represent a
  * Tube with radius and ray.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 public class Tube extends RadialGeometry {
 
-	// our axis ray
+	/** axis ray of the tube - represents the whole axis line */
 	protected final Ray axisRay;
 
 	/**
@@ -21,7 +20,7 @@ public class Tube extends RadialGeometry {
 	 * ray.
 	 * 
 	 * @param radius  the radius of the tube
-	 * @param axisRay the axis ray of the tube
+	 * @param ray the axis ray of the tube
 	 */
 	public Tube(double radius, Ray ray) { // is it should be Package Friendly
 		super(radius);
@@ -35,7 +34,7 @@ public class Tube extends RadialGeometry {
 	}
 
 	@Override
-	public List<Point> findIntsersections(Ray ray) {
+	public List<Point> findIntersections(Ray ray) {
 		return null;
 	}
 

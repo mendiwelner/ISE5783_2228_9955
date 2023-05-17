@@ -8,8 +8,8 @@ import geometries.Plane;
 /**
  * Testing Plane
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 class PlaneTest {
 
@@ -91,7 +91,7 @@ class PlaneTest {
 
 	/**
 	 * Test method for
-	 * {@link geometries.Plane#testFindIntsersections(primitives.Point)}.
+	 * {@link geometries.Plane#findIntersections(primitives.Ray)}.
 	 */
 	@Test
 	void testFindIntersections() {
@@ -99,49 +99,49 @@ class PlaneTest {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Testing ray intersects the plane
 		Ray ray1 = new Ray(new Point(1, -1, -1), new Vector(0, 1, 1));
-		assertEquals(new Point(1, 0, 0), plane.findIntsersections(ray1).get(0), "This point is not the correct point");
-		assertEquals(1, plane.findIntsersections(ray1).size(), "The amount of intersections should be 1");
+		assertEquals(new Point(1, 0, 0), plane.findIntersections(ray1).get(0), "This point is not the correct point");
+		assertEquals(1, plane.findIntersections(ray1).size(), "The amount of intersections should be 1");
 
 		// TC02: Testing ray does not intersects the plane
 		Ray ray2 = new Ray(new Point(0, 1, 1), new Vector(0, 1, 1));
-		assertEquals(null, plane.findIntsersections(ray2), "There should be no intersections");
+		assertEquals(null, plane.findIntersections(ray2), "There should be no intersections");
 
 		// =============== Boundary Values Tests ==================
 		// group 1 - ray parallel to the plane, no intersections
 		// TC01: ray included in the plane
 		Ray ray3 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 0));
-		assertNull(plane.findIntsersections(ray3), "There should be no intersections");
+		assertNull(plane.findIntersections(ray3), "There should be no intersections");
 
 		// TC02: ray does not included in the plane
 		Ray ray4 = new Ray(new Point(0, 0, 1), new Vector(0, 1, 0));
-		assertNull(plane.findIntsersections(ray4), "There should be no intersections");
+		assertNull(plane.findIntersections(ray4), "There should be no intersections");
 
 		// group 2 - ray is orthogonal to the plane
 		// TC01: ray starts in the plane - no intersections
 		Ray ray5 = new Ray(new Point(0, 0, 0), new Vector(0, 0, 1));
-		assertNull(plane.findIntsersections(ray5), "There should be no intersections");
+		assertNull(plane.findIntersections(ray5), "There should be no intersections");
 
 		// TC02: ray starts before the plane - one intersections
 		Ray ray6 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
-		assertEquals(new Point(0, 0, 0), plane.findIntsersections(ray6).get(0), "This point is not the correct point");
-		assertEquals(1, plane.findIntsersections(ray6).size(), "The amount of intersections should be 1");
+		assertEquals(new Point(0, 0, 0), plane.findIntersections(ray6).get(0), "This point is not the correct point");
+		assertEquals(1, plane.findIntersections(ray6).size(), "The amount of intersections should be 1");
 
 		// TC03: ray starts after the plane - no intersections
 		Ray ray7 = new Ray(new Point(0, 0, 1), new Vector(0, 0, 1));
-		assertNull(plane.findIntsersections(ray7), "There should be no intersections");
+		assertNull(plane.findIntersections(ray7), "There should be no intersections");
 
 		// group 3 - ray is not orthogonal and not parallel, no intersections
 		// TC01: ray starts from the plane
 		Ray ray8 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 1));
-		assertNull(plane.findIntsersections(ray8), "There should be no intersections");
+		assertNull(plane.findIntersections(ray8), "There should be no intersections");
 
 		// TC02: ray starts from the plane
 		Ray ray9 = new Ray(new Point(0, 0, 1), new Vector(0, 1, 1));
-		assertNull(plane.findIntsersections(ray9), "There should be no intersections");
+		assertNull(plane.findIntersections(ray9), "There should be no intersections");
 
 		// TC03: ray starts from the reference point of the plane
 		Ray ray10 = new Ray(new Point(0, 0, 0), new Vector(0, 1, 1));
-		assertNull(plane.findIntsersections(ray10), "There should be no intersections");
+		assertNull(plane.findIntersections(ray10), "There should be no intersections");
 
 	}
 

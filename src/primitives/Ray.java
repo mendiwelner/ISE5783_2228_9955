@@ -6,9 +6,9 @@ import static primitives.Util.isZero;
  * Ray class will serve as the ray of a general shape to build the shape later
  * on.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
- *         
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
+ * 
  */
 public class Ray {
 
@@ -19,7 +19,7 @@ public class Ray {
 	 * Constructor to create a new Ray object with the specified starting point and
 	 * direction. The direction vector is normalized to have a length of 1.
 	 * 
-	 * @param p the starting point of the Ray
+	 * @param p   the starting point of the Ray
 	 * @param vec the direction vector of the Ray
 	 */
 	public Ray(Point p, Vector vec) {

@@ -16,17 +16,17 @@ public class Triangle extends Polygon {
 	/**
 	 * Constructor to initialize Triangle with 3 points
 	 * 
-	 * @param point p1
-	 * @param point p2
-	 * @param point p3
+	 * @param p1 1st vertex
+	 * @param p2 2nd vertex
+	 * @param p3 3rd vertex
 	 */
 	public Triangle(Point p1, Point p2, Point p3) {
 		super(p1, p2, p3);
 	}
 
 	@Override
-	public List<Point> findIntsersections(Ray ray) {
-		List<Point> intersections = plane.findIntsersections(ray);
+	public List<Point> findIntersections(Ray ray) {
+		List<Point> intersections = plane.findIntersections(ray);
 
 		Point p0 = ray.getP0();
 		Vector dir = ray.getDir();

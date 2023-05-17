@@ -14,21 +14,24 @@ import primitives.*;
 /**
  * Testing Camera Class
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  *
  */
 public class IntegrationTest {
 
 	@Test
 	void testSphere() {
+		List<Ray> rayList;
+		Camera camera;
+		Sphere sphere;
+		
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: sphere is across the central pixel of view plane - 2 intersections
-		Camera camera = new Camera(new Point(0, 0, 0), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
-		Sphere sphere = new Sphere(1, new Point(0, 0, -3));
-		LinkedList<Ray> rayList = pixelRays(camera.setVPSize(3, 3), 3, 3);
+		camera = new Camera(new Point(0, 0, 0), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
+		sphere = new Sphere(1, new Point(0, 0, -3));
+		rayList = pixelRays(camera.setVPSize(3, 3), 3, 3);
 		assertEquals(2, countIntersections(rayList, sphere), "wrong amount of pixel intersections");
-		
 
 		// TC02: sphere is across the whole view plane - 18 intersections
 		sphere = new Sphere(2.5, new Point(0, 0, -2.5));
@@ -52,11 +55,12 @@ public class IntegrationTest {
 
 	@Test
 	void testPlane() {
+		Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
+		List<Ray> rayList = pixelRays(camera.setVPSize(3, 3), 3, 3);
+
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: plane is parallel to view plane - 9 intersections
-		Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
 		Plane plane1 = new Plane(new Point(0, 0, -2), new Vector(0, 0, 1));
-		LinkedList<Ray> rayList = pixelRays(camera.setVPSize(3, 3), 3, 3);
 		assertEquals(9, countIntersections(rayList, plane1), "wrong amount of pixel intersections");
 
 		// TC02: plane is diagonally near the view plane - 9 intersections
@@ -71,11 +75,12 @@ public class IntegrationTest {
 
 	@Test
 	void testTriangle() {
+		Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
+		List<Ray> rayList = pixelRays(camera.setVPSize(3, 3), 3, 3);
+
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Triangle is across to central pixel - 1 intersection
-		Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
 		Triangle trg1 = new Triangle(new Point(0, 1, -2), new Point(1, -1, -2), new Point(-1, -1, -2));
-		LinkedList<Ray> rayList = pixelRays(camera.setVPSize(3, 3), 3, 3);
 		assertEquals(1, countIntersections(rayList, trg1), "wrong amount of pixel intersections");
 
 		// TC02: Triangle is across to view plane - 2 intersections
@@ -84,8 +89,8 @@ public class IntegrationTest {
 
 	}
 
-	private LinkedList<Ray> pixelRays(Camera camera, int nX, int nY) {
-		LinkedList<Ray> rays = new LinkedList<Ray>();
+	private List<Ray> pixelRays(Camera camera, int nX, int nY) {
+		List<Ray> rays = new LinkedList<>();
 		for (int i = 0; i < nX; i++)
 			for (int j = 0; j < nY; j++)
 				rays.add(camera.constructRay(nX, nY, j, i));
@@ -93,15 +98,13 @@ public class IntegrationTest {
 		return rays;
 	}
 
-	private int countIntersections(LinkedList<Ray> rays, Intersectable shape) {
+	private int countIntersections(List<Ray> rays, Intersectable shape) {
 		int counter = 0;
-		List<Point> intersections = new LinkedList<Point>();
 		for (Ray ray : rays) {
-			intersections = shape.findIntsersections(ray);
+			var intersections = shape.findIntersections(ray);
 			if (intersections != null)
 				counter += intersections.size();
 		}
-
 		return counter;
 	}
 }

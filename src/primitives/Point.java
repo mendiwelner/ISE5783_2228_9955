@@ -3,14 +3,14 @@ package primitives;
 /**
  * Point class allows us to represent a point with coordinates x,y,z.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  *
  */
 
 public class Point {
 
-	// x,y,z Double3 object to represent a point
+	/** x,y,z Double3 object to represent a point */
 	protected final Double3 xyz;
 
 	/**
@@ -27,7 +27,7 @@ public class Point {
 	/**
 	 * Constructor to initializing the point with Double3 object
 	 * 
-	 * @param Double3 xyz-object
+	 * @param newXyz xyz-object
 	 */
 	Point(Double3 newXyz) {
 		xyz = newXyz;
@@ -50,7 +50,7 @@ public class Point {
 	/**
 	 * This function adds a vector to the point and returns the new point
 	 * 
-	 * @param vector
+	 * @param vec vector to add
 	 * @return new point after we added a vector to it
 	 */
 	public Point add(Vector vec) {
@@ -60,7 +60,7 @@ public class Point {
 	/**
 	 * This function subtracts the point from vector
 	 * 
-	 * @param point
+	 * @param p another point
 	 * @return new vector that was subtracted by the given point
 	 */
 	public Vector subtract(Point p) {
@@ -83,7 +83,7 @@ public class Point {
 	/**
 	 * This function returns the distance of our point from the given point
 	 * 
-	 * @param point
+	 * @param p another point
 	 * @return distance of our point from the given point
 	 */
 	public double distance(Point p) {

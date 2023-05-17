@@ -10,8 +10,8 @@ import primitives.*;
 /**
  * Testing Cylinder
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  *
  */
 class CylinderTest {
@@ -87,10 +87,6 @@ class CylinderTest {
 
 		// Point is at the edge bottom base
 		// assertEquals(new Vector(0,0,-1),cyl.getNormal(new Point(0,0,0)));
-	}
-
-	void testFindIntsersections() {
-		fail("Not yet implemented");
 	}
 
 }

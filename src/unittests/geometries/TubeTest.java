@@ -8,8 +8,8 @@ import geometries.Tube;
 /**
  * Testing Tube
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 class TubeTest {
 
@@ -50,9 +50,5 @@ class TubeTest {
 		// TC02: Wrong normal calculation (in case the point is across the ray.p0)
 		assertEquals(new Vector(0, -Math.sqrt(1 / 2d), -Math.sqrt(1 / 2d)), tube.getNormal(new Point(0, 1, 1)),
 				"getNormal does not work correctly (Boundary test)");
-	}
-
-	void testFindIntersections() {
-		fail("Not yet implemented");
 	}
 }

@@ -8,8 +8,8 @@ import static primitives.Util.*;
  * The class Sphere extends the RadialGeometry class and allows us to represent
  * a sphere by radius and a point.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 public class Sphere extends RadialGeometry {
 
@@ -19,8 +19,8 @@ public class Sphere extends RadialGeometry {
 	/**
 	 * Constructor to initialize sphere with a radius and point
 	 * 
-	 * @param radius
-	 * @param point
+	 * @param radius radius value
+	 * @param point center point
 	 */
 	public Sphere(double radius, Point point) {
 		super(radius);
@@ -33,7 +33,7 @@ public class Sphere extends RadialGeometry {
 	}
 
 	@Override
-	public List<Point> findIntsersections(Ray ray) {
+	public List<Point> findIntersections(Ray ray) {
 
 		Point p0 = ray.getP0();
 

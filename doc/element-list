@@ -1,5 +1,7 @@
 geometries
 primitives
+renderer
 test
 unittests.geometries
 unittests.primitives
+unittests.renderer

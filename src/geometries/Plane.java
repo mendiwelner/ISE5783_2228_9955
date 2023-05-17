@@ -8,8 +8,8 @@ import static primitives.Util.*;
  * The class Plane will serve as the representation of the shape plane created
  * with 3 points or with point and vector.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 public class Plane implements Geometry {
 
@@ -22,8 +22,8 @@ public class Plane implements Geometry {
 	/**
 	 * Constructor to initialize Plane with a point and vector
 	 * 
-	 * @param point
-	 * @param vector normal
+	 * @param point a point in the plane
+	 * @param normal a vector orthogonal to the plane
 	 */
 	public Plane(Point point, Vector normal) {
 		this.point = point;
@@ -45,7 +45,7 @@ public class Plane implements Geometry {
 	}
 
 	/**
-	 * 
+	 * Getter for the normal
 	 * @return the normal to the plane
 	 */
 	public Vector getNormal() {
@@ -58,7 +58,7 @@ public class Plane implements Geometry {
 	}
 
 	@Override
-	public List<Point> findIntsersections(Ray ray) {
+	public List<Point> findIntersections(Ray ray) {
 
 		// if the starting point of plane equals to the start of ray, no intersection
 		if (point.equals(ray.getP0()))

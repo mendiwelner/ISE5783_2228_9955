@@ -4,8 +4,8 @@ package primitives;
  * Vector class will serve as the "upgraded point" to represent direction and
  * size.
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 
 public class Vector extends Point {
@@ -26,7 +26,7 @@ public class Vector extends Point {
 	/**
 	 * Constructor to initialize xyz with Double3 object
 	 * 
-	 * @param Double3 object
+	 * @param newXyz triad of coordinates
 	 */
 	Vector(Double3 newXyz) {
 		super(newXyz);
@@ -38,7 +38,7 @@ public class Vector extends Point {
 	 * This function adds the given vector to our vector and return the result as a
 	 * new vector.
 	 * 
-	 * @param vector
+	 * @param vec another vector
 	 * @return new vector
 	 */
 	public Vector add(Vector vec) {
@@ -49,7 +49,7 @@ public class Vector extends Point {
 	 * This function scales this vector by the given scalar and return the result as
 	 * a new vector.
 	 * 
-	 * @param scalar to multiply the vector by
+	 * @param scalar a number to multiply the vector by
 	 * @return new vector
 	 */
 	public Vector scale(double scalar) {
@@ -59,7 +59,7 @@ public class Vector extends Point {
 	/**
 	 * This function computes the dot product of this vector and the given vector.
 	 * 
-	 * @param vector to compute the dot product with
+	 * @param vec another vector to compute the dot product with
 	 * @return scalar
 	 */
 	public double dotProduct(Vector vec) {
@@ -70,7 +70,7 @@ public class Vector extends Point {
 	 * This function computes the cross product of this vector and the given vector
 	 * and return the result as a new vector that orthogonal to both vectors.
 	 * 
-	 * @param vector to compute the cross product with
+	 * @param vec another vector to compute the cross product with
 	 * @return new orthogonal vector
 	 * 
 	 */
@@ -105,7 +105,7 @@ public class Vector extends Point {
 	 * normalize this vector to be a vector with the same direction as this vector
 	 * but a length of 1
 	 * 
-	 * @return normalized vector
+	 * @return new normalized vector
 	 */
 	public Vector normalize() {
 		return this.scale(1 / this.length());

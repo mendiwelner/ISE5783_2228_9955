@@ -1,17 +1,17 @@
 package unittests.geometries;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static primitives.Util.isZero;
 
 import org.junit.jupiter.api.Test;
 import primitives.*;
 import geometries.Triangle;
+import java.util.List;
 
 /**
  * Testing Triangle
  * 
- * @author Mendy Welner 209272228. mendiwell@gmail.com 
- * 		   Mendy Segal. 211769955.Mendysegal490@gmail.com
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 class TriangleTest {
 
@@ -54,13 +54,13 @@ class TriangleTest {
 		assertEquals(1, result.length(), 0.00000001, "Triangle's normal is not a unit vector");
 		// ensure the result is orthogonal to all the edges
 		for (int i = 0; i < 3; ++i)
-			assertEquals(0,result.dotProduct(pts[i].subtract(pts[i == 0 ? 2 : i - 1])),0.00000001,
+			assertEquals(0, result.dotProduct(pts[i].subtract(pts[i == 0 ? 2 : i - 1])), 0.00000001,
 					"Triangle's normal is not orthogonal to one of the edges");
 	}
 
 	/**
 	 * Test method for
-	 * {@link geometries.Triangle#FindIntersections(primitives.Point)}.
+	 * {@link geometries.Triangle#findIntersections(primitives.Ray)}.
 	 */
 	@Test
 	void testFindIntersections() {
@@ -69,28 +69,28 @@ class TriangleTest {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: intersection in the Triangle
 		Ray ray1 = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
-		assertEquals(new Point(1, 1, 1), trgle.findIntsersections(ray1).get(0), "This point is not the correct point");
+		assertEquals(List.of(new Point(1, 1, 1)), trgle.findIntersections(ray1), "This point is not the correct point");
 
 		// TC02: intersection outside of the Triangle, against one of the ribs
 		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray2), "There should be no intersections");
+		assertNull(trgle.findIntersections(ray2), "There should be no intersections");
 
 		// TC03: intersection outside of the Triangle, against one of the vertexes
 		Ray ray3 = new Ray(new Point(-1, -1, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray3), "There should be no intersections");
+		assertNull(trgle.findIntersections(ray3), "There should be no intersections");
 
 		// =============== Boundary Values Tests ==================
 		// TC01: intersection on one of the ribs
 		Ray ray4 = new Ray(new Point(0, 1, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray4), "There should be no intersections");
+		assertNull(trgle.findIntersections(ray4), "There should be no intersections");
 
 		// TC02: intersection on one of the vertexes
 		Ray ray5 = new Ray(new Point(0, 0, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray5), "There should be no intersections");
+		assertNull(trgle.findIntersections(ray5), "There should be no intersections");
 
 		// TC03: intersection on the continued of the one of the ribs
 		Ray ray6 = new Ray(new Point(-1, 0, -1), new Vector(0, 0, 1));
-		assertNull(trgle.findIntsersections(ray6), "There should be no intersections");
+		assertNull(trgle.findIntersections(ray6), "There should be no intersections");
 
 	}
 }
