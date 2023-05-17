@@ -111,15 +111,15 @@ public class VectorTest {
 		Vector v2 = new Vector(0, 3, -2);
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: Length of cross product between v1 and v2 should be same as mult them
-		assertTrue(isZero(v1.crossProduct(v2).length() - v1.length() * v2.length()),
+		assertEquals(0,v1.crossProduct(v2).length() - v1.length() * v2.length(),0.00000001,
 				"ERROR: crossProduct() wrong result length");
 
 		// =============== Boundary Values Tests ==================
 		// TC02: Cross product of parallel vectors
-		assertTrue(isZero(v1.crossProduct(v2).dotProduct(v1)),
+		assertEquals(0,v1.crossProduct(v2).dotProduct(v1),
 				"ERROR: crossProduct() result is not orthogonal to its operands");
 		// This test is the continuation of the privies test
-		assertTrue(isZero(v1.crossProduct(v2).dotProduct(v2)),
+		assertEquals(0,v1.crossProduct(v2).dotProduct(v2),
 				"ERROR: crossProduct() result is not orthogonal to its operands");
 		// TC03: Cross product of parallel vectors
 		assertThrows(Exception.class, () -> v1.crossProduct(new Vector(-2, -4, -6)),
@@ -158,7 +158,7 @@ public class VectorTest {
 		// TC01: Testing normalized positive vector
 		assertEquals(1, v.normalize().length(), 0.000001, "ERROR: the normalized vector is not a unit vector");
 		// TC02: Testing normalized negative vector
-		assertTrue(isZero(new Vector(-10, -20, -30).normalize().length() - 1),
+		assertEquals(0,new Vector(-10, -20, -30).normalize().length() - 1,0.00000001,
 				"ERROR: the normalized vector is not a unit vector");
 
 		// =============== Boundary Values Tests ==================
