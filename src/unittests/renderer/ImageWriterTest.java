@@ -57,12 +57,6 @@ class ImageWriterTest {
 			}
 				
 		}
-			
-		
-		
-		
-		
-		
 		imageWriter.writeToImage();
 		
 	}
