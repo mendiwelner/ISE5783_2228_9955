@@ -45,7 +45,7 @@ class ImageWriterTest {
 	 */
 	@Test
 	void testWriteToImage() {
-		// new
+		// new p
 		Color yello = new Color(150,150,50);
 		Color red = new Color(150,50,50);
 		ImageWriter imageWriter = new ImageWriter("newImage", 800, 500);
