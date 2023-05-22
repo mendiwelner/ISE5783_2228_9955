@@ -32,9 +32,9 @@ public class Camera {
 	 * Constructor to create a new camera object with the specified vector
 	 * directions and a starting point
 	 * 
-	 * @param point  p-starting point of camera
-	 * @param vector vTo-direction to the center of view plane
-	 * @param vector vUp-the up direction of the camera
+	 * @param p  point-starting point of camera
+	 * @param vTo vector-direction to the center of view plane
+	 * @param vUp vector-the up direction of the camera
 	 */
 	public Camera(Point p, Vector vTo, Vector vUp) {
 		if (!isZero(vTo.dotProduct(vUp)))
@@ -47,8 +47,9 @@ public class Camera {
 	}
 
 	/**
+	 * This function returns the height of view plane
 	 * 
-	 * @return the height of view plane from camera
+	 * @return height
 	 */
 	double getHeight() {
 		return height;
@@ -56,21 +57,25 @@ public class Camera {
 
 	/**
 	 * 
-	 * @return the width of view plane from camera
+	 * This function returns the width of view plane
+	 * 
+	 * @return width
 	 */
 	double getWidth() {
 		return width;
 	}
 
 	/**
+	 * * This function returns the distance of view plane
 	 * 
-	 * @return the distance of view plane from camera
+	 * @return distance
 	 */
 	double getDistance() {
 		return distance;
 	}
 
 	/**
+	 * * This function sets the size of view plane
 	 * 
 	 * @param width  of view plane
 	 * @param height of view plane
@@ -83,9 +88,10 @@ public class Camera {
 	}
 
 	/**
+	 * * This function sets the distance of view plane
 	 * 
-	 * @param distance
-	 * @return the distance of view plane from camera
+	 * @param distance-from the camera
+	 * @return a new camera with the specified parameter
 	 */
 	public Camera setVPDistance(double distance) {
 		this.distance = distance;
@@ -93,6 +99,7 @@ public class Camera {
 	}
 
 	/**
+	 * * This function returns ray through a pixel in view plane
 	 * 
 	 * @param nX-number of rows in view plane
 	 * @param nY-number of columns in view plane

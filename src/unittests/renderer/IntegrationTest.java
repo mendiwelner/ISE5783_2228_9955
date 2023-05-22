@@ -19,7 +19,8 @@ import primitives.*;
  *
  */
 public class IntegrationTest {
-
+	
+	/** Test method for {@link geometries.Sphere#Sphere(double,primitives.Point)}. */
 	@Test
 	void testSphere() {
 		List<Ray> rayList;
@@ -52,7 +53,8 @@ public class IntegrationTest {
 		assertEquals(0, countIntersections(rayList, sphere), "wrong amount of pixel intersections");
 
 	}
-
+	
+	/** Test method for {@link geometries.Plane#Plane(primitives.Point,primitives.Vector)}. */
 	@Test
 	void testPlane() {
 		Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
@@ -72,7 +74,8 @@ public class IntegrationTest {
 		assertEquals(6, countIntersections(rayList, plane3), "wrong amount of pixel intersections");
 
 	}
-
+	
+	/** Test method for {@link geometries.Triangle#Triangle(primitives.Point,primitives.Point,primitives.Point)}. */
 	@Test
 	void testTriangle() {
 		Camera camera = new Camera(new Point(0, 0, 1), new Vector(0, 0, -1), new Vector(0, 1, 0)).setVPDistance(1);
