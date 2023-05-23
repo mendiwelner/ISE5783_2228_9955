@@ -17,6 +17,25 @@ public class Scene {
 	public AmbientLight ambientLight = AmbientLight.NONE;
 	public Geometries geometries = new Geometries();
 	
-	Scene()
+	public Scene(String sceneName){
+		name = sceneName;
+	}
+	
+	
+	public Scene setBackground(Color color) {
+		background = color;
+		return this;
+	}
+	
+	public Scene setAmbientLight(AmbientLight ambientLight) {
+		this.ambientLight = ambientLight;
+		return this;
+	}
+	
+	public Scene setGeometries(Geometries geometries) {
+		this.geometries = geometries;
+		return this;
+	}
+	
 
 }

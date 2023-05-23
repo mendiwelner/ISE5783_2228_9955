@@ -10,6 +10,8 @@ package primitives;
 
 public class Point {
 
+	/** Constant value for the center of the coordinate system */
+	public static final Point ZERO = new Point(0, 0, 0);
 	/** x,y,z Double3 object to represent a point */
 	protected final Double3 xyz;
 
