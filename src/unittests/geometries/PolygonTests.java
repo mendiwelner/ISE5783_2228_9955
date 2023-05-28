@@ -83,8 +83,7 @@ public class PolygonTests {
 	}
 
 	/**
-	 * Test method for
-	 * {@link geometries.Polygon#findIntersections(primitives.Ray)}.
+	 * Test method for {@link geometries.Polygon#findIntersections(primitives.Ray)}.
 	 */
 	@Test
 	void testFindIntersections() {
@@ -92,8 +91,7 @@ public class PolygonTests {
 		// ============ Equivalence Partitions Tests ==============
 		// TC01: intersection in the Polygon
 		Ray ray1 = new Ray(new Point(1, 1, 0), new Vector(0, 0, 1));
-		assertEquals(new Point(1, 1, 1), polygon.findIntersections(ray1).get(0),
-				"This point is not the correct point");
+		assertEquals(new Point(1, 1, 1), polygon.findIntersections(ray1).get(0), "This point is not the correct point");
 
 		// TC02: intersection outside of the Polygon, against one of the ribs
 		Ray ray2 = new Ray(new Point(-1, 1, -1), new Vector(0, 0, 1));

@@ -22,7 +22,7 @@ public class Plane implements Geometry {
 	/**
 	 * Constructor to initialize Plane with a point and vector
 	 * 
-	 * @param point a point in the plane
+	 * @param point  a point in the plane
 	 * @param normal a vector orthogonal to the plane
 	 */
 	public Plane(Point point, Vector normal) {
@@ -46,6 +46,7 @@ public class Plane implements Geometry {
 
 	/**
 	 * Getter for the normal
+	 * 
 	 * @return the normal to the plane
 	 */
 	public Vector getNormal() {

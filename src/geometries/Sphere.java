@@ -20,7 +20,7 @@ public class Sphere extends RadialGeometry {
 	 * Constructor to initialize sphere with a radius and point
 	 * 
 	 * @param radius radius value
-	 * @param point center point
+	 * @param point  center point
 	 */
 	public Sphere(double radius, Point point) {
 		super(radius);

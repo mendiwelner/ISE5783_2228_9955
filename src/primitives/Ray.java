@@ -57,19 +57,19 @@ public class Ray {
 	public Vector getDir() {
 		return dir;
 	}
-	
+
 	public Point findClosestPoint(List<Point> points) {
 		if (points.size() == 0)
-				return null;
-		
+			return null;
+
 		Point closestPoint = points.get(0);
 		double minDistance = points.get(0).distance(p0);
-		for(int i = 1; i < points.size();i++) {
-			if(points.get(i).distance(p0) < minDistance) {
+		for (int i = 1; i < points.size(); i++) {
+			if (points.get(i).distance(p0) < minDistance) {
 				closestPoint = points.get(i);
 				minDistance = points.get(i).distance(p0);
 			}
-				
+
 		}
 		return closestPoint;
 	}

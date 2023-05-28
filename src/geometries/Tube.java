@@ -19,8 +19,8 @@ public class Tube extends RadialGeometry {
 	 * Constructor to Creates a cylindrical tube with the specified radius and axis
 	 * ray.
 	 * 
-	 * @param radius  the radius of the tube
-	 * @param ray the axis ray of the tube
+	 * @param radius the radius of the tube
+	 * @param ray    the axis ray of the tube
 	 */
 	public Tube(double radius, Ray ray) { // is it should be Package Friendly
 		super(radius);

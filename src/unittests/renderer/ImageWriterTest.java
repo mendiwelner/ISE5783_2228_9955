@@ -17,11 +17,12 @@ import org.junit.jupiter.api.Test;
 class ImageWriterTest {
 
 	/**
-	 * Test method for {@link renderer.ImageWriter#ImageWriter(java.lang.String, int, int)}.
+	 * Test method for
+	 * {@link renderer.ImageWriter#ImageWriter(java.lang.String, int, int)}.
 	 */
 	@Test
 	void testImageWriter() {
-		
+
 	}
 
 	/**
@@ -29,7 +30,7 @@ class ImageWriterTest {
 	 */
 	@Test
 	void testGetNy() {
-		
+
 	}
 
 	/**
@@ -37,7 +38,7 @@ class ImageWriterTest {
 	 */
 	@Test
 	void testGetNx() {
-		
+
 	}
 
 	/**
@@ -45,24 +46,25 @@ class ImageWriterTest {
 	 */
 	@Test
 	void testWriteToImage() {
-		Color yello = new Color(240,250,50);
-		Color red = new Color(200,50,50);
+		Color yello = new Color(240, 250, 50);
+		Color red = new Color(200, 50, 50);
 		ImageWriter imageWriter = new ImageWriter("newImage", 800, 500);
-		for(int i = 0; i < 800; i++) {
-			for(int j = 0; j < 500; j++) {
-				if(i % 50 == 0 || j % 50 == 0)
-					imageWriter.writePixel(i,j, red);
+		for (int i = 0; i < 800; i++) {
+			for (int j = 0; j < 500; j++) {
+				if (i % 50 == 0 || j % 50 == 0)
+					imageWriter.writePixel(i, j, red);
 				else
 					imageWriter.writePixel(i, j, yello);
 			}
-				
+
 		}
 		imageWriter.writeToImage();
-		
+
 	}
 
 	/**
-	 * Test method for {@link renderer.ImageWriter#writePixel(int, int, primitives.Color)}.
+	 * Test method for
+	 * {@link renderer.ImageWriter#writePixel(int, int, primitives.Color)}.
 	 */
 	@Test
 	void testWritePixel() {

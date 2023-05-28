@@ -47,8 +47,7 @@ class SphereTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link geometries.Sphere#findIntersections(primitives.Ray)}.
+	 * Test method for {@link geometries.Sphere#findIntersections(primitives.Ray)}.
 	 */
 	@Test
 	void testFindIntersections() {
@@ -105,8 +104,7 @@ class SphereTest {
 		// TC06: Testing one point of intersection, ray starts near the center of the
 		// sphere
 		Ray ray10 = new Ray(new Point(0, 0, 2), new Vector(0, 0, 1));
-		assertEquals(new Point(0, 0, 6), sphere.findIntersections(ray10).get(0),
-				"This point is not the correct point");
+		assertEquals(new Point(0, 0, 6), sphere.findIntersections(ray10).get(0), "This point is not the correct point");
 		assertEquals(1, sphere.findIntersections(ray10).size(), "The amount of intersections should be 1");
 
 		// group 2 - the ray starts on the edge of the sphere
