@@ -48,7 +48,7 @@ class RayTest {
 
 		// =============== Boundary Values Tests ==================
 		// TC01: empty list
-		List<Point> points2 = new ArrayList();
+		List<Point> points2 = new ArrayList<>();
 		assertEquals(null, ray.findClosestPoint(points2), "wrong. list is empty");
 
 		// TC02: first point of the list

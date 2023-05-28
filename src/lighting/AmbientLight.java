@@ -13,20 +13,19 @@ import primitives.*;
  */
 public class AmbientLight {
 
-	/* the ambient light for the scene */
+	/** the ambient light for the scene */
 	public static final AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
-	/* the intensity of the light for the scene */
+	/** the intensity of the light for the scene */
 	private final Color intensity;
 
 	/**
 	 * constructor to initialize the ambient light and intensity
 	 * 
-	 * @param color-color of ambient light
-	 * @param kA-scaler for intensity of light
+	 * @param color color of ambient light
+	 * @param kA scaler for intensity of light
 	 */
 	public AmbientLight(Color color, Double3 kA) {
 		intensity = color.scale(kA);
-
 	}
 
 	/**

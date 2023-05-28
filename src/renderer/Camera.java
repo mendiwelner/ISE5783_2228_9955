@@ -95,7 +95,7 @@ public class Camera {
 	/**
 	 * This function sets the distance of view plane
 	 * 
-	 * @param distance-from the camera
+	 * @param distance from the camera
 	 * @return a new camera with the specified parameter
 	 */
 	public Camera setVPDistance(double distance) {
@@ -106,8 +106,8 @@ public class Camera {
 	/**
 	 * This function sets the Image Writer of scene
 	 * 
-	 * @param imageWriter-creates the png file with the scene
-	 * @return camera-the camera itself
+	 * @param imageWriter creates the png file with the scene
+	 * @return camera the camera itself
 	 */
 	public Camera setImageWriter(ImageWriter imageWriter) {
 		this.imageWriter = imageWriter;

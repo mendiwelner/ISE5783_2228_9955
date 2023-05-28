@@ -3,8 +3,6 @@
  */
 package unittests.renderer;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import primitives.*;
 import renderer.*;
 
@@ -12,62 +10,23 @@ import org.junit.jupiter.api.Test;
 
 /**
  * @author mendy
- *
  */
 class ImageWriterTest {
-
-	/**
-	 * Test method for
-	 * {@link renderer.ImageWriter#ImageWriter(java.lang.String, int, int)}.
-	 */
-	@Test
-	void testImageWriter() {
-
-	}
-
-	/**
-	 * Test method for {@link renderer.ImageWriter#getNy()}.
-	 */
-	@Test
-	void testGetNy() {
-
-	}
-
-	/**
-	 * Test method for {@link renderer.ImageWriter#getNx()}.
-	 */
-	@Test
-	void testGetNx() {
-
-	}
 
 	/**
 	 * Test method for {@link renderer.ImageWriter#writeToImage()}.
 	 */
 	@Test
 	void testWriteToImage() {
-		Color yello = new Color(240, 250, 50);
-		Color red = new Color(200, 50, 50);
-		ImageWriter imageWriter = new ImageWriter("newImage", 800, 500);
-		for (int i = 0; i < 800; i++) {
-			for (int j = 0; j < 500; j++) {
-				if (i % 50 == 0 || j % 50 == 0)
-					imageWriter.writePixel(i, j, red);
-				else
-					imageWriter.writePixel(i, j, yello);
-			}
-
-		}
+		final int width = 800;
+		final int height = 500;
+		final int step = 50;
+		final Color yellow = new Color(240, 250, 50);
+		final Color red = new Color(200, 50, 50);
+		ImageWriter imageWriter = new ImageWriter("newImage", width, 500);
+		for (int i = 0; i < width; i++)
+			for (int j = 0; j < height; j++)
+					imageWriter.writePixel(i, j, i % step == 0 || j % step == 0 ? red : yellow);
 		imageWriter.writeToImage();
-
 	}
-
-	/**
-	 * Test method for
-	 * {@link renderer.ImageWriter#writePixel(int, int, primitives.Color)}.
-	 */
-	@Test
-	void testWritePixel() {
-	}
-
 }

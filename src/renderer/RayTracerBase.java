@@ -13,7 +13,7 @@ import scene.Scene;
  */
 public abstract class RayTracerBase {
 
-	protected Scene scene;
+	protected final Scene scene;
 
 	public RayTracerBase(Scene scene) {
 		this.scene = scene;
