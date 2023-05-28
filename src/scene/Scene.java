@@ -13,25 +13,48 @@ import lighting.*;
  */
 public class Scene {
 
+	/**the name of the scene*/
 	public final String name;
+	/**the color of the background, initialize to black*/
 	public Color background = Color.BLACK;
+	/**the ambientLight, initialize to none*/
 	public AmbientLight ambientLight = AmbientLight.NONE;
+	/**the geometries for the scene*/
 	public Geometries geometries = new Geometries();
 
+	/**
+	 * set the name of the scene
+	 * @param sceneName for the name of the scene
+	 */
 	public Scene(String sceneName) {
 		name = sceneName;
 	}
 
+	/**
+	 * set the background of the scene
+	 * @param color for the color of the background
+	 * @return this scene
+	 */
 	public Scene setBackground(Color color) {
 		background = color;
 		return this;
 	}
 
+	/**
+	 * set the ambientLight of the scene
+	 * @param ambientLight for the ambientLight of the scene
+	 * @return this scene
+	 */
 	public Scene setAmbientLight(AmbientLight ambientLight) {
 		this.ambientLight = ambientLight;
 		return this;
 	}
 
+	/**
+	 * set the geometries of the scene
+	 * @param geometries for the geometries of the scene
+	 * @return this scene
+	 */
 	public Scene setGeometries(Geometries geometries) {
 		this.geometries = geometries;
 		return this;

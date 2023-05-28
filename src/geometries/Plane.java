@@ -1,5 +1,6 @@
 package geometries;
 
+import java.awt.Color;
 import java.util.List;
 import primitives.*;
 import static primitives.Util.*;
@@ -11,7 +12,7 @@ import static primitives.Util.*;
  * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
  *         211769955.Mendysegal490@gmail.com
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
 	// the starting point in plane
 	private final Point point;

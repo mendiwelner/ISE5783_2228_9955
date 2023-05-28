@@ -9,7 +9,7 @@ import static primitives.Util.*;
  * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
  *         211769955.Mendysegal490@gmail.com
  */
-public abstract class RadialGeometry implements Geometry {
+public abstract class RadialGeometry extends Geometry {
 
 	/** the radius of a rounded shape */
 	protected final double radius;

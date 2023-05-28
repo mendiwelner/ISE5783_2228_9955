@@ -57,7 +57,13 @@ public class Ray {
 	public Vector getDir() {
 		return dir;
 	}
-
+	
+	/**
+	 * This function returns the closest point from list of points, to the point of the ray
+	 * 
+	 * @param points is a list of points
+	 * @return the closest point
+	 */
 	public Point findClosestPoint(List<Point> points) {
 		if (points.size() == 0)
 			return null;

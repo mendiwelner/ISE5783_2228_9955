@@ -174,8 +174,10 @@ public class Camera {
 	public void printGrid(int interval, Color color) {
 		if (imageWriter == null)
 			throw new MissingResourceException("Required resources are missing.", "Resource", null);
-		for (int j = 0; j < imageWriter.getNx(); j++) {
-			for (int i = 0; i < imageWriter.getNy(); i++) {
+		int nX = imageWriter.getNx();
+		int nY = imageWriter.getNy();
+		for (int j = 0; j < nX; j++) {
+			for (int i = 0; i < nY; i++) {
 				if (j % interval == 0 || i % interval == 0)
 					this.imageWriter.writePixel(j, i, color);
 			}

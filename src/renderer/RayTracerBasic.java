@@ -13,6 +13,10 @@ import scene.Scene;
  */
 public class RayTracerBasic extends RayTracerBase {
 
+	/**
+	 * constructor by calling super
+	 * @param scene for super
+	 */
 	public RayTracerBasic(Scene scene) {
 		super(scene);
 	}

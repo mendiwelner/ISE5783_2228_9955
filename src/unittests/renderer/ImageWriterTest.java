@@ -23,7 +23,7 @@ class ImageWriterTest {
 		final int step = 50;
 		final Color yellow = new Color(240, 250, 50);
 		final Color red = new Color(200, 50, 50);
-		ImageWriter imageWriter = new ImageWriter("newImage", width, 500);
+		ImageWriter imageWriter = new ImageWriter("newImage", width, height);
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++)
 					imageWriter.writePixel(i, j, i % step == 0 || j % step == 0 ? red : yellow);
