@@ -2,6 +2,8 @@ package geometries;
 
 import java.awt.Color;
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 
 /**
@@ -35,7 +37,7 @@ public class Tube extends RadialGeometry {
 	}
 
 	@Override
-	public List<Point> findIntersections(Ray ray) {
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 		return null;
 	}
 

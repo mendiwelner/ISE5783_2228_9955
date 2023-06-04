@@ -1,6 +1,8 @@
 package geometries;
 
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 import static primitives.Util.alignZero;
 
@@ -25,8 +27,9 @@ public class Triangle extends Polygon {
 	}
 
 	@Override
-	public List<Point> findIntersections(Ray ray) {
-		List<Point> intersections = plane.findIntersections(ray);
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
+		List<GeoPoint> intersections = plane.findGeoIntersectionsHelper(ray);
+		intersections.get(0).geometry = this;
 
 		Point p0 = ray.getP0();
 		Vector dir = ray.getDir();
@@ -48,7 +51,6 @@ public class Triangle extends Polygon {
 		double res3 = alignZero(dir.dotProduct(n3));
 		if (res1 * res3 <= 0)
 			return null;
-
 		return intersections;
 	}
 }

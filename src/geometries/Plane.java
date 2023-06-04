@@ -2,6 +2,8 @@ package geometries;
 
 import java.awt.Color;
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 import static primitives.Util.*;
 
@@ -60,7 +62,7 @@ public class Plane extends Geometry {
 	}
 
 	@Override
-	public List<Point> findIntersections(Ray ray) {
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
 		// if the starting point of plane equals to the start of ray, no intersection
 		if (point.equals(ray.getP0()))
@@ -80,6 +82,6 @@ public class Plane extends Geometry {
 
 		// t has to be greater then 0 to avoid zero vector
 		double t = alignZero(nQMinusP0 / nv);
-		return t <= 0 ? null : List.of(ray.getPoint(t));
+		return t <= 0 ? null : List.of(new GeoPoint(this,ray.getPoint(t)));
 	}
 }

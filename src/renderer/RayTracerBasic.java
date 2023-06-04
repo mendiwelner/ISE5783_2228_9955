@@ -1,15 +1,12 @@
-/**
- * 
- */
 package renderer;
-
 import primitives.*;
+import geometries.Intersectable.GeoPoint;
 import java.util.List;
 import scene.Scene;
 
 /**
+ * This department will handle tracking the rays and returning their color
  * @author mendy
- *
  */
 public class RayTracerBasic extends RayTracerBase {
 
@@ -23,14 +20,15 @@ public class RayTracerBasic extends RayTracerBase {
 
 	@Override
 	public Color traceRay(Ray ray) {
-		var intersections = scene.geometries.findIntersections(ray);
+		var intersections = scene.geometries.findGeoIntersections(ray);
 		if (intersections == null)
 			return scene.background;
-		return calcColor(ray.findClosestPoint(intersections));
+		GeoPoint closestGeoPoint = ray.findClosestGeoPoint(intersections);
+		return calcColor(closestGeoPoint);
 
 	}
 
-	private Color calcColor(Point p) {
-		return scene.ambientLight.getIntensity();
+	private Color calcColor(GeoPoint p) {
+		return scene.ambientLight.getIntensity().add(p.geometry.getEmission());
 	}
 }

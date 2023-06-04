@@ -19,24 +19,46 @@ public abstract class Intersectable {
 	 * @param ray the ray to intersect with
 	 * @return List of intersection points
 	 */
-	public abstract List<Point> findIntersections(Ray ray);
-	
+	public final List<Point> findIntersections(Ray ray){
+		List<GeoPoint> geoList = findGeoIntersections(ray);
+		return geoList = null ? null
+				: geoList.stream().map(gp -> gp.point).toList();
+	}
+	public final List<GeoPoint> findGeoIntersections(Ray ray){return findGeoIntersectionshelper(ray);}
+	protected abstract List<GeoPoint> findGeoIntersectionshelper(Ray ray);
+
 	/**
 	 * This class...
 	 */
 	public static class GeoPoint {
-		 public Geometry geometry;
-		 public Point point;
-		 /**
+		public Geometry geometry;
+		public Point point;
+
+		/**
 		 * constructor for the class GeoPoint
+		 * 
 		 * @param geometry for the geometry
-		 * @param point for the point
+		 * @param point    for the point
 		 */
-		 GeoPoint(Geometry geometry, Point point)
-		 {
-			 this.geometry = geometry;
-			 this.point = point;
-		 }
-		 
+		public GeoPoint(Geometry geometry, Point point) {
+			this.geometry = geometry;
+			this.point = point;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj instanceof GeoPoint g)
+				return geometry.equals(g.geometry) && point.equals(g.point);
+			return false;
+		}
+
+		@Override
+		public String toString() {
+			return "" + geometry + point;
+		}
+
 	}
+
 }

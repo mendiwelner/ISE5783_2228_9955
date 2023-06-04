@@ -1,7 +1,9 @@
 package geometries;
-
+import scene.*;
 import java.util.LinkedList;
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 
 /**
@@ -41,10 +43,10 @@ public class Geometries extends Intersectable {
 	}
 
 	@Override
-	public List<Point> findIntersections(Ray ray) {
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray)  {
 		// there is at least 1 intersection, we create our list
-		List<Point> intersections = null;
-		for (Intersectable shape : shapes) {
+		List<GeoPoint> intersections = null;
+		for (Geometry geometry : shapes) {
 			List<Point> shapeIntersections = shape.findIntersections(ray);
 			if (shapeIntersections != null) {
 				if (intersections == null)
