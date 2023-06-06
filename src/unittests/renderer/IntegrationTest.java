@@ -54,7 +54,7 @@ public class IntegrationTest {
 		sphere = new Sphere(0.5, new Point(0, 0, 1));
 		assertEquals(0, countIntersections(rayList, sphere), "wrong amount of pixel intersections");
 
-	}
+	}  
 
 	/**
 	 * Test method for

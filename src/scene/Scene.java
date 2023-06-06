@@ -4,6 +4,10 @@
 package scene;
 
 import primitives.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
 import geometries.Geometries;
 import lighting.*;
 
@@ -21,6 +25,7 @@ public class Scene {
 	public AmbientLight ambientLight = AmbientLight.NONE;
 	/**the geometries for the scene*/
 	public Geometries geometries = new Geometries();
+	public List<LightSource> lights = new LinkedList<>();
 
 	/**
 	 * set the name of the scene
@@ -59,5 +64,9 @@ public class Scene {
 		this.geometries = geometries;
 		return this;
 	}
-
+	
+	public Scene setLights(List<LightSource> lights) {
+		this.lights = lights;
+		return this;
+	}
 }

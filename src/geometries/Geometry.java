@@ -2,9 +2,10 @@ package geometries;
 
 import primitives.Vector;
 
-import java.awt.Color;
-
+import primitives.Color;
+import primitives.Material;
 import primitives.Point;
+
 
 /**
  * The abstract class Geometry will serve as the representation of a general shape
@@ -17,6 +18,7 @@ public abstract class Geometry extends Intersectable {
 
 	/**the color of the emission, initialize to black*/
 	protected Color emission = Color.BLACK;
+	protected Material material = new Material();
 	
 	/**
 	 * This function returns the normal vector at the given point on the shell of
@@ -32,12 +34,30 @@ public abstract class Geometry extends Intersectable {
 	 * 
 	 * @return the Color of the emission
 	 */
-	public abstract Color getEmission();
-	
+	public Color getEmission()
+	{
+		return this.emission;
+	}
 	/**
 	 * This function sets the Color of the emission
 	 * 
 	 * @return this geometry
 	 */
-	public abstract Geometry setEmission( Color emission);
+	public Geometry setEmission(Color emission)
+	{
+		this.emission = emission;
+		return this;
+	}
+	
+	public Material getMaterial()
+	{
+		return this.material;
+	}
+	
+	public Geometry setMaterial(Material material)
+	{
+		this.material = material;
+		return this;
+	}
+	
 }

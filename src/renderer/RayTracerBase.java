@@ -1,9 +1,6 @@
-/**
- * 
- */
 package renderer;
-
 import primitives.*;
+
 
 import scene.Scene;
 

@@ -4,6 +4,7 @@ import static primitives.Util.isZero;
 
 import java.util.List;
 
+import geometries.Intersectable.GeoPoint;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
@@ -89,8 +90,8 @@ public class Polygon extends Geometry {
 	}
 
 	@Override
-	public List<Point> findIntersections(Ray ray) {
-		List<Point> intersections = plane.findIntersections(ray);
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+		var intersections = plane.findGeoIntersections(ray);
 		if (intersections == null)
 			return null;
 
@@ -115,7 +116,7 @@ public class Polygon extends Geometry {
 			if (positive != (sign > 0))
 				return null;
 		}
-
+		intersections.get(0).geometry = this;
 		return intersections;
 	}
 

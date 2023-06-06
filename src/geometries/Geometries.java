@@ -46,12 +46,12 @@ public class Geometries extends Intersectable {
 	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray)  {
 		// there is at least 1 intersection, we create our list
 		List<GeoPoint> intersections = null;
-		for (Geometry geometry : shapes) {
-			List<Point> shapeIntersections = shape.findIntersections(ray);
-			if (shapeIntersections != null) {
+		for (Intersectable geometry : shapes) {
+			var geoIntersections = geometry.findGeoIntersections(ray);
+			if (geoIntersections != null) {
 				if (intersections == null)
 					intersections = new LinkedList<>();
-				intersections.addAll(shapeIntersections);
+				intersections.addAll(geoIntersections);
 			}
 		}
 		return intersections;

@@ -13,7 +13,7 @@ import renderer.Camera;
  * @author Dan
  *
  */
-class CameraTest {
+class CameraTest { 
 	private static final Point ZERO_POINT = new Point(0, 0, 0);
 
 	/**

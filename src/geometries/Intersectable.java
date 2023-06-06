@@ -21,11 +21,11 @@ public abstract class Intersectable {
 	 */
 	public final List<Point> findIntersections(Ray ray){
 		List<GeoPoint> geoList = findGeoIntersections(ray);
-		return geoList = null ? null
+		return geoList == null ? null
 				: geoList.stream().map(gp -> gp.point).toList();
 	}
-	public final List<GeoPoint> findGeoIntersections(Ray ray){return findGeoIntersectionshelper(ray);}
-	protected abstract List<GeoPoint> findGeoIntersectionshelper(Ray ray);
+	public final List<GeoPoint> findGeoIntersections(Ray ray){return findGeoIntersectionsHelper(ray);}
+	protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 
 	/**
 	 * This class...
@@ -46,7 +46,7 @@ public abstract class Intersectable {
 		}
 
 		@Override
-		public boolean equals(Object obj) {
+		public boolean equals(Object obj) { 
 			if (this == obj)
 				return true;
 			if (obj instanceof GeoPoint g)

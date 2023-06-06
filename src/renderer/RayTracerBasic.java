@@ -1,5 +1,6 @@
 package renderer;
-import primitives.*;
+import primitives.Color;
+import primitives.Ray;
 import geometries.Intersectable.GeoPoint;
 import java.util.List;
 import scene.Scene;
@@ -14,7 +15,7 @@ public class RayTracerBasic extends RayTracerBase {
 	 * constructor by calling super
 	 * @param scene for super
 	 */
-	public RayTracerBasic(Scene scene) {
+	public RayTracerBasic(Scene scene) { 
 		super(scene);
 	}
 
@@ -29,6 +30,7 @@ public class RayTracerBasic extends RayTracerBase {
 	}
 
 	private Color calcColor(GeoPoint p) {
-		return scene.ambientLight.getIntensity().add(p.geometry.getEmission());
+		Color c = p.geometry.getEmission();
+		return scene.ambientLight.getIntensity().add(c);
 	}
 }

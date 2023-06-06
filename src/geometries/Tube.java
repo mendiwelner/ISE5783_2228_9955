@@ -13,7 +13,7 @@ import primitives.*;
  * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
  *         211769955.Mendysegal490@gmail.com
  */
-public class Tube extends RadialGeometry {
+public class Tube extends RadialGeometry { 
 
 	/** axis ray of the tube - represents the whole axis line */
 	protected final Ray axisRay;

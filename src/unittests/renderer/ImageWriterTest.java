@@ -17,7 +17,7 @@ class ImageWriterTest {
 	 * Test method for {@link renderer.ImageWriter#writeToImage()}.
 	 */
 	@Test
-	void testWriteToImage() {
+	void testWriteToImage() { 
 		final int width = 800;
 		final int height = 500;
 		final int step = 50;
