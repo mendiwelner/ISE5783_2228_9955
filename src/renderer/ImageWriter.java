@@ -36,7 +36,7 @@ public class ImageWriter {
 	 * @param nX        amount of pixels by Width
 	 * @param nY        amount of pixels by height
 	 */
-	public ImageWriter(String imageName, int nX, int nY) {
+	public ImageWriter(String imageName, int nX, int nY) { 
 		this.imageName = imageName;
 		this.nX = nX;
 		this.nY = nY;

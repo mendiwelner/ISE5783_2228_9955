@@ -44,7 +44,7 @@ public class Camera {
 	public Camera(Point p, Vector vTo, Vector vUp) {
 		if (!isZero(vTo.dotProduct(vUp)))
 			throw new IllegalArgumentException("The vectors are not orthogonals");
-
+ 
 		p0 = p;
 		this.vTo = vTo.normalize();
 		this.vUp = vUp.normalize();
@@ -154,7 +154,7 @@ public class Camera {
 	/**
 	 * This function creates the image of the scene using the imageWriter class
 	 */
-	public void renderImage() {
+	public Camera renderImage() {
 		if (p0 == null || vTo == null || vUp == null || imageWriter == null || rayTracerBase == null)
 			throw new MissingResourceException("Required resources are missing.", "Resource", null);
 		for (int j = 0; j < imageWriter.getNx(); j++) {
@@ -163,6 +163,7 @@ public class Camera {
 			}
 		}
 		imageWriter.writeToImage();
+		return this;
 	}
 
 	/**
