@@ -1,6 +1,5 @@
 package renderer;
 import primitives.*;
-import primitives.Ray;
 import geometries.Intersectable.GeoPoint;
 import lighting.LightSource;
 
@@ -33,57 +32,38 @@ public class RayTracerBasic extends RayTracerBase {
 	}
 
 	private Color calcColor(GeoPoint gp, Ray ray) {
-		Color c = calcLocalEffects(gp, ray);
-		return scene.ambientLight.getIntensity().add(c); 
+		return scene.ambientLight.getIntensity().add(calcLocalEffects(gp, ray)); 
 	}
 	
 	private Color calcLocalEffects(GeoPoint gp, Ray ray) {
-		Color color = gp.geometry.getEmission();
-		Vector v = ray.getDir();
-		Vector n = gp.geometry.getNormal(gp.point);
-		double nv = alignZero(n.dotProduct(v));
-		if (nv == 0) return color;
-		Material material = gp.geometry.getMaterial();
-		
-		for (LightSource lightSource : scene.lights) {
-			Vector l = lightSource.getL(gp.point);
-			double nl = alignZero(n.dotProduct(l));
-			if (nl * nv > 0) { // sign(nl) == sing(nv)
-				Color iL = lightSource.getIntensity(gp.point);
-				color = color.add(iL.scale(calcDiffusive(material.kD, nl, iL)),
-						iL.scale(calcSpecular(material, n, l, nl, v));
-			}
-			return color;
-		}
-	}
-	
-	private Color calcDiffusive(Double3 kD, double nl, Color iL) {
-        // Calculate the diffuse coefficient by scaling the material's surface color with the dot product.
-        Double3 diffuseCoefficient = kD.scale(Math.abs(nl));
-
-        // Multiply the light intensity with the diffuse coefficient to obtain the diffusive color.
-        Color diffuseColor = iL.scale(diffuseCoefficient);
-
-        // Return the diffusive color.
-        return diffuseColor;
+        Color color = Color.BLACK;
+        Vector vector = ray.getDir();
+        Vector normal = gp.geometry.getNormal(gp.point);
+        double nv = alignZero(normal.dotProduct(vector));
+        if (nv == 0)
+            return color;
+        Material material = gp.geometry.getMaterial();
+        for (LightSource lightSource : scene.lights) {
+            Vector lightVector = lightSource.getL(gp.point);
+            double nl = alignZero(normal.dotProduct(lightVector));
+            if (nl * nv > 0) {
+                Color lightIntensity = lightSource.getIntensity(gp.point);
+                color = color.add(lightIntensity.scale(calcDiffusive(material, nl))
+                		, lightIntensity.scale(calcSpecular(material, normal, lightVector, nl, vector)));
+            }
+        }
+        return color;
     }
 	
-	private Color calcSpecular(Double3 kS, Vector n, Vector l, double nl, Vector v, Color iL, int nShininess) {
-        // Calculate the reflection vector using the surface normal and the light direction.
-        Vector r = l.subtract(n.scale(nl * 2));
+	private Double3 calcDiffusive(Material material, double nl) {
+        return material.kD.scale(Math.abs(nl));
+    }
+	
+	private Double3 calcSpecular(Material material, Vector normal, Vector lightVector, double nl, Vector vector) {
+        Vector reflectedVector = lightVector.subtract(normal.scale(2 * nl));
+        double max = Math.max(0, vector.scale(-1).dotProduct(reflectedVector));
+        return material.kS.scale(Math.pow(max, material.nShininess));
 
-        // Calculate the dot product between the view direction and the reflection vector.
-        double minusVR = -alignZero(v.dotProduct(r));
-
-        // If the dot product is less than or equal to 0, return black color (no specular reflection).
-        if (minusVR <= 0)
-            return Color.BLACK;
-
-        // Calculate the specular coefficient raised to the power of the shininess factor.
-        Double3 shine = kS.scale(Math.pow(minusVR, nShininess));
-
-        // Multiply the light intensity with the specular coefficient to obtain the specular color.
-        return iL.scale(shine);
     }
 	
 }

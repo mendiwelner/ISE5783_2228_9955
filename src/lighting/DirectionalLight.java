@@ -1,7 +1,6 @@
 package lighting;
 
 import primitives.Vector;
-
 import primitives.Color;
 import primitives.Point;
 
