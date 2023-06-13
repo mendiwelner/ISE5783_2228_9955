@@ -1,9 +1,6 @@
 package lighting;
 
-import java.util.Vector;
-
-import primitives.Color;
-import primitives.Point;
+import primitives.*;
 
 /**
  * The class LightSource provide the LightSource for the scene
@@ -12,7 +9,7 @@ import primitives.Point;
  *         211769955.Mendysegal490@gmail.com
  */
 public interface LightSource {
-	public Color getIntencity(Point p);
+	public Color getIntensity(Point p);
 	public Vector getL(Point p);
 
 }

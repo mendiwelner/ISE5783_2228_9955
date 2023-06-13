@@ -6,17 +6,17 @@ import primitives.Vector;
 
 public class SpotLight extends PointLight{
 	private Vector direction;
-	protected SpotLight(Color intencity, Vector direction) {
-		super(intencity);
+	public SpotLight(Color intensity, Point position, Vector direction) {
+		super(intensity, position);
 		this.direction = direction;
 	}
 	
 	@Override
-	public Color getIntencity(Point p) {
+	public Color getIntensity(Point p) {
 		double d = p.distance(position);
 		Vector l = p.subtract(position);
 		double max = Math.max(0, direction.dotProduct(l));
-		return getIntencity().scale(max).scale(kC+kL*d + kQ*d*d);
+		return getIntensity().scale(max).scale(kC+kL*d + kQ*d*d);
 	}
 
 }

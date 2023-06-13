@@ -6,26 +6,27 @@ public class PointLight extends Light {
 	protected Point position;
 	protected double kC = 1, kL = 0, kQ = 0;
 	
-	protected PointLight(Color intencity) {
-		super(intencity);
+	public PointLight(Color intensity, Point position) {
+		super(intensity);
+		this.position = position;
 	}
 
-	public Color getIntencity(Point p) {
+	public Color getIntensity(Point p) {
 		double d = p.distance(position);
-		return getIntencity().scale(kC+kL*d + kQ*d*d);
+		return getIntensity().scale(kC+kL*d + kQ*d*d);
 	}
 	
-	PointLight setKC(double kC) {
+	public PointLight setKc(double kC) {
 		this.kC = kC;
 		return this;
 	}
 	
-	PointLight setKL(double kL) {
+	public PointLight setKl(double kL) {
 		this.kL = kL;
 		return this;
 	}
 	
-	PointLight setKQ(double kQ) {
+	public PointLight setKq(double kQ) {
 		this.kQ = kQ;
 		return this;
 	}

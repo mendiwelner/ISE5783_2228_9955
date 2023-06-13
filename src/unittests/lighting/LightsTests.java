@@ -1,4 +1,4 @@
-package unittests.renderer;
+package unittests.lighting;
 
 import static java.awt.Color.*;
 
@@ -55,7 +55,7 @@ public class LightsTests {
    private final Point          trianglesLightPosition  = new Point(30, 10, -100);
    private final Vector         trianglesLightDirection = new Vector(-2, -2, -2);
 
-   private final Geometry       sphere                  = new Sphere(sphereCenter, SPHERE_RADIUS)
+   private final Geometry       sphere                  = new Sphere(SPHERE_RADIUS, sphereCenter)
       .setEmission(sphereColor).setMaterial(new Material().setKd(KD).setKs(KS).setShininess(SHININESS));
    private final Geometry       triangle1               = new Triangle(vertices[0], vertices[1], vertices[2])
       .setMaterial(material);
@@ -72,7 +72,8 @@ public class LightsTests {
       camera1.setImageWriter(imageWriter) //
          .setRayTracer(new RayTracerBasic(scene1)) //
          .renderImage() //
-         .writeToImage(); //
+         .writeToImage();
+         
    }
 
    /** Produce a picture of a sphere lighted by a point light */

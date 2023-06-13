@@ -25,5 +25,16 @@ public class AmbientLight extends Light{
 	public AmbientLight(Color color, Double3 kA) {
 		super(color.scale(kA));
 	}
+	
+	@Override
+	public Color getIntensity(Point p) {
+		return this.getIntensity();
+	}
+	
+	@Override
+	public Vector getL(Point p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

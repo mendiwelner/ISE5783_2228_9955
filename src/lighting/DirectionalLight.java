@@ -7,17 +7,16 @@ import primitives.Point;
 
 public class DirectionalLight extends Light{
 	private Vector direction;
-	protected DirectionalLight(Color intencity, Vector direction) {
-		super(intencity);
+	public DirectionalLight(Color intensity, Vector direction) {
+		super(intensity);
 		this.direction = direction;
 	}
 
-	public Color getIntencity(Point p) {
-		return this.getIntencity();
+	public Color getIntensity(Point p) {
+		return this.getIntensity();
 	}
 	
 	public Vector getL(Point p) {
-		// TODO Auto-generated method stub
-		return null;
+		return direction;
 	}
 }
