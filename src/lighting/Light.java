@@ -12,9 +12,16 @@ import primitives.Point;
 abstract class Light implements LightSource{
 	/** the intensity of the light for the scene */
 	private Color intensity;
-	protected Light(Color intensity) {
+	
+	/**
+	 * constructor to initialize the intensity of light
+	 * 
+	 * @param intensity intensity of light
+	 */
+	public Light(Color intensity) {
 		this.intensity = intensity;
 	}
+	
 	/**
 	 * @return intensity light of the scene
 	 */
