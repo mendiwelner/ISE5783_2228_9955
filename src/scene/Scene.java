@@ -25,6 +25,7 @@ public class Scene {
 	public AmbientLight ambientLight = AmbientLight.NONE;
 	/**the geometries for the scene*/
 	public Geometries geometries = new Geometries();
+	/**the lights for the scene*/
 	public List<LightSource> lights = new LinkedList<>();
 
 	/**
@@ -64,7 +65,11 @@ public class Scene {
 		this.geometries = geometries;
 		return this;
 	}
-	
+	/**
+	 * set the Lights of the scene
+	 * @param lights for the lights of the scene
+	 * @return this scene
+	 */
 	public Scene setLights(List<LightSource> lights) {
 		this.lights = lights;
 		return this;

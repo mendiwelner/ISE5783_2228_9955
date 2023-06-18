@@ -37,14 +37,14 @@ public class Camera {
 	 * Constructor to create a new camera object with the specified vector
 	 * directions and a starting point
 	 * 
-	 * @param p   point-starting point of camera
-	 * @param vTo vector-direction to the center of view plane
-	 * @param vUp vector-the up direction of the camera
+	 * @param p   point starting point of camera
+	 * @param vTo vector direction to the center of view plane
+	 * @param vUp vector the up direction of the camera
 	 */
 	public Camera(Point p, Vector vTo, Vector vUp) {
 		if (!isZero(vTo.dotProduct(vUp)))
 			throw new IllegalArgumentException("The vectors are not orthogonals");
- 
+
 		p0 = p;
 		this.vTo = vTo.normalize();
 		this.vUp = vUp.normalize();
@@ -153,6 +153,7 @@ public class Camera {
 
 	/**
 	 * This function creates the image of the scene using the imageWriter class
+	 * @return this camera
 	 */
 	public Camera renderImage() {
 		if (p0 == null || vTo == null || vUp == null || imageWriter == null || rayTracerBase == null)

@@ -24,14 +24,28 @@ public abstract class Intersectable {
 		return geoList == null ? null
 				: geoList.stream().map(gp -> gp.point).toList();
 	}
+	/**
+	 * This function returns a list of intersection points between ray and general by calling findGeoIntersectionsHelper
+	 
+	 * @param ray the ray to intersect with
+	 * @return List of intersection GeoPoint
+	 */
 	public final List<GeoPoint> findGeoIntersections(Ray ray){return findGeoIntersectionsHelper(ray);}
+	/**
+	 * This function returns a list of intersection points between ray and general
+	 * 	 
+	 * @param ray the ray to intersect with
+	 * @return List of intersection GeoPoint
+	 */
 	protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 
 	/**
 	 * This class...
 	 */
 	public static class GeoPoint {
+		/**the geometry part of the GeoPoint*/
 		public Geometry geometry;
+		/**the point part of the GeoPoint*/
 		public Point point;
 
 		/**

@@ -13,8 +13,8 @@ public abstract class RayTracerBase {
 	protected final Scene scene;
 
 	/**
-	 * this function set the scene
-	 * @param scene to set for our scene
+	 * Constructor to create a new RayTracerBase object 
+	 * @param scene for the scene
 	 */
 	public RayTracerBase(Scene scene) {
 		this.scene = scene;

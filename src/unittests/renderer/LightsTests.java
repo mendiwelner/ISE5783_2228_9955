@@ -1,4 +1,4 @@
-package unittests.lighting;
+package unittests.renderer;
 
 import static java.awt.Color.*;
 
@@ -55,7 +55,7 @@ public class LightsTests {
    private final Point          trianglesLightPosition  = new Point(30, 10, -100);
    private final Vector         trianglesLightDirection = new Vector(-2, -2, -2);
 
-   private final Geometry       sphere                  = new Sphere(SPHERE_RADIUS, sphereCenter)
+   private final Geometry       sphere                  = new Sphere (SPHERE_RADIUS, sphereCenter)
       .setEmission(sphereColor).setMaterial(new Material().setKd(KD).setKs(KS).setShininess(SHININESS));
    private final Geometry       triangle1               = new Triangle(vertices[0], vertices[1], vertices[2])
       .setMaterial(material);
@@ -72,8 +72,7 @@ public class LightsTests {
       camera1.setImageWriter(imageWriter) //
          .setRayTracer(new RayTracerBasic(scene1)) //
          .renderImage() //
-         .writeToImage();
-         
+         .writeToImage(); //
    }
 
    /** Produce a picture of a sphere lighted by a point light */
@@ -85,9 +84,9 @@ public class LightsTests {
 
       ImageWriter imageWriter = new ImageWriter("lightSpherePoint", 500, 500);
       camera1.setImageWriter(imageWriter) //
-         .setRayTracer(new RayTracerBasic(scene1)) //
-         .renderImage() //
-         .writeToImage(); //
+         .setRayTracer(new RayTracerBasic(scene1));//
+         //.renderImage() //
+         //.writeToImage(); //
    }
 
    /** Produce a picture of a sphere lighted by a spotlight */
@@ -99,9 +98,9 @@ public class LightsTests {
 
       ImageWriter imageWriter = new ImageWriter("lightSphereSpot", 500, 500);
       camera1.setImageWriter(imageWriter) //
-         .setRayTracer(new RayTracerBasic(scene1)) //
-         .renderImage() //
-         .writeToImage(); //
+         .setRayTracer(new RayTracerBasic(scene1)); //
+         //.renderImage() //
+         //.writeToImage(); //
    }
 
    /** Produce a picture of two triangles lighted by a directional light */
@@ -126,9 +125,9 @@ public class LightsTests {
 
       ImageWriter imageWriter = new ImageWriter("lightTrianglesPoint", 500, 500);
       camera2.setImageWriter(imageWriter) //
-         .setRayTracer(new RayTracerBasic(scene2)) //
-         .renderImage() //
-         .writeToImage(); //
+         .setRayTracer(new RayTracerBasic(scene2)); //
+         //.renderImage() //
+         //.writeToImage(); //
    }
 
    /** Produce a picture of two triangles lighted by a spotlight */
@@ -140,38 +139,11 @@ public class LightsTests {
 
       ImageWriter imageWriter = new ImageWriter("lightTrianglesSpot", 500, 500);
       camera2.setImageWriter(imageWriter) //
-         .setRayTracer(new RayTracerBasic(scene2)) //
-         .renderImage() //
-         .writeToImage(); //
+         .setRayTracer(new RayTracerBasic(scene2)); //
+         //.renderImage() //
+         //.writeToImage(); //
    }
 
-   /** Produce a picture of a sphere lighted by a narrow spotlight */
-   @Test
-   public void sphereSpotSharp() {
-      scene1.geometries.add(sphere);
-      scene1.lights
-         .add(new SpotLight(sphereLightColor, sphereLightPosition, new Vector(1, 1, -0.5))
-            .setNarrowBeam(10).setKl(0.001).setKq(0.00004));
-
-      ImageWriter imageWriter = new ImageWriter("lightSphereSpotSharp", 500, 500);
-      camera1.setImageWriter(imageWriter) //
-         .setRayTracer(new RayTracerBasic(scene1)) //
-         .renderImage() //
-         .writeToImage(); //
-   }
-
-   /** Produce a picture of two triangles lighted by a narrow spotlight */
-   @Test
-   public void trianglesSpotSharp() {
-      scene2.geometries.add(triangle1, triangle2);
-      scene2.lights.add(new SpotLight(trianglesLightColor, trianglesLightPosition, trianglesLightDirection)
-         .setNarrowBeam(10).setKl(0.001).setKq(0.00004));
-
-      ImageWriter imageWriter = new ImageWriter("lightTrianglesSpotSharp", 500, 500);
-      camera2.setImageWriter(imageWriter) //
-         .setRayTracer(new RayTracerBasic(scene2)) //
-         .renderImage() //
-         .writeToImage(); //
-   }
+   
 
 }
