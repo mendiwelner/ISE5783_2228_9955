@@ -4,7 +4,6 @@ import static primitives.Util.isZero;
 
 import java.util.List;
 
-import geometries.Intersectable.GeoPoint;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;

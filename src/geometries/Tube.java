@@ -1,9 +1,7 @@
 package geometries;
 
-import java.awt.Color;
 import java.util.List;
 
-import geometries.Intersectable.GeoPoint;
 import primitives.*;
 
 /**

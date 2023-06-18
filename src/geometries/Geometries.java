@@ -1,9 +1,7 @@
 package geometries;
-import scene.*;
 import java.util.LinkedList;
 import java.util.List;
 
-import geometries.Intersectable.GeoPoint;
 import primitives.*;
 
 /**

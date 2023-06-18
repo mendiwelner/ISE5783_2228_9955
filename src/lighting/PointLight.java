@@ -8,24 +8,24 @@ import primitives.*;
  * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
  *         211769955.Mendysegal490@gmail.com
  */
-public class PointLight extends Light {
-	
+public class PointLight extends Light implements LightSource {
+
 	/** the point to focus for the scene */
-	protected Point position;
+	private final Point position;
 	/** the attenuation coefficients for the scene */
-	protected double kC = 1, kL = 0, kQ = 0;
-	
+	private double kC = 1, kL = 0, kQ = 0;
+
 	/**
 	 * constructor to initialize the direction and position of light
 	 * 
 	 * @param intensity intensity of light
-	 * @param position position of scene's light
+	 * @param position  position of scene's light
 	 */
 	public PointLight(Color intensity, Point position) {
 		super(intensity);
 		this.position = position;
 	}
-	
+
 	/**
 	 * Getter of intensity of light
 	 * 
@@ -34,35 +34,35 @@ public class PointLight extends Light {
 	 */
 	public Color getIntensity(Point p) {
 		double d = p.distance(position);
-		return getIntensity().scale(kC+kL*d + kQ*d*d);
+		return intensity.reduce(kC + kL * d + kQ * d * d);
 	}
-	
+
 	/**
 	 * Setter of kC variable
 	 * 
-	 * @param kC double 
+	 * @param kC double
 	 * @return PointLight of the scene
 	 */
 	public PointLight setKc(double kC) {
 		this.kC = kC;
 		return this;
 	}
-	
+
 	/**
 	 * Setter of kL variable
 	 * 
-	 * @param kL double 
+	 * @param kL double
 	 * @return PointLight of the scene
 	 */
 	public PointLight setKl(double kL) {
 		this.kL = kL;
 		return this;
 	}
-	
+
 	/**
 	 * Setter of kQ variable
 	 * 
-	 * @param kQ double 
+	 * @param kQ double
 	 * @return PointLight of the scene
 	 */
 	public PointLight setKq(double kQ) {
@@ -70,11 +70,9 @@ public class PointLight extends Light {
 		return this;
 	}
 
-
 	@Override
 	public Vector getL(Point p) {
-		// TODO Auto-generated method stub
-		return null;
+		return p.subtract(position).normalize();
 	}
 
 }

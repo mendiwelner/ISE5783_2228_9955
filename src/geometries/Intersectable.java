@@ -64,13 +64,13 @@ public abstract class Intersectable {
 			if (this == obj)
 				return true;
 			if (obj instanceof GeoPoint g)
-				return geometry.equals(g.geometry) && point.equals(g.point);
+				return geometry == g.geometry && point.equals(g.point);
 			return false;
 		}
 
 		@Override
 		public String toString() {
-			return "" + geometry + point;
+			return geometry + " " + point;
 		}
 
 	}

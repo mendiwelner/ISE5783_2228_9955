@@ -1,8 +1,7 @@
 package lighting;
 
-import primitives.Color;
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
+import static primitives.Util.*;
 
 /**
  * The class SpotLight provide the spot light for the scene
@@ -13,7 +12,7 @@ import primitives.Vector;
 public class SpotLight extends PointLight{
 	
 	/** the point to focus for the scene */
-	private Vector direction;
+	private final Vector direction;
 	
 	/**
 	 * constructor to initialize the direction,position and direction of light
@@ -24,15 +23,14 @@ public class SpotLight extends PointLight{
 	 */
 	public SpotLight(Color intensity, Point position, Vector direction) {
 		super(intensity, position);
-		this.direction = direction;
+		this.direction = direction.normalize();
 	}
 	
 	@Override
 	public Color getIntensity(Point p) {
-		double d = p.distance(position);
-		Vector l = p.subtract(position);
-		double max = Math.max(0, direction.dotProduct(l));
-		return getIntensity().scale(max).scale(kC+kL*d + kQ*d*d);
+		Vector l = getL(p);
+		double dirL = direction.dotProduct(l);
+		return alignZero(dirL) <= 0 ? Color.BLACK : super.getIntensity(p).scale(dirL);
 	}
 
 }

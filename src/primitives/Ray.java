@@ -1,4 +1,5 @@
 package primitives;
+
 import geometries.Intersectable.GeoPoint;
 
 import static primitives.Util.isZero;
@@ -58,25 +59,27 @@ public class Ray {
 	public Vector getDir() {
 		return dir;
 	}
-	
+
 	/**
-	 * This function returns the closest point from list of points, to the point of the ray
+	 * This function returns the closest point from list of points, to the point of
+	 * the ray
 	 * 
 	 * @param points is a list of points
 	 * @return the closest point
 	 */
-	public Point findClosestPoint(List<Point> points) { 
-		return points == null? null
-				: findClosestGeoPoint(points.stream()
-						.map(p -> new GeoPoint(null, p)).toList()).point;
+	public Point findClosestPoint(List<Point> points) {
+		return points == null || points.isEmpty() ? null
+				: findClosestGeoPoint(points.stream().map(p -> new GeoPoint(null, p)).toList()).point;
 	}
+
 	/**
-	 * This function returns the findClosest GeoPoint from list of points, to the point of the ray
+	 * This function returns the findClosest GeoPoint from list of points, to the
+	 * point of the ray
 	 * 
 	 * @param points is a list of points
 	 * @return the closest point
 	 */
-	public GeoPoint findClosestGeoPoint(List<GeoPoint> points) { 
+	public GeoPoint findClosestGeoPoint(List<GeoPoint> points) {
 		if (points.size() == 0)
 			return null;
 		GeoPoint closestGeoPoint = points.get(0);
@@ -89,7 +92,6 @@ public class Ray {
 		}
 		return closestGeoPoint;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

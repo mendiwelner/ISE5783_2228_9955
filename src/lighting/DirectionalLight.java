@@ -11,7 +11,7 @@ import primitives.Point;
  *         211769955.Mendysegal490@gmail.com
  */
 
-public class DirectionalLight extends Light{
+public class DirectionalLight extends Light implements LightSource {
 	//the direction of the vector of the light
 	private Vector direction;
 	/**
@@ -22,7 +22,7 @@ public class DirectionalLight extends Light{
 	 */
 	public DirectionalLight(Color intensity, Vector direction) {
 		super(intensity);
-		this.direction = direction;
+		this.direction = direction.normalize();
 	}
 	/**
 	 * This function returns the intensity of view light
@@ -30,7 +30,7 @@ public class DirectionalLight extends Light{
 	 * @return getIntensity
 	 */
 	public Color getIntensity(Point p) {
-		return this.getIntensity();
+		return intensity;
 	}
 	/**
 	 * This function returns the direction of the light

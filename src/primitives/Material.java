@@ -10,7 +10,8 @@ public class Material {
 	/**the kD and the kS of the material*/
 	public Double3 kD = Double3.ZERO, kS = Double3.ZERO;
 	/**the shininess of the material*/
-	public int nShininess;
+	public int nShininess = 1;
+	
 	/**
 	 * sets the kD of the material
 	 * 
@@ -21,6 +22,7 @@ public class Material {
 		this.kD = kD;
 		return this;
 	}
+
 	/**
 	 * sets the kD of the material
 	 * 
@@ -31,6 +33,7 @@ public class Material {
 		this.kD = new Double3(kD);
 		return this;
 	}
+	
 	/**
 	 * sets the kS of the material
 	 * 
@@ -41,6 +44,7 @@ public class Material {
 		this.kS = kS;
 		return this;
 	}
+	
 	/**
 	 * sets the kS of the material
 	 * 
@@ -51,6 +55,7 @@ public class Material {
 		this.kS = new Double3(kS);
 		return this;
 	}	
+	
 	/**
 	 * sets the Shininess of the material
 	 * 
