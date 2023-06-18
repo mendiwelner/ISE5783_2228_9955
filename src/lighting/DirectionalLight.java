@@ -12,7 +12,7 @@ import primitives.Point;
  */
 
 public class DirectionalLight extends Light implements LightSource {
-	//the direction of the vector of the light
+	/**the direction of the vector of the light*/
 	private Vector direction;
 	/**
 	 * Constructor to create a new Directional Light object that call the super (light)
@@ -39,5 +39,10 @@ public class DirectionalLight extends Light implements LightSource {
 	 */
 	public Vector getL(Point p) {
 		return direction;
+	}
+	
+	@Override
+	public double getDistance(Point p) {
+		return Double.POSITIVE_INFINITY;
 	}
 }

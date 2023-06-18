@@ -14,7 +14,7 @@ import primitives.*;
 
 public class Cylinder extends Tube {
 
-	// the height of the Cylinder
+	/**the height of the Cylinder*/
 	private final double height;
 
 	/**
@@ -67,7 +67,7 @@ public class Cylinder extends Tube {
 	 * This function returns True if the point is between the bases, Otherwise it
 	 * returns False.
 	 * 
-	 * @param point
+	 * @param p the point
 	 * @return boolean value
 	 */
 	private boolean isBetweenCaps(Point p) {

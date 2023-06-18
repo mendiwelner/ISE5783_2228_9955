@@ -19,21 +19,39 @@ public abstract class Intersectable {
 	 * @param ray the ray to intersect with
 	 * @return List of intersection points
 	 */
-	public final List<Point> findIntersections(Ray ray){
+	public final List<Point> findIntersections(Ray ray) {
 		List<GeoPoint> geoList = findGeoIntersections(ray);
-		return geoList == null ? null
-				: geoList.stream().map(gp -> gp.point).toList();
+		return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
 	}
+
 	/**
-	 * This function returns a list of intersection points between ray and general by calling findGeoIntersectionsHelper
-	 
+	 * This function returns a list of intersection points between ray and general
+	 * geometry
+	 * 
+	 * @param ray the ray to intersect with
+	 * @return List of intersection points
+	 */
+	public final List<Point> findIntersections(Ray ray, double distance) {
+		List<GeoPoint> geoList = findGeoIntersections(ray);
+
+		return geoList == null ? null
+				: geoList.stream().filter(gp -> ray.getP0().distance(gp.point) < distance).map(gp -> gp.point).toList();
+	}
+
+	/**
+	 * This function returns a list of intersection points between ray and general
+	 * by calling findGeoIntersectionsHelper
+	 * 
 	 * @param ray the ray to intersect with
 	 * @return List of intersection GeoPoint
 	 */
-	public final List<GeoPoint> findGeoIntersections(Ray ray){return findGeoIntersectionsHelper(ray);}
+	public final List<GeoPoint> findGeoIntersections(Ray ray) {
+		return findGeoIntersectionsHelper(ray);
+	}
+
 	/**
 	 * This function returns a list of intersection points between ray and general
-	 * 	 
+	 * 
 	 * @param ray the ray to intersect with
 	 * @return List of intersection GeoPoint
 	 */
@@ -43,9 +61,9 @@ public abstract class Intersectable {
 	 * This class...
 	 */
 	public static class GeoPoint {
-		/**the geometry part of the GeoPoint*/
+		/** the geometry part of the GeoPoint */
 		public Geometry geometry;
-		/**the point part of the GeoPoint*/
+		/** the point part of the GeoPoint */
 		public Point point;
 
 		/**
@@ -60,7 +78,7 @@ public abstract class Intersectable {
 		}
 
 		@Override
-		public boolean equals(Object obj) { 
+		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;
 			if (obj instanceof GeoPoint g)

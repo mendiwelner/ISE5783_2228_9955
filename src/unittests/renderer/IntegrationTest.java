@@ -54,7 +54,7 @@ public class IntegrationTest {
 		sphere = new Sphere(0.5, new Point(0, 0, 1));
 		assertEquals(0, countIntersections(rayList, sphere), "wrong amount of pixel intersections");
 
-	}  
+	}
 
 	/**
 	 * Test method for
@@ -100,6 +100,15 @@ public class IntegrationTest {
 
 	}
 
+	/**
+	 * Generates a list of rays corresponding to pixels in the camera's view.
+	 *
+	 * @param camera the Camera object representing the viewing perspective
+	 * @param nX     the number of pixels in the horizontal direction
+	 * @param nY     the number of pixels in the vertical direction
+	 * @return a list of Ray objects representing the rays corresponding to each
+	 *         pixel
+	 */
 	private List<Ray> pixelRays(Camera camera, int nX, int nY) {
 		List<Ray> rays = new LinkedList<>();
 		for (int i = 0; i < nX; i++)
@@ -109,6 +118,14 @@ public class IntegrationTest {
 		return rays;
 	}
 
+	/**
+	 * Counts the total number of intersections between a list of rays and an
+	 * Intersectable shape.
+	 *
+	 * @param rays  the list of Ray objects to be tested for intersections
+	 * @param shape the Intersectable shape to check for intersections with
+	 * @return the total number of intersections between the rays and the shape
+	 */
 	private int countIntersections(List<Ray> rays, Intersectable shape) {
 		int counter = 0;
 		for (Ray ray : rays) {

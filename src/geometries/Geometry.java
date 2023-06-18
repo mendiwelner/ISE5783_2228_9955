@@ -18,6 +18,7 @@ public abstract class Geometry extends Intersectable {
 
 	/** the color of the emission, initialize to black */
 	private Color emission = Color.BLACK;
+	/** the material of the Geometry*/
 	private Material material = new Material();
 
 	/**

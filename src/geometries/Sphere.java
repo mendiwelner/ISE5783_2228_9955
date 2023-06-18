@@ -14,7 +14,7 @@ import static primitives.Util.*;
  */
 public class Sphere extends RadialGeometry {
 
-	// the center of the sphere
+	/**the center of the sphere*/
 	private final Point center;
 
 	/**

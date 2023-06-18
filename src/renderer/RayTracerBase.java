@@ -9,7 +9,7 @@ import scene.Scene;
  * @author mendy
  */
 public abstract class RayTracerBase {
-
+	/**the scene of the RayTracerBase*/
 	protected final Scene scene;
 
 	/**

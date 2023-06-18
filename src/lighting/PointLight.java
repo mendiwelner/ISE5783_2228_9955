@@ -12,8 +12,12 @@ public class PointLight extends Light implements LightSource {
 
 	/** the point to focus for the scene */
 	private final Point position;
-	/** the attenuation coefficients for the scene */
-	private double kC = 1, kL = 0, kQ = 0;
+	/** the kC parameter for the scene */
+	private double kC = 1;
+	/** the kL parameter for the scene */
+	private double kL = 0;
+	/** the kQ parameter for the scene */
+	private double kQ = 0; 
 
 	/**
 	 * constructor to initialize the direction and position of light
@@ -73,6 +77,11 @@ public class PointLight extends Light implements LightSource {
 	@Override
 	public Vector getL(Point p) {
 		return p.subtract(position).normalize();
+	}
+
+	@Override
+	public double getDistance(Point p) {
+		return position.distance(p);
 	}
 
 }

@@ -6,7 +6,7 @@ package primitives;
  * @author Dan
  */
 public abstract class Util {
-	// It is binary, equivalent to ~1/1,000,000,000,000 in decimal (12 digits)
+	/**It is binary, equivalent to ~1/1,000,000,000,000 in decimal (12 digits)*/
 	private static final int ACCURACY = -40;
 
 	/**
@@ -16,10 +16,15 @@ public abstract class Util {
 	}
 
 	// double store format (bit level):
-	// seee eeee eeee (1.)mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 	// 1 bit sign, 11 bits exponent, 53 bits (52 stored) normalized mantissa
 	// the number is m+2^e where 1<=m<2
 	// NB: exponent is stored "normalized" (i.e. always positive by adding 1023)
+	/**
+	 * Retrieves the exponent value of a given floating-point number.
+	 *
+	 * @param num the double value for which to retrieve the exponent
+	 * @return the exponent value of the given number
+	 */
 	private static int getExp(double num) {
 		// 1. doubleToRawLongBits: "convert" the stored number to set of bits
 		// 2. Shift all 52 bits to the right (removing mantissa)

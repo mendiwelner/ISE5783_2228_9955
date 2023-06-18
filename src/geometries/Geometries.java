@@ -13,7 +13,7 @@ import primitives.*;
  */
 public class Geometries extends Intersectable {
 
-	// the list of the geometries
+	/** the list of the geometries*/
 	private List<Intersectable> shapes = new LinkedList<>();
 
 	/**

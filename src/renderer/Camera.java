@@ -14,23 +14,23 @@ import java.util.MissingResourceException;
  *
  */
 public class Camera {
-	// starting point of camera
+	/**starting point of camera*/
 	private final Point p0;
-	// direction to the center of view plane
+	/** direction to the center of view plane*/
 	private final Vector vTo;
-	// the up direction of the camera
+	/** the up direction of the camera*/
 	private final Vector vUp;
-	// the right direction of the camera
+	/** the right direction of the camera*/
 	private final Vector vRight;
-	// the right height of the view plane
+	/** the right height of the view plane*/
 	private double height;
-	// the width of the view plane
+	/** the width of the view plane*/
 	private double width;
-	// the distance of view plane from camera
+	/** the distance of view plane from camera*/
 	private double distance;
-	// the image of the scene
+	/** the image of the scene*/
 	private ImageWriter imageWriter;
-	// the tracer of the rays
+	/** the tracer of the rays*/
 	private RayTracerBase rayTracerBase;
 
 	/**
@@ -158,12 +158,14 @@ public class Camera {
 	public Camera renderImage() {
 		if (p0 == null || vTo == null || vUp == null || imageWriter == null || rayTracerBase == null)
 			throw new MissingResourceException("Required resources are missing.", "Resource", null);
-		for (int j = 0; j < imageWriter.getNx(); j++) {
-			for (int i = 0; i < imageWriter.getNy(); i++) {
-				imageWriter.writePixel(j, i, castRay(imageWriter.getNx(), imageWriter.getNy(), j, i));
+		int nX = imageWriter.getNx();
+		int nY = imageWriter.getNy();
+		for (int j = 0; j < nX; j++) {
+			for (int i = 0; i < nY; i++) {
+				imageWriter.writePixel(j, i, castRay(nX, nY, j, i));
 			}
 		}
-		imageWriter.writeToImage();
+		imageWriter.writeToImage(); 
 		return this;
 	}
 

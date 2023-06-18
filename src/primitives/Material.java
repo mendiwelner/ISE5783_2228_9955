@@ -1,4 +1,5 @@
 package primitives;
+
 /**
  * Material class will handle the affect of the Material on the image
  * 
@@ -7,11 +8,13 @@ package primitives;
  */
 
 public class Material {
-	/**the kD and the kS of the material*/
-	public Double3 kD = Double3.ZERO, kS = Double3.ZERO;
-	/**the shininess of the material*/
+	/** the kD of the material */
+	public Double3 kD = Double3.ZERO;
+	/** the kS of the material */
+	public Double3 kS = Double3.ZERO;
+	/** the shininess of the material */
 	public int nShininess = 1;
-	
+
 	/**
 	 * sets the kD of the material
 	 * 
@@ -33,7 +36,7 @@ public class Material {
 		this.kD = new Double3(kD);
 		return this;
 	}
-	
+
 	/**
 	 * sets the kS of the material
 	 * 
@@ -44,7 +47,7 @@ public class Material {
 		this.kS = kS;
 		return this;
 	}
-	
+
 	/**
 	 * sets the kS of the material
 	 * 
@@ -54,8 +57,8 @@ public class Material {
 	public Material setKs(double kS) {
 		this.kS = new Double3(kS);
 		return this;
-	}	
-	
+	}
+
 	/**
 	 * sets the Shininess of the material
 	 * 
@@ -65,6 +68,6 @@ public class Material {
 	public Material setShininess(int shininess) {
 		this.nShininess = shininess;
 		return this;
-	}	
+	}
 
 }

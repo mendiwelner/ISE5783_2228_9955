@@ -14,6 +14,9 @@ import scene.Scene;
  */
 public class RayTracerBasic extends RayTracerBase {
 
+	/** The magnitude of the initial displacement of the rays */
+	private static final double DELTA = 0.1;
+
 	/**
 	 * constructor by calling super
 	 * 
@@ -28,16 +31,32 @@ public class RayTracerBasic extends RayTracerBase {
 		var intersections = scene.geometries.findGeoIntersections(ray);
 		if (intersections == null)
 			return scene.background;
-		
+
 		GeoPoint closestGeoPoint = ray.findClosestGeoPoint(intersections);
 		return calcColor(closestGeoPoint, ray);
 
 	}
 
+	/**
+	 * Calculates the color of a point in the scene by combining the ambient light
+	 * intensity with the local effects at that point.
+	 *
+	 * @param gp  the GeoPoint representing the point in the scene
+	 * @param ray the Ray representing the viewing ray
+	 * @return the Color of the point in the scene
+	 */
 	private Color calcColor(GeoPoint gp, Ray ray) {
 		return scene.ambientLight.getIntensity().add(calcLocalEffects(gp, ray));
 	}
 
+	/**
+	 * Calculates the local effects at a given point in the scene, including diffuse
+	 * and specular reflections.
+	 * 
+	 * @param gp  the GeoPoint representing the point in the scene
+	 * @param ray the Ray representing the viewing ray
+	 * @return the Color representing the local effects at the point
+	 */
 	private Color calcLocalEffects(GeoPoint gp, Ray ray) {
 		Vector vector = ray.getDir();
 		Vector normal = gp.geometry.getNormal(gp.point);
@@ -48,27 +67,77 @@ public class RayTracerBasic extends RayTracerBase {
 
 		Color color = gp.geometry.getEmission();
 		for (LightSource lightSource : scene.lights) {
-			Vector lightVector = lightSource.getL(gp.point);
-			double nl = alignZero(normal.dotProduct(lightVector));
+			Vector l = lightSource.getL(gp.point);
+			double nl = alignZero(normal.dotProduct(l));
 			if (nl * nv > 0) {
-				Color lightIntensity = lightSource.getIntensity(gp.point);
-				color = color.add(lightIntensity.scale(calcDiffusive(material, nl) //
-						.add(calcSpecular(material, normal, lightVector, nl, vector))));
+				{
+					if (unshaded(gp, lightSource, l, normal, nl)) {
+						Color lightIntensity = lightSource.getIntensity(gp.point);
+						color = color.add(lightIntensity.scale(calcDiffusive(material, nl) //
+								.add(calcSpecular(material, normal, l, nl, vector))));
+					}
+				}
+				
 			}
 		}
 		return color;
 	}
 
+	/**
+	 * Calculates the diffusive reflection component for a given material and normal
+	 * vector.
+	 *
+	 * @param material the Material of the object
+	 * @param nl       the dot product between the normal vector and the light
+	 *                 vector
+	 * @return the diffusive reflection component as a Double3 vector
+	 */
 	private Double3 calcDiffusive(Material material, double nl) {
 		return material.kD.scale(Math.abs(nl));
 	}
 
+	/**
+	 * Calculates the specular reflection component for a given material, normal
+	 * vector, light vector, and viewing vector.
+	 *
+	 * @param material    the Material of the object
+	 * @param normal      the surface normal vector at the point
+	 * @param lightVector the vector from the point to the light source
+	 * @param nl          the dot product between the normal vector and the light
+	 *                    vector
+	 * @param vector      the viewing vector
+	 * @return the specular reflection component as a Double3 vector
+	 */
 	private Double3 calcSpecular(Material material, Vector normal, Vector lightVector, double nl, Vector vector) {
 		Vector reflectedVector = lightVector.subtract(normal.scale(2 * nl));
 		double minusVR = -vector.dotProduct(reflectedVector);
 		return alignZero(minusVR) <= 0 ? Double3.ZERO //
 				: material.kS.scale(Math.pow(minusVR, material.nShininess));
 
+	}
+
+	/**
+	 * Checks if a point on a surface is unshaded by performing a shadow ray test.
+	 *
+	 * @param gp the GeoPoint representing the point on the surface
+	 * @param l  the vector from the point to the light source
+	 * @param n  the surface normal vector at the point
+	 * @return true if the point is unshaded, false otherwise
+	 */
+	private static final double EPS = 0.1;
+	private boolean unshaded(GeoPoint gp, LightSource light, Vector l, Vector n, double nl) {
+		Vector lightDiraction = l.scale(-1); // from Point to light source
+		Vector epsVector = n.scale(nl < 0 ? EPS : -EPS);
+		Point point = gp.point.add(epsVector);
+		Ray lightRay = new Ray(point, lightDiraction);
+		double d = light.getDistance(point);
+		var intersections = scene.geometries.findGeoIntersections(lightRay);
+		if (intersections == null) return true;
+		Point rayHead = lightRay.getP0();
+		for (var intersection : intersections) {
+			if(intersection.point.distance(rayHead) < d) return false;
+		}
+		return true;
 	}
 
 }
