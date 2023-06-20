@@ -126,13 +126,13 @@ public class RayTracerBasic extends RayTracerBase {
 	 */
 	private static final double EPS = 0.1;
 	private boolean unshaded(GeoPoint gp, LightSource light, Vector l, Vector n, double nl) {
-		Vector lightDiraction = l.scale(-1); // from Point to light source
+		Vector lightDirection = l.scale(-1); // from Point to light source
 		Vector epsVector = n.scale(nl < 0 ? EPS : -EPS);
 		Point point = gp.point.add(epsVector);
-		Ray lightRay = new Ray(point, lightDiraction);
-		double d = light.getDistance(point);
+		Ray lightRay = new Ray(point, lightDirection);
 		var intersections = scene.geometries.findGeoIntersections(lightRay);
 		if (intersections == null) return true;
+		double d = light.getDistance(point);
 		Point rayHead = lightRay.getP0();
 		for (var intersection : intersections) {
 			if(intersection.point.distance(rayHead) < d) return false;

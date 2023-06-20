@@ -28,7 +28,8 @@ public class Triangle extends Polygon {
 	@Override
 	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){ 
 		var intersections = plane.findGeoIntersections(ray);
-
+		if (intersections == null) return null;
+		
 		Point p0 = ray.getP0();
 		Vector dir = ray.getDir();
 
