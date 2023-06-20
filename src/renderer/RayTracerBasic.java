@@ -16,6 +16,10 @@ public class RayTracerBasic extends RayTracerBase {
 
 	/** The magnitude of the initial displacement of the rays */
 	private static final double DELTA = 0.1;
+	/** The max calculation color level for the stop recursive function */
+	private static final int MAX_CALC_COLOR_LEVEL = 10;
+	/** The minimum calculation color level for the stop recursive function */
+	private static final double MIN_CALC_COLOR_K = 0.001;
 
 	/**
 	 * constructor by calling super
@@ -82,7 +86,7 @@ public class RayTracerBasic extends RayTracerBase {
 		}
 		return color;
 	}
-
+	
 	/**
 	 * Calculates the diffusive reflection component for a given material and normal
 	 * vector.

@@ -12,6 +12,10 @@ public class Material {
 	public Double3 kD = Double3.ZERO;
 	/** the kS of the material */
 	public Double3 kS = Double3.ZERO;
+	/** the transparency of the material */
+	public Double3 kT = Double3.ZERO;
+	/** the reflection of the material */
+	public Double3 kR = Double3.ZERO;
 	/** the shininess of the material */
 	public int nShininess = 1;
 
@@ -58,6 +62,51 @@ public class Material {
 		this.kS = new Double3(kS);
 		return this;
 	}
+	
+	/**
+	 * sets the kT of the material
+	 * 
+	 * @param kT for the material (type Double3)
+	 * @return the material
+	 */
+	public Material setKt(Double3 kT) {
+		this.kT = kT;
+		return this;
+	}
+
+	/**
+	 * sets the kT of the material
+	 * 
+	 * @param kT for the material (type Double)
+	 * @return the material
+	 */
+	public Material setKt(double kT) {
+		this.kT = new Double3(kT);
+		return this;
+	}
+
+	/**
+	 * sets the kR of the material
+	 * 
+	 * @param kR for the material (type Double3)
+	 * @return the material
+	 */
+	public Material setKr(Double3 kR) {
+		this.kR = kR;
+		return this;
+	}
+
+	/**
+	 * sets the kR of the material
+	 * 
+	 * @param kR for the material (type Double)
+	 * @return the material
+	 */
+	public Material setKr(double kR) {
+		this.kR = new Double3(kR);
+		return this;
+	}
+
 
 	/**
 	 * sets the Shininess of the material
