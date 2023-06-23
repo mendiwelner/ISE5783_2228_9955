@@ -143,5 +143,50 @@ public class RayTracerBasic extends RayTracerBase {
 		}
 		return true;
 	}
+	
+	
+	
+	/**
+     * calculates the transparency of the point
+     *
+     * @param gp    - the intersection point
+     * @param light - the light source
+     * @param l     - the light vector
+     * @param n     - the normal vector
+     * @param nl    - the dot product of n and l, used in calcLocalEffects
+     * @return - the transparency of the point
+     */
+    private Double3 transparency(GeoPoint gp, LightSource light, Vector l, Vector n, double nl) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Ray lightRay = new Ray(gp.point, n, lightDirection); // ray to check shading
+        var intersections = scene.geometries.findGeoIntersections(lightRay);
+        if (intersections == null)
+            return Double3.ONE;
+        Double3 ktr = Double3.ONE;
+        //loop over intersections and for each intersection which is closer to the
+        //point than the light source multiply ktr by 𝒌𝑻 of its geometry
+        for (GeoPoint geoPoint : intersections) {
+            if (alignZero(geoPoint.point.distance(gp.point) - light.getDistance(gp.point)) <= 0) {
+                ktr = ktr.product(geoPoint.geometry.getMaterial().kD);
+                if (ktr.equals(Double3.ZERO))
+                    break;
+            }
+        }
+
+        return ktr; //returns the transparency of the point
+    }
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
