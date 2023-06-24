@@ -40,6 +40,15 @@ public class Material {
 		this.kD = new Double3(kD);
 		return this;
 	}
+	
+	/**
+	 * gets the kD of the material
+	 * 
+	 * @return the kD
+	 */
+	public Double3 getKd() {
+		return this.kD;
+	}
 
 	/**
 	 * sets the kS of the material
@@ -64,6 +73,15 @@ public class Material {
 	}
 	
 	/**
+	 * gets the kS of the material
+	 * 
+	 * @return the kS
+	 */
+	public Double3 getKs() {
+		return this.kS;
+	}
+	
+	/**
 	 * sets the kT of the material
 	 * 
 	 * @param kT for the material (type Double3)
@@ -83,6 +101,15 @@ public class Material {
 	public Material setKt(double kT) {
 		this.kT = new Double3(kT);
 		return this;
+	}
+	
+	/**
+	 * gets the kT of the material
+	 * 
+	 * @return the kT
+	 */
+	public Double3 getKt() {
+		return this.kT;
 	}
 
 	/**
@@ -106,6 +133,16 @@ public class Material {
 		this.kR = new Double3(kR);
 		return this;
 	}
+	
+	/**
+	 * gets the kR of the material
+	 * 
+	 * @return the kR
+	 */
+	public Double3 getKr() {
+		return this.kR;
+	}
+
 
 
 	/**
@@ -117,6 +154,15 @@ public class Material {
 	public Material setShininess(int shininess) {
 		this.nShininess = shininess;
 		return this;
+	}
+	
+	/**
+	 * gets the Shininess of the material
+	 * 
+	 * @return the shininess
+	 */
+	public int getShininess() {
+		return this.nShininess;
 	}
 
 }

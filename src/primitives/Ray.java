@@ -18,6 +18,8 @@ public class Ray {
 
 	private final Point p0;
 	private final Vector dir;
+	/**DELTA value to move the point away from original point*/
+    private static final double DELTA = 0.1;
 
 	/**
 	 * Constructor to create a new Ray object with the specified starting point and
@@ -30,6 +32,22 @@ public class Ray {
 		p0 = p;
 		dir = vec.normalize();
 	}
+	
+	/**
+     * Constructor for ray deflected by DELTA
+     *
+     * @param p   origin
+     * @param n   normal vector
+     * @param dir direction
+     */
+    public Ray(Point p, Vector n, Vector dir) {
+        this.dir = dir.normalize();
+        double nv = n.dotProduct(this.dir);
+        Vector delta = n.scale(DELTA);
+        if (nv < 0)
+            delta = delta.scale(-1);
+        this.p0 = p.add(delta);
+    }
 
 	/**
 	 * This function returns the starting point of the the ray which is p0
