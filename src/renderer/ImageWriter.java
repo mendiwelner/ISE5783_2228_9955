@@ -17,18 +17,18 @@ import javax.imageio.*;
  * 
  * @author Dan
  */
-public class ImageWriter { 
-	/** the nX of the image*/
+public class ImageWriter {
+	/** the nX of the image */
 	private int nX;
-	/** the nY of the image*/
+	/** the nY of the image */
 	private int nY;
-	/** the FOLDER PATH of the image*/
+	/** the FOLDER PATH of the image */
 	private static final String FOLDER_PATH = System.getProperty("user.dir") + "/images";
-	/** the image*/
+	/** the image */
 	private BufferedImage image;
-	/** the image Name*/
+	/** the image Name */
 	private String imageName;
-	/** the logger*/
+	/** the logger */
 	private Logger logger = Logger.getLogger("ImageWriter");
 
 	// ***************** Constructors ********************** //
@@ -39,7 +39,7 @@ public class ImageWriter {
 	 * @param nX        amount of pixels by Width
 	 * @param nY        amount of pixels by height
 	 */
-	public ImageWriter(String imageName, int nX, int nY) { 
+	public ImageWriter(String imageName, int nX, int nY) {
 		this.imageName = imageName;
 		this.nX = nX;
 		this.nY = nY;

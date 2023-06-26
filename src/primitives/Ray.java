@@ -2,7 +2,7 @@ package primitives;
 
 import geometries.Intersectable.GeoPoint;
 
-import static primitives.Util.isZero;
+import static primitives.Util.*;
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ public class Ray {
 
 	private final Point p0;
 	private final Vector dir;
-	/**DELTA value to move the point away from original point*/
-    private static final double DELTA = 0.1;
+	/** DELTA value to move the point away from original point */
+	private static final double DELTA = 0.1;
 
 	/**
 	 * Constructor to create a new Ray object with the specified starting point and
@@ -32,22 +32,19 @@ public class Ray {
 		p0 = p;
 		dir = vec.normalize();
 	}
-	
+
 	/**
-     * Constructor for ray deflected by DELTA
-     *
-     * @param p   origin
-     * @param n   normal vector
-     * @param dir direction
-     */
-    public Ray(Point p, Vector n, Vector dir) {
-        this.dir = dir.normalize();
-        double nv = n.dotProduct(this.dir);
-        Vector delta = n.scale(DELTA);
-        if (nv < 0)
-            delta = delta.scale(-1);
-        this.p0 = p.add(delta);
-    }
+	 * Constructor for ray deflected by DELTA
+	 *
+	 * @param p   origin
+	 * @param n   normal vector
+	 * @param dir direction
+	 */
+	public Ray(Point p, Vector n, Vector dir) {
+		this.dir = dir.normalize();
+		double nv = alignZero(n.dotProduct(this.dir));
+		this.p0 = nv == 0 ? p : p.add(n.scale(nv < 0 ? -DELTA : DELTA));
+	}
 
 	/**
 	 * This function returns the starting point of the the ray which is p0
@@ -98,14 +95,16 @@ public class Ray {
 	 * @return the closest point
 	 */
 	public GeoPoint findClosestGeoPoint(List<GeoPoint> points) {
-		if (points.size() == 0)
+		if (points == null)
 			return null;
-		GeoPoint closestGeoPoint = points.get(0);
-		double minDistance = points.get(0).point.distance(p0);
-		for (int i = 1; i < points.size(); i++) {
-			if (points.get(i).point.distance(p0) < minDistance) {
-				closestGeoPoint = points.get(i);
-				minDistance = points.get(i).point.distance(p0);
+		
+		GeoPoint closestGeoPoint = null;
+		double minDistance = Double.POSITIVE_INFINITY;
+		for (GeoPoint point : points) {
+			double distance = point.point.distance(p0);
+			if (distance < minDistance) {
+				closestGeoPoint = point;
+				minDistance = distance;
 			}
 		}
 		return closestGeoPoint;

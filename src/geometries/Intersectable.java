@@ -28,12 +28,12 @@ public abstract class Intersectable {
 	 * This function returns a list of intersection points between ray and general
 	 * geometry
 	 * 
-	 * @param ray the ray to intersect with
+	 * @param ray      the ray to intersect with
+	 * @param distance to measure with
 	 * @return List of intersection points
 	 */
 	public final List<Point> findIntersections(Ray ray, double distance) {
 		List<GeoPoint> geoList = findGeoIntersections(ray);
-
 		return geoList == null ? null
 				: geoList.stream().filter(gp -> ray.getP0().distance(gp.point) < distance).map(gp -> gp.point).toList();
 	}

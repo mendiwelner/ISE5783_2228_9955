@@ -1,6 +1,7 @@
 package lighting;
 
 import primitives.*;
+import static java.lang.Math.*;
 
 /**
  * The class PointLight provide the point light for the scene
@@ -17,7 +18,7 @@ public class PointLight extends Light implements LightSource {
 	/** the kL parameter for the scene */
 	private double kL = 0;
 	/** the kQ parameter for the scene */
-	private double kQ = 0; 
+	private double kQ = 0;
 
 	/**
 	 * constructor to initialize the direction and position of light
@@ -37,8 +38,8 @@ public class PointLight extends Light implements LightSource {
 	 * @return intensity of light at the point
 	 */
 	public Color getIntensity(Point p) {
-		double d = p.distance(position);
-		return intensity.reduce(kC + kL * d + kQ * d * d);
+		double d2 = p.distanceSquared(position);
+		return intensity.reduce(kC + kL * sqrt(d2) + kQ * d2);
 	}
 
 	/**

@@ -14,7 +14,7 @@ import static primitives.Util.*;
  */
 public class Sphere extends RadialGeometry {
 
-	/**the center of the sphere*/
+	/** the center of the sphere */
 	private final Point center;
 
 	/**
@@ -34,7 +34,7 @@ public class Sphere extends RadialGeometry {
 	}
 
 	@Override
-	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+	protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
 		Point p0 = ray.getP0();
 		// if p0 is the center of the sphere, we return the point on the shell

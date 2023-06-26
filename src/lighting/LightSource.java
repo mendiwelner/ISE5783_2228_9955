@@ -9,7 +9,7 @@ import primitives.*;
  *         211769955.Mendysegal490@gmail.com
  */
 public interface LightSource {
-	
+
 	/**
 	 * Getter of intensity of light
 	 * 
@@ -17,7 +17,7 @@ public interface LightSource {
 	 * @return intensity of light at the point
 	 */
 	public Color getIntensity(Point p);
-	
+
 	/**
 	 * Getter of direction of light
 	 * 
@@ -25,7 +25,13 @@ public interface LightSource {
 	 * @return direction of light at the point
 	 */
 	public Vector getL(Point p);
-	
+
+	/**
+	 * Getter of distance from a point
+	 * 
+	 * @param p point
+	 * @return the distance between point and geometry
+	 */
 	public double getDistance(Point p);
 
 }

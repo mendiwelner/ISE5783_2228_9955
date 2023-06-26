@@ -143,10 +143,16 @@ public class Double3 {
 	public boolean lowerThan(Double3 other) {
 		return d1 < other.d1 && d2 < other.d2 && d3 < other.d3;
 	}
-	
+
+	/**
+	 * Checks whether all the numbers are greater than three numbers in another
+	 * triad
+	 * 
+	 * @param minCalcColorK to measure the distance
+	 * @return true if minCalcColorK bigger then 3 coordinates
+	 */
 	public boolean greaterThan(double minCalcColorK) {
-        return d1 > minCalcColorK && d2 > minCalcColorK && d3 > minCalcColorK;
-    }
-	
-	
+		return d1 > minCalcColorK && d2 > minCalcColorK && d3 > minCalcColorK;
+	}
+
 }

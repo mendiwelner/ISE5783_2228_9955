@@ -9,7 +9,10 @@ import renderer.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author mendy
+ * Class ImageWriterTest will serve as tester of all Images operations
+ * 
+ * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
+ *         211769955.Mendysegal490@gmail.com
  */
 class ImageWriterTest {
 
@@ -17,7 +20,7 @@ class ImageWriterTest {
 	 * Test method for {@link renderer.ImageWriter#writeToImage()}.
 	 */
 	@Test
-	void testWriteToImage() { 
+	void testWriteToImage() {
 		final int width = 800;
 		final int height = 500;
 		final int step = 50;
@@ -26,7 +29,7 @@ class ImageWriterTest {
 		ImageWriter imageWriter = new ImageWriter("newImage", width, height);
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++)
-					imageWriter.writePixel(i, j, i % step == 0 || j % step == 0 ? red : yellow);
+				imageWriter.writePixel(i, j, i % step == 0 || j % step == 0 ? red : yellow);
 		imageWriter.writeToImage();
 	}
 }

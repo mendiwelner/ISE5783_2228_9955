@@ -14,23 +14,23 @@ import java.util.MissingResourceException;
  *
  */
 public class Camera {
-	/**starting point of camera*/
+	/** starting point of camera */
 	private final Point p0;
-	/** direction to the center of view plane*/
+	/** direction to the center of view plane */
 	private final Vector vTo;
-	/** the up direction of the camera*/
+	/** the up direction of the camera */
 	private final Vector vUp;
-	/** the right direction of the camera*/
+	/** the right direction of the camera */
 	private final Vector vRight;
-	/** the right height of the view plane*/
+	/** the right height of the view plane */
 	private double height;
-	/** the width of the view plane*/
+	/** the width of the view plane */
 	private double width;
-	/** the distance of view plane from camera*/
+	/** the distance of view plane from camera */
 	private double distance;
-	/** the image of the scene*/
+	/** the image of the scene */
 	private ImageWriter imageWriter;
-	/** the tracer of the rays*/
+	/** the tracer of the rays */
 	private RayTracerBase rayTracerBase;
 
 	/**
@@ -153,6 +153,7 @@ public class Camera {
 
 	/**
 	 * This function creates the image of the scene using the imageWriter class
+	 * 
 	 * @return this camera
 	 */
 	public Camera renderImage() {
@@ -160,33 +161,29 @@ public class Camera {
 			throw new MissingResourceException("Required resources are missing.", "Resource", null);
 		int nX = imageWriter.getNx();
 		int nY = imageWriter.getNy();
-		for (int j = 0; j < nX; j++) {
-			for (int i = 0; i < nY; i++) {
-				imageWriter.writePixel(j, i, castRay(nX, nY, j, i));
-			}
-		}
-		imageWriter.writeToImage(); 
+		for (int j = 0; j < nX; j++)
+			for (int i = 0; i < nY; i++)
+				castRay(nX, nY, j, i);
 		return this;
 	}
 
 	/**
 	 * This function prints the grid of image after drawing it by a color
 	 * 
-	 * @param interval-amount of pixel skipping before painting on grid
-	 * @param color-the       color we paint on the grid
+	 * @param interval amount of pixel skipping before painting on grid
+	 * @param color    the color we paint on the grid
+	 * @return Camera object itself
 	 */
-	public void printGrid(int interval, Color color) {
+	public Camera printGrid(int interval, Color color) {
 		if (imageWriter == null)
 			throw new MissingResourceException("Required resources are missing.", "Resource", null);
 		int nX = imageWriter.getNx();
 		int nY = imageWriter.getNy();
-		for (int j = 0; j < nX; j++) {
-			for (int i = 0; i < nY; i++) {
+		for (int j = 0; j < nX; j++)
+			for (int i = 0; i < nY; i++)
 				if (j % interval == 0 || i % interval == 0)
 					this.imageWriter.writePixel(j, i, color);
-			}
-		}
-		imageWriter.writeToImage();
+		return this;
 	}
 
 	/**
@@ -202,15 +199,14 @@ public class Camera {
 	/**
 	 * This function helps us to calculate the color of pixel
 	 * 
-	 * @param nX-rows    of view plane
-	 * @param nY-columns of view plane
-	 * @param j-rows     indexer
-	 * @param i-columns  indexer
-	 * @return color of a point in the pixel grid
+	 * @param nX rows of view plane
+	 * @param nY columns of view plane
+	 * @param j  rows indexer
+	 * @param i  columns indexer
 	 */
-	private Color castRay(int nX, int nY, int j, int i) {
+	private void castRay(int nX, int nY, int j, int i) {
 		Ray ray = constructRay(nX, nY, j, i);
-		return rayTracerBase.traceRay(ray);
+		imageWriter.writePixel(j, i, rayTracerBase.traceRay(ray));
 	}
 
 }

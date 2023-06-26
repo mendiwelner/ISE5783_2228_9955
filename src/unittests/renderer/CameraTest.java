@@ -13,7 +13,7 @@ import renderer.Camera;
  * @author Dan
  *
  */
-class CameraTest { 
+class CameraTest {
 	/**
 	 * Test method for {@link renderer.Camera#constructRay(int, int, int, int)}.
 	 */

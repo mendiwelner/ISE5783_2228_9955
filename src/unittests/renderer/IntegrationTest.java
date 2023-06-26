@@ -12,7 +12,7 @@ import renderer.Camera;
 import primitives.*;
 
 /**
- * Testing Camera Class
+ * Testing Integration of geometries
  * 
  * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
  *         211769955.Mendysegal490@gmail.com

@@ -1,4 +1,5 @@
 package geometries;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import primitives.*;
  */
 public class Geometries extends Intersectable {
 
-	/** the list of the geometries*/
+	/** the list of the geometries */
 	private List<Intersectable> shapes = new LinkedList<>();
 
 	/**
@@ -41,7 +42,7 @@ public class Geometries extends Intersectable {
 	}
 
 	@Override
-	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray)  {
+	protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 		// there is at least 1 intersection, we create our list
 		List<GeoPoint> intersections = null;
 		for (Intersectable geometry : shapes) {

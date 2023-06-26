@@ -13,6 +13,8 @@ import primitives.*;
 import org.junit.jupiter.api.Test;
 
 /**
+ * Class RayTest will serve as tester of all ray operations
+ * 
  * @author Mendy Welner 209272228. mendiwell@gmail.com Mendy Segal.
  *         211769955.Mendysegal490@gmail.com
  *

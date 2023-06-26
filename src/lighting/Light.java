@@ -11,7 +11,7 @@ import primitives.Color;
 abstract class Light {
 	/** the intensity of the light for the scene */
 	protected final Color intensity;
-	
+
 	/**
 	 * constructor to initialize the intensity of light
 	 * 
@@ -20,8 +20,10 @@ abstract class Light {
 	public Light(Color intensity) {
 		this.intensity = intensity;
 	}
-	
+
 	/**
+	 * This function returns the intensity of light
+	 * 
 	 * @return intensity light of the scene
 	 */
 	public Color getIntensity() {

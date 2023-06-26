@@ -14,7 +14,7 @@ import primitives.*;
 
 public class Cylinder extends Tube {
 
-	/**the height of the Cylinder*/
+	/** the height of the Cylinder */
 	private final double height;
 
 	/**
@@ -59,7 +59,7 @@ public class Cylinder extends Tube {
 	}
 
 	@Override
-	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray)  {
+	public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 		return null;
 	}
 
